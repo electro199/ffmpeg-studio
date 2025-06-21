@@ -9,7 +9,7 @@ It simplifies video and audio processing tasks such as format conversion, filter
 ### Using PIP
 From PyPi
 ```sh
-pip install git+https://github.com/electro199/ffmpeg-studio.git
+pip install ffmpeg-studio
 ```
 
 From Source
