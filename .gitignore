@@ -1,3 +1,5 @@
+.pypirc
+
 __pycache__/
 test.py
 /.venv*

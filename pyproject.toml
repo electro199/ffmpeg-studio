@@ -3,7 +3,7 @@ requires = ["flit_core >=3.11,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "ffmpeg"
+name = "ffmpeg-studio"
 authors = [{name = "Aman Raza"}]
 license = "GPL-3.0-or-later"
 requires-python = ">=3.11"
@@ -19,3 +19,6 @@ dev = [
     "mkdocstrings[python]",
     "mkdocs-autorefs"
 ]
+
+[tool.flit.module]
+name = "ffmpeg"  # This is your actual code directory

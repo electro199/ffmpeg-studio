@@ -27,7 +27,7 @@ clip = VideoFile("video.mp4").subclip(1, 10)
 
 # Filters
 
-Filters can be used with [`apply`](/ffmpeg.py/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg.py/api/#ffmpeg.filters.apply2), apply2 is for multi output filters like Split and Concat.
+Filters can be used with [`apply`](/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg-studio/api/#ffmpeg.filters.apply2), apply2 is for multi output filters like Split and Concat.
 
 Usage:
 
@@ -39,7 +39,7 @@ clip_scaled = apply(Scale(1000, 1000), clip)
 
 # Export
 
-FFmpeg.py comes with an easy-to-use `export` function that export the single output with multiple stream.
+ffmpeg-studio comes with an easy-to-use `export` function that export the single output with multiple stream.
 
 combine audio and video from files and output them to a single file.
 

@@ -1,7 +1,5 @@
 """
 Here is the Usage of callback function to make progress with tqdm
-
-
 """
 
 from functools import partial

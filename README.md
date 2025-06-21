@@ -1,4 +1,4 @@
-# FFmpeg.py
+# ffmpeg-studio
 
 FFmpeg Wrapper for Python
 This module provides a Pythonic interface to FFmpeg, allowing users to construct and execute FFmpeg commands programmatically.
@@ -8,7 +8,7 @@ It simplifies video and audio processing tasks such as format conversion, filter
 
 ### Using Package Manager
 ```sh
-pip install git+https://github.com/electro199/ffmpeg.py.git
+pip install git+https://github.com/electro199/ffmpeg-studio.git
 ```
 
 ### Install FFmpeg
@@ -45,7 +45,7 @@ ffmpeg -version
 
 ## Documention 
 
-Documention read docs [here](https://electro199.github.io/ffmpeg.py/).
+Documention read docs [here](https://electro199.github.io/ffmpeg-studio/).
 
 ### Usage
 
@@ -67,7 +67,7 @@ export(
 ```
 
 # Filters
-FFmpeg.py support complex Filters and can be used with  [`apply`](https://electro199.github.io/ffmpeg.py/api/#ffmpeg.filters.apply) or [`apply2`](https://electro199.github.io/ffmpeg.py/api/#ffmpeg.filters.apply2), apply2 is for multi output filters like Split and Concat.
+ffmpeg-studio support complex Filters and can be used with  [`apply`](https://electro199.github.io/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](https://electro199.github.io/ffmpeg-studio/api/#ffmpeg.filters.apply2), apply2 is for multi output filters like Split and Concat.
 
 
 ```py

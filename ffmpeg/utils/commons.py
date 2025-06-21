@@ -1,5 +1,5 @@
 """
-common functions used by ffmpeg.py feel free to use them!
+common functions used by ffmpeg-studio feel free to use them!
 
 """
 

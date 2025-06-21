@@ -1,7 +1,7 @@
 ### Install Library
 
 ```sh
-pip install git+https://github.com/electro199/ffmpeg.py.git
+pip install git+https://github.com/electro199/ffmpeg-studio.git
 ```
 
 !!! note

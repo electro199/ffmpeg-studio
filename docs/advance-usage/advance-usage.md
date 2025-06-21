@@ -1,7 +1,7 @@
-Lets see how everything works in FFmpeg.py
+Lets see how everything works in ffmpeg-studio
 
 # Input 
-The ffmpeg takes input in `[-key value -i path]`, ffmpeg.py will make a input with `InputFile` or `VideoFile`. Both of them are does same thing but with VideoFile it comes with addition features like:
+The ffmpeg takes input in `[-key value -i path]`, ffmpeg-studio will make a input with `InputFile` or `VideoFile`. Both of them are does same thing but with VideoFile it comes with addition features like:
 
 - **subclip** that sets `-ss` and `-t`  for seek start and duration repectively
 - **from_imagefile**  that sets `-t`  for duration and enable `loop`.
@@ -40,11 +40,11 @@ FFmpeg().add_global_flag("-recast_media")
 ---
 # Filters
 
-Filters are way the ffmpeg allow media to be manipulated, ffmpeg.py use [`apply`](/ffmpeg.py/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg.py/api/#ffmpeg.filters.apply2), apply2 is for multi output filters. Filter output can be exported or further filtered.
+Filters are way the ffmpeg allow media to be manipulated, ffmpeg-studio use [`apply`](/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg-studio/api/#ffmpeg.filters.apply2), apply2 is for multi output filters. Filter output can be exported or further filtered.
 
 ## Usage
 
-The [`apply`](/ffmpeg.py/api/#ffmpeg.filters.apply) functions take Filter and then the input to be filtered
+The [`apply`](/ffmpeg-studio/api/#ffmpeg.filters.apply) functions take Filter and then the input to be filtered
 
 ```python
 apply(Filter, clip)
@@ -88,7 +88,7 @@ final_video = apply(Overlay(scaled_logo, 0, 0),scaled_video)
 ```
 # Multiple Outputs
 
-ffmpeg.py supports multiple output in single command by simply calling one more `output`. Lets use previous example. Here we are export the video and scaled logo
+ffmpeg-studio supports multiple output in single command by simply calling one more `output`. Lets use previous example. Here we are export the video and scaled logo
 
 ```python
 

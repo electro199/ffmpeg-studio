@@ -1,5 +1,5 @@
-site_name: FFmpeg.py
-site_url: https://electro199.github.io/ffmpeg.py/
+site_name: ffmpeg-studio
+site_url: https://electro199.github.io/ffmpeg-studio/
 
 theme:
   name: material

@@ -1,6 +1,6 @@
-# FFmpeg.py
+# ffmpeg-studio
 
-**FFmpeg.py** is a Pythonic interface to [FFmpeg](https://ffmpeg.org/), designed to simplify the construction and execution of FFmpeg commands. It allows developers and power users to build complex audio/video processing pipelines in a more readable and flexible way.
+**ffmpeg-studio** is a Pythonic interface to [FFmpeg](https://ffmpeg.org/), designed to simplify the construction and execution of FFmpeg commands. It allows developers and power users to build complex audio/video processing pipelines in a more readable and flexible way.
 
 
 ## Key Features
@@ -15,7 +15,7 @@
 
 # FFprobe and FFplay
 
-Alongside `ffmpeg.py`, this toolkit may also include convenient wrappers for:
+Alongside `ffmpeg-studio`, this toolkit may also include convenient wrappers for:
 
 ## `ffprobe`
 
