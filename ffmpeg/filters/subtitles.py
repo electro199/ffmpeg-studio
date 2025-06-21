@@ -26,19 +26,12 @@ class Subtitles(BaseFilter):
             original_size = f"{width}x{height}"
 
         self.flags = {
-            "filename": self.escape_path(filename),
+            "filename": self.escape_arguments(filename),
             "original_size": original_size,
-            "fontsdir": self.escape_path(fontsdir),
+            "fontsdir": self.escape_arguments(fontsdir),
             "alpha": alpha,
             "charenc": charenc,
             "stream_index": stream_index,
-            "force_style": force_style,
+            "force_style": self.escape_arguments(force_style),
             "wrap_unicode": wrap_unicode,
         }
-
-    def escape_path(self, path):
-        """
-        no backslash allowed
-        `:` must be escaped
-        """
-        return f"'{path}'".replace("\\", "/").replace(":", "\\:")

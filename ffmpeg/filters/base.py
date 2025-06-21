@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Optional, TypeVar, Union
 from ..inputs.streams import StreamSpecifier
 from ..inputs.base_input import BaseInput
 from ..utils import build_name_kvargs_format
@@ -22,6 +22,11 @@ Node in Object form
 FilterNode holds :
     parent node reference 
     Filter reference that will be used make filter expression
+"""
+
+OptionalStr = TypeVar("OptionalStr", None, str, Optional[str])
+"""
+String or None Type
 """
 
 
@@ -49,6 +54,24 @@ class BaseFilter:
             StreamSpecifier(self)
             if self.output_count == 1
             else [StreamSpecifier(self, i) for i in range(self.output_count)]
+        )
+
+    def escape_arguments(self, text: OptionalStr) -> OptionalStr:
+        """
+        Escapes all characters that require escaping in FFmpeg filter arguments.
+
+        Returns:
+            None if text was None otherwise new str with escaped chars
+        """
+        if text is None:
+            return text
+        return (
+            "'"
+            + text.replace("\\", "\\\\")
+            .replace("'", r"'\\\''")
+            .replace("%", r"\\%")
+            .replace(":", "\\:")
+            + "'"
         )
 
     def __repr__(self) -> str:
