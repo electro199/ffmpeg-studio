@@ -48,7 +48,6 @@ plugins:
             # show_if_no_docstring: true
             docstring_section_style: table
             merge_init_into_class: true
-            show_inheritance_diagram: true
             show_symbol_type_heading: true
             inherited_members: true
 nav:
