@@ -108,7 +108,7 @@ class TestFFmpeg(unittest.TestCase):
         self.assertIn("y=2", filter)  # str no change
         self.assertIn("z=1", filter)  # bool will be int
         self.assertNotIn("a=", filter)  # None will be skiped
-
+    
     def test_filter_chain_application(self):
         filtered = apply(Scale(width=1280, height=720), self.video)
         ff = FFmpeg().output(Map(filtered), path="scaled.mp4")
