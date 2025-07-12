@@ -5,6 +5,7 @@ For simple usecase use `export`
 
 """
 
+
 import logging
 import subprocess
 from typing import Any, Callable, Literal, Optional
@@ -29,14 +30,17 @@ class FFmpeg:
         self._filter_nodes: list[BaseFilter] = []
         self._outputs: list[OutFile] = []
         self.node_count: int = 0
-        self._global_flags = ["-hide_banner"]   
+        self._global_flags = []
+
+        # Set Defaults
+        self.reset()
 
     def reset(self) -> "FFmpeg":
         """Reset all compilation data added"""
         self._inputs = []
         self._filter_nodes = []
         self.node_count = 0
-        self._global_flags = []
+        self._global_flags = ["-hide_banner"]
         return self
 
     def add_global_flag(self, *flags) -> "FFmpeg":
@@ -180,7 +184,6 @@ class FFmpeg:
 
         if len(self._outputs) < 1:
             raise RuntimeError()
-        self.reset()
 
         if overwrite:
             self.add_global_flag("-y")
@@ -285,15 +288,15 @@ class FFmpeg:
             raise FFmpegException(process.stderr.read(), process.returncode)
 
 
-def export(*nodes: BaseInput | StreamSpecifier, path: str) -> FFmpeg:
+def export(*nodes: BaseInput | StreamSpecifier, path: str, **kwargs) -> FFmpeg:
     """
     Exports a clip by processing the given input nodes and saving the output to the specified path.
 
     Args:
-        nodes: One or more input nodes representing media sources.
-        path: The output file path where the exported clip will be saved.
-
+        nodes (BaseInput | StreamSpecifier): One or more input nodes representing media sources.
+        path (str): The output file path where the exported clip will be saved.
+        kwargs (dict[str, Any]): flags for Output
     Returns:
         FFmpeg: An FFmpeg instance configured with the given inputs and output path.
     """
-    return FFmpeg().output(*(Map(node) for node in nodes), path=path)
+    return FFmpeg().output(*(Map(node) for node in nodes), path=path, **kwargs)

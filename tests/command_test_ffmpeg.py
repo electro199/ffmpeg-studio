@@ -108,7 +108,7 @@ class TestFFmpeg(unittest.TestCase):
         self.assertIn("y=2", filter)  # str no change
         self.assertIn("z=1", filter)  # bool will be int
         self.assertNotIn("a=", filter)  # None will be skiped
-    
+
     def test_filter_chain_application(self):
         filtered = apply(Scale(width=1280, height=720), self.video)
         ff = FFmpeg().output(Map(filtered), path="scaled.mp4")
@@ -117,6 +117,28 @@ class TestFFmpeg(unittest.TestCase):
         self.assertIn("-filter_complex", command)  # Check if video filter is applied
         self.assertIn("scale=width=1280:height=720", " ".join(command))
         self.assertEqual("scaled.mp4", command[-1])
+
+    def test_global_flags_default_reset(self):
+        ff = FFmpeg()
+
+        default_flags = ff._global_flags
+
+        ff.reset()
+
+        self.assertEqual(default_flags, ff._global_flags)
+    
+    def test_global_flags_custom(self):
+        ff = FFmpeg()
+        ff.reset()
+        flags = ["someflag", "some_more_flag"]
+
+        ff.output(Map(InputFile("input.mp4")),path="out.mp4")
+
+        ff.add_global_flag(*flags)
+        commamd = ff.compile()
+
+        self.assertIn(flags[0], commamd)
+        self.assertIn(flags[1], commamd)
 
 
 if __name__ == "__main__":
