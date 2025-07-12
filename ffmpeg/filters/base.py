@@ -1,28 +1,33 @@
+"""
+Base For All Filters 
+
+Command structure represented are like this:
+
+-i 1.png
+
+-f_c    [1]filter=2=d:s:d[a] ;
+        [a]filter=2=d:s:d[b]
+        |----Filter-----|
+
+Whole node in command
+----
+-f_c    [1]filter=2=d:s:d[a]
+        [a]filter=2=d:s:d[b]
+        |----Filter-----|
+                        |*|
+                        StreamSpecifier 
+
+Filter holds :
+    parent node reference either (StreamSpecifier or Input)
+    Filter Info including name and flags
+
+"""
+
 from typing import Optional, TypeVar, Union
 from ..inputs.streams import StreamSpecifier
 from ..inputs.base_input import BaseInput
 from ..utils import build_name_kvargs_format
 
-"""
--i 1.png
--i 2.png
--i 3.png
-
--f  [1]filter=2=d:s:d[a] ;
-    [a]filter=2=d:s:d[b]
-    |----Filter-----|
-
-Whole node in command
-----
--f  [1]filter=2=d:s:d[a]
-    [a]filter=2=d:s:d[b]
-    |----Filter-----|
-
-Node in Object form
-FilterNode holds :
-    parent node reference 
-    Filter reference that will be used make filter expression
-"""
 
 OptionalStr = TypeVar("OptionalStr", None, str, Optional[str])
 """

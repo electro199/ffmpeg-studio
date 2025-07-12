@@ -13,7 +13,7 @@ from .draw_box import Box
 from .draw_text import Text
 from .overlay import Overlay
 from .split import Split
-from .base import BaseFilter
+from .base import BaseFilter, OptionalStr
 from .transition import XFade
 from .subtitles import Subtitles
 from .timebase import SetTimeBase
@@ -39,6 +39,7 @@ __all__ = [
     "Overlay",
     "Split",
     "BaseFilter",
+    "OptionalStr",
     "XFade",
     "Subtitles",
     "SetTimeBase",
