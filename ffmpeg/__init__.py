@@ -24,6 +24,7 @@ from .inputs import (
 from .filters import apply, apply2
 from .output.output import Map, OutFile
 from .ffmpeg import FFmpeg, export
+from .utils.diagram import draw_filter_graph
 from .exception import FFmpegException, FFprobeException
 
 
