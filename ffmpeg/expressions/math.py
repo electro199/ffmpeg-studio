@@ -28,12 +28,12 @@ def f_atan(x) -> str:
 
 def f_atan2(y, x) -> str:
     """Compute principal value of the arc tangent of y/x."""
-    return f"atan2({y}\\, {x})"
+    return f"atan2({y}, {x})"
 
 
 def f_between(x, min, max) -> str:
     "Return 1 if x is greater than or equal to min and lesser than or equal to max, 0 otherwise."
-    return f"between({x}\\,{min}\\,{max})"
+    return f"between({x},{min},{max})"
 
 
 def f_bitand(x, y) -> str:

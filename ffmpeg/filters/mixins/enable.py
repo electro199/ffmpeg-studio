@@ -26,9 +26,7 @@ class TimelineEditingMixin:
         Returns:
             TimelineEditingMixin: The current instance with the updated `enable` flag.
         """
-        self.flags.update({"enable": f_between("t", start, end)})
-        # self.flags.update({"enable": rf"between(t\,{start}\,{end})"})
-
+        self.flags.update({"enable": rf"between(t\,{start}\,{end})"})
         return self
 
     def enable_after(self, t: float) -> Self:
