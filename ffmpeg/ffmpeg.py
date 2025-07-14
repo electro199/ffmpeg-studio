@@ -5,7 +5,6 @@ For simple usecase use `export`
 
 """
 
-
 import logging
 import subprocess
 from typing import Any, Callable, Literal, Optional
@@ -33,19 +32,23 @@ class FFmpeg:
         self._global_flags = []
 
         # Set Defaults
-        self.reset()
+        self.reset(reset_global=True)
 
-    def reset(self) -> "FFmpeg":
+    def reset(self, reset_global=True) -> "FFmpeg":
         """Reset all compilation data added"""
         self._inputs = []
         self._filter_nodes = []
         self.node_count = 0
-        self._global_flags = ["-hide_banner"]
+        if reset_global:
+            self._global_flags = ["-hide_banner"]
         return self
 
     def add_global_flag(self, *flags) -> "FFmpeg":
-        """Adds additional FFmpeg flags"""
-        self._global_flags.extend(flags)
+        """Adds additional FFmpeg flags, avoiding duplicates"""
+
+        for flag in flags:
+            if flag not in self._global_flags:
+                self._global_flags.append(flag)
         return self
 
     def is_input_exporting(self, node: BaseInput | StreamSpecifier) -> bool:
@@ -185,6 +188,8 @@ class FFmpeg:
         if len(self._outputs) < 1:
             raise RuntimeError()
 
+        self.reset(reset_global=False)
+
         if overwrite:
             self.add_global_flag("-y")
         else:
@@ -243,6 +248,7 @@ class FFmpeg:
             overwrite: overwrite the output if already exists
 
         """
+
         stdout = None
         stderr = subprocess.PIPE
 

@@ -1,5 +1,5 @@
 """
-Base For All Filters 
+Base For All Filters
 
 Command structure represented are like this:
 
@@ -13,9 +13,9 @@ Whole node in command
 ----
 -f_c    [1]filter=2=d:s:d[a]
         [a]filter=2=d:s:d[b]
-        |----Filter-----|
-                        |*|
-                        StreamSpecifier 
+        |----Filter------|*|
+                         |*|
+                        StreamSpecifier
 
 Filter holds :
     parent node reference either (StreamSpecifier or Input)
@@ -61,7 +61,8 @@ class BaseFilter:
             else [StreamSpecifier(self, i) for i in range(self.output_count)]
         )
 
-    def escape_arguments(self, text: OptionalStr) -> OptionalStr:
+    @staticmethod
+    def escape_arguments(text: OptionalStr) -> OptionalStr:
         """
         Escapes all characters that require escaping in FFmpeg filter arguments.
 
@@ -71,12 +72,10 @@ class BaseFilter:
         if text is None:
             return text
         return (
-            "'"
-            + text.replace("\\", "\\\\")
+            text.replace("\\", "\\\\")
             .replace("'", r"'\\\''")
-            .replace("%", r"\\%")
             .replace(":", "\\:")
-            + "'"
+            # .replace("%", r"\\%")
         )
 
     def __repr__(self) -> str:
