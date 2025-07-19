@@ -140,6 +140,12 @@ class TestFFmpeg(unittest.TestCase):
         self.assertIn(flags[0], commamd)
         self.assertIn(flags[1], commamd)
 
+    def test_compile_consistency(self):
+        filtered = apply(Scale(width=1280, height=720), self.video)
+        ff = FFmpeg().output(Map(filtered), path="scaled.mp4")
+        
+        self.assertEqual(ff.compile(), ff.compile())
+        self.assertEqual(ff.compile(), ff.compile())
 
 if __name__ == "__main__":
     unittest.main()
