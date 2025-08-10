@@ -10,6 +10,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment: pypi deploy
 
     steps:
       - name: 📥 Checkout code
