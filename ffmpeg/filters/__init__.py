@@ -14,17 +14,23 @@ from .draw_text import Text
 from .overlay import Overlay
 from .split import Split
 from .base import BaseFilter, OptionalStr
-from .transition import XFade
+from .xfade import XFade
 from .subtitles import Subtitles
 from .timebase import SetTimeBase
 from .apply_filter import apply, apply2
 from .concat import Concat
 from .sar import SetSampleAspectRatio
 from .mixins.enable import TimelineEditingMixin
+from .amix import AudioMix
+from .volume import Volume
+from .adelay import AudioDelay
 
 __all__ = [
+    # util
     "apply",
     "apply2",
+
+    # video
     "Scale",
     "EvalMode",
     "AspectRatioMode",
@@ -37,13 +43,22 @@ __all__ = [
     "Box",
     "Text",
     "Overlay",
-    "Split",
-    "BaseFilter",
-    "OptionalStr",
     "XFade",
     "Subtitles",
     "SetTimeBase",
-    "Concat",
     "SetSampleAspectRatio",
+
+    # audio
+    "AudioMix",
+    "Volume",
+    "AudioDelay",
+
+    # general
+    "Concat",
+    "Split",
+
+    # internal
+    "BaseFilter",
+    "OptionalStr",
     "TimelineEditingMixin",
 ]

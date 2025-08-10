@@ -43,7 +43,6 @@ class VirtualVideo(BaseVirtualInput):
             if k in {"cls", "height", "width"}:
                 continue
 
-
             kwargs.update(k=v)
 
         return cls("cellauto", size=f"{width}x{height}", **kwargs)
@@ -77,6 +76,7 @@ class VirtualVideo(BaseVirtualInput):
         cls,
         width: int = 640,
         height: int = 480,
+        duration: Optional[float] = None,
         rate: Optional[int] = None,
         end_pts: Optional[int] = None,
         end_scale: Optional[float] = None,
@@ -97,9 +97,14 @@ class VirtualVideo(BaseVirtualInput):
         kwargs = {
             k: v
             for k, v in local_vars.items()
-            if k not in {"cls", "width", "height"}
+            if k not in {"cls", "width", "height", "duration"}
         }
-        return cls("mandelbrot", size=f"{width}x{height}", **kwargs)
+        return cls(
+            "mandelbrot",
+            size=f"{width}x{height}",
+            flags=dict(t=duration),  # this filter does not take duration like normal
+            **kwargs,
+        )
 
     @classmethod
     def from_gradients(
@@ -140,9 +145,7 @@ class VirtualVideo(BaseVirtualInput):
         """
         local_vars = locals()
         kwargs = {
-            k: v
-            for k, v in local_vars.items()
-            if k not in {"cls", "width", "height"}
+            k: v for k, v in local_vars.items() if k not in {"cls", "width", "height"}
         }
         return cls("gradients", size=f"{width}x{height}", **kwargs)
 
@@ -166,9 +169,7 @@ class VirtualVideo(BaseVirtualInput):
         """
         local_vars = locals()
         kwargs = {
-            k: v
-            for k, v in local_vars.items()
-            if k not in {"cls", "width", "height"}
+            k: v for k, v in local_vars.items() if k not in {"cls", "width", "height"}
         }
         return cls("testsrc", size=f"{width}x{height}", **kwargs)
 
@@ -184,9 +185,7 @@ class VirtualVideo(BaseVirtualInput):
     ):
         local_vars = locals()
         kwargs = {
-            k: v
-            for k, v in local_vars.items()
-            if k not in {"cls", "width", "height"}
+            k: v for k, v in local_vars.items() if k not in {"cls", "width", "height"}
         }
         return cls("testsrc2", size=f"{width}x{height}", **kwargs)
 
@@ -201,9 +200,7 @@ class VirtualVideo(BaseVirtualInput):
     ):
         local_vars = locals()
         kwargs = {
-            k: v
-            for k, v in local_vars.items()
-            if k not in {"cls", "width", "height"}
+            k: v for k, v in local_vars.items() if k not in {"cls", "width", "height"}
         }
         return cls("smptehdbars", size=f"{width}x{height}", **kwargs)
 
@@ -218,9 +215,7 @@ class VirtualVideo(BaseVirtualInput):
     ):
         local_vars = locals()
         kwargs = {
-            k: v
-            for k, v in local_vars.items()
-            if k not in {"cls", "width", "height"}
+            k: v for k, v in local_vars.items() if k not in {"cls", "width", "height"}
         }
         return cls("smptebars", size=f"{width}x{height}", **kwargs)
 
@@ -266,9 +261,7 @@ class VirtualVideo(BaseVirtualInput):
     ):
         local_vars = locals()
         kwargs = {
-            k: v
-            for k, v in local_vars.items()
-            if k not in {"cls", "width", "height"}
+            k: v for k, v in local_vars.items() if k not in {"cls", "width", "height"}
         }
         return cls(
             "ddagrab",
@@ -300,3 +293,28 @@ class VirtualVideo(BaseVirtualInput):
             _size=f"{tile_width * 6}x{tile_height * 4}",
             **kwargs,
         )
+
+    @classmethod
+    def from_color(
+        cls,
+        color: str,
+        width: int,
+        height: int,
+        duration: Optional[float] = None,
+        rate: int = 25,
+        sar: Optional[int] = None,
+        decimals: Optional[int] = None,
+    ):
+        """
+        Parameters:
+            size : set video size (default "320x240")
+            rate : set video rate (default "25")
+            duration : set video duration (default -0.000001)
+            sar : set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
+            decimals : set number of decimals to show (from 0 to 17) (default 0)
+        """
+        local_vars = locals()
+        kwargs = {
+            k: v for k, v in local_vars.items() if k not in {"cls", "width", "height"}
+        }
+        return cls("color", size=f"{width}x{height}", **kwargs)

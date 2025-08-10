@@ -40,7 +40,7 @@ def draw_filter_graph(
 
     # ── 2. Start the dot graph ──
     dot = Digraph(name="FFmpegFilterGraph", format=format)
-    dot.attr(rankdir="LR", dpi=str(300), fontsize="10")
+    dot.attr(rankdir="LR", dpi=str(3000), fontsize="10")
 
     # Helper to assign deterministic unique IDs
     uid = itertools.count()
