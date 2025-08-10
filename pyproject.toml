@@ -4,12 +4,29 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "ffmpeg-studio"
-authors = [{name = "Aman Raza"}]
+authors = [{ name = "Aman Raza" }]
 license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
 requires-python = ">=3.11"
 readme = "README.md"
-license-files = ["LICENSE"]
 dynamic = ["version", "description"]
+
+keywords = ["ffmpeg", "media", "video processing", "audio", "python", "wrapper", "transcoding"]
+
+classifiers = [
+    "Intended Audience :: Developers",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Sound/Audio",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Operating System :: OS Independent"
+]
+
+[project.urls]
+Homepage = "https://github.com/electro199/ffmpeg-studio"
+Repository = "https://github.com/electro199/ffmpeg-studio"
+Documentation = "https://electro199.github.io/ffmpeg-studio/"
 
 [project.optional-dependencies]
 dev = [
@@ -21,4 +38,4 @@ dev = [
 ]
 
 [tool.flit.module]
-name = "ffmpeg"  # This is your actual code directory
+name = "ffmpeg"
