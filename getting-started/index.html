@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg.py/getting-started/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/getting-started/">
       
       
         <link rel="prev" href="../installation/">
@@ -18,15 +18,15 @@
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Getting Started - FFmpeg.py</title>
+        <title>Getting Started - ffmpeg-studio</title>
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.7e37652d.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="FFmpeg.py" class="md-header__button md-logo" aria-label="FFmpeg.py" data-md-component="logo">
+    <a href=".." title="ffmpeg-studio" class="md-header__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            FFmpeg.py
+            ffmpeg-studio
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -216,13 +216,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="FFmpeg.py" class="md-nav__button md-logo" aria-label="FFmpeg.py" data-md-component="logo">
+    <a href=".." title="ffmpeg-studio" class="md-nav__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    FFmpeg.py
+    ffmpeg-studio
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -566,13 +566,13 @@
 <span class="c1"># [&#39;-t&#39;, &#39;10&#39;, &#39;-ss&#39;, &#39;1&#39;, &#39;-i&#39;, &#39;video.mp4&#39;]</span>
 </code></pre></div>
 <h1 id="filters">Filters</h1>
-<p>Filters can be used with <a href="/ffmpeg.py/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg.py/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters like Split and Concat.</p>
+<p>Filters can be used with <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters like Split and Concat.</p>
 <p>Usage:</p>
 <div class="highlight"><pre><span></span><code><span class="n">clip</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;image.png&quot;</span><span class="p">)</span>
 <span class="n">clip_scaled</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">clip</span><span class="p">)</span>
 </code></pre></div>
 <h1 id="export">Export</h1>
-<p>FFmpeg.py comes with an easy-to-use <code>export</code> function that export the single output with multiple stream.</p>
+<p>ffmpeg-studio comes with an easy-to-use <code>export</code> function that export the single output with multiple stream.</p>
 <p>combine audio and video from files and output them to a single file.</p>
 <p>This code extracts the <strong>video</strong> from <code>video.mp4</code> and the <strong>audio</strong> from <code>video1.mp4</code>, then exports them into a single output file <code>out.mp4</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.inputs</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoFile</span>
@@ -724,10 +724,10 @@ this provide useful flags that are applied to input in ffmpeg command.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   </body>

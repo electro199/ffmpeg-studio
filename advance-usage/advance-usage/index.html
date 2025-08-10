@@ -8,7 +8,7 @@
       
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg.py/advance-usage/advance-usage/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/advance-usage/advance-usage/">
       
       
         <link rel="prev" href="../../getting-started/">
@@ -18,15 +18,15 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
     
     
       
-        <title>Advance usage - FFmpeg.py</title>
+        <title>Advance usage - ffmpeg-studio</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -92,7 +92,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="FFmpeg.py" class="md-header__button md-logo" aria-label="FFmpeg.py" data-md-component="logo">
+    <a href="../.." title="ffmpeg-studio" class="md-header__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -106,7 +106,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            FFmpeg.py
+            ffmpeg-studio
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -216,13 +216,13 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="FFmpeg.py" class="md-nav__button md-logo" aria-label="FFmpeg.py" data-md-component="logo">
+    <a href="../.." title="ffmpeg-studio" class="md-nav__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
 
     </a>
-    FFmpeg.py
+    ffmpeg-studio
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -544,9 +544,9 @@
 
 
 
-<p>Lets see how everything works in FFmpeg.py</p>
+<p>Lets see how everything works in ffmpeg-studio</p>
 <h1 id="input">Input</h1>
-<p>The ffmpeg takes input in <code>[-key value -i path]</code>, ffmpeg.py will make a input with <code>InputFile</code> or <code>VideoFile</code>. Both of them are does same thing but with VideoFile it comes with addition features like:</p>
+<p>The ffmpeg takes input in <code>[-key value -i path]</code>, ffmpeg-studio will make a input with <code>InputFile</code> or <code>VideoFile</code>. Both of them are does same thing but with VideoFile it comes with addition features like:</p>
 <ul>
 <li><strong>subclip</strong> that sets <code>-ss</code> and <code>-t</code>  for seek start and duration repectively</li>
 <li><strong>from_imagefile</strong>  that sets <code>-t</code>  for duration and enable <code>loop</code>.</li>
@@ -575,9 +575,9 @@
 </code></pre></div></p>
 <hr />
 <h1 id="filters">Filters</h1>
-<p>Filters are way the ffmpeg allow media to be manipulated, ffmpeg.py use <a href="/ffmpeg.py/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg.py/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters. Filter output can be exported or further filtered.</p>
+<p>Filters are way the ffmpeg allow media to be manipulated, ffmpeg-studio use <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters. Filter output can be exported or further filtered.</p>
 <h2 id="usage_1">Usage</h2>
-<p>The <a href="/ffmpeg.py/api/#ffmpeg.filters.apply"><code>apply</code></a> functions take Filter and then the input to be filtered</p>
+<p>The <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> functions take Filter and then the input to be filtered</p>
 <div class="highlight"><pre><span></span><code><span class="n">apply</span><span class="p">(</span><span class="n">Filter</span><span class="p">,</span> <span class="n">clip</span><span class="p">)</span>
 </code></pre></div>
 <h2 id="example">Example</h2>
@@ -614,7 +614,7 @@
 <span class="c1">#  -map [n2o0] out.mp4</span>
 </code></pre></div>
 <h1 id="multiple-outputs">Multiple Outputs</h1>
-<p>ffmpeg.py supports multiple output in single command by simply calling one more <code>output</code>. Lets use previous example. Here we are export the video and scaled logo</p>
+<p>ffmpeg-studio supports multiple output in single command by simply calling one more <code>output</code>. Lets use previous example. Here we are export the video and scaled logo</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">VideoFile</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Overlay</span>
 
@@ -749,10 +749,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
       
     
   </body>
