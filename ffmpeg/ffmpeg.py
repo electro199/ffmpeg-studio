@@ -25,7 +25,7 @@ class FFmpeg:
 
     def __init__(self) -> None:
 
-        self.ffmpeg_path = Self
+        self.ffmpeg_path = "ffmpeg"
         self._inputs: list[BaseInput] = []
         self._filter_nodes: list[BaseFilter] = []
         self._outputs: list[OutFile] = []
