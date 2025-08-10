@@ -7,7 +7,8 @@ For simple usecase use `export`
 
 import logging
 import subprocess
-from typing import Any, Callable, Literal, Optional
+from pathlib import Path
+from typing import Any, Callable, Literal, Optional, Self
 
 from .exception.exceptions import FFmpegException
 from .filters import BaseFilter
@@ -24,32 +25,43 @@ class FFmpeg:
 
     def __init__(self) -> None:
 
-        self.ffmpeg_path = "ffmpeg"
+        self.ffmpeg_path = Self
         self._inputs: list[BaseInput] = []
         self._filter_nodes: list[BaseFilter] = []
         self._outputs: list[OutFile] = []
         self.node_count: int = 0
-        self._global_flags = []
+        self._global_flags: dict[str, str | float | None] = {}
+
+        self.filter_file = "filters.txt"
+        self.use_filter_file = False
 
         # Set Defaults
         self.reset(reset_global=True)
 
-    def reset(self, reset_global=True) -> "FFmpeg":
+    def set_ffmpeg_path(self, path: str):
+        self.ffmpeg_path = path
+
+    def reset(self, reset_global=True) -> Self:
         """Reset all compilation data added"""
         self._inputs = []
         self._filter_nodes = []
         self.node_count = 0
         if reset_global:
-            self._global_flags = ["-hide_banner"]
+            self._global_flags = {"-hide_banner": None}
         return self
 
-    def add_global_flag(self, *flags) -> "FFmpeg":
+    def add_global_flag(self, key: str, value: str | float | None = None) -> Self:
         """Adds additional FFmpeg flags, avoiding duplicates"""
-
-        for flag in flags:
-            if flag not in self._global_flags:
-                self._global_flags.append(flag)
+        self._global_flags[key] = value
         return self
+
+    def buid_global_flags(self):
+        cmd = []
+        for key, value in self._global_flags.items():
+            cmd.append(key)
+            if value is not None:
+                cmd.append(str(value))
+        return cmd
 
     def is_input_exporting(self, node: BaseInput | StreamSpecifier) -> bool:
         """Check if Output is Input without any filter applied"""
@@ -131,29 +143,26 @@ class FFmpeg:
         return filter_chain
 
     def flatten_graph(
-        self, node: BaseInput | StreamSpecifier  # type: ignore
+        self, node: BaseInput | StreamSpecifier
     ) -> list[BaseFilter] | None:
-
-        if isinstance(node, StreamSpecifier):
-            node: BaseFilter | BaseInput = node.parent
-
-        if isinstance(node, BaseInput):
-            if node not in self._inputs_tmp:
-                self._inputs_tmp.append(node)
-            return
-
-        if isinstance(node, BaseFilter):
-            if node in self._filter_nodes:
-                return
-
-        nodes = [node]
-
-        for parent_node in node.parent_nodes:
-            nn = self.flatten_graph(parent_node)
-            if nn:
-                nodes.extend(nn)
-
-        return nodes
+        stack = [node]
+        visited_filters = set()
+        collected_nodes = []
+        while stack:
+            current = stack.pop()
+            if isinstance(current, StreamSpecifier):
+                current = current.parent
+            if isinstance(current, BaseInput):
+                if current not in self._inputs_tmp:
+                    self._inputs_tmp.append(current)
+                continue
+            if isinstance(current, BaseFilter):
+                if current in self._filter_nodes or current in visited_filters:
+                    continue
+                visited_filters.add(current)
+                collected_nodes.append(current)
+                stack.extend(reversed(current.parent_nodes))
+        return collected_nodes or None
 
     def build_inputs(self) -> list[str]:
 
@@ -197,7 +206,7 @@ class FFmpeg:
 
         self.add_global_flag("-loglevel", "error")
 
-        command = [self.ffmpeg_path, *self._global_flags]
+        command = [self.ffmpeg_path, *self.buid_global_flags()]
         # First flatten filters to add inputs automatically from last node order matters here
         filters = []
         for output in self._outputs:
@@ -208,7 +217,11 @@ class FFmpeg:
             command.extend(inputs)
 
         if filters:
-            command.extend(("-filter_complex", ";".join(filters)))
+            if self.use_filter_file:
+                Path(self.filter_file).write_text(";\n".join(filters))
+                command.extend(("-filter_complex_script", self.filter_file))
+            else:
+                command.extend(("-filter_complex", ";".join(filters)))
 
         for output in self._outputs:
             for i, maps in enumerate(output.maps):  # one output can have multiple maps
@@ -219,7 +232,7 @@ class FFmpeg:
 
         return list(map(str, command))
 
-    def output(self, *maps: Map, path: str, **kvflags) -> "FFmpeg":
+    def output(self, *maps: Map, path: str, **kvflags) -> Self:
         """
         Create output for the command with map and output specific flags and the path for the output.
 
@@ -255,7 +268,8 @@ class FFmpeg:
         # If progress_callback: function is provided capture the outputs
         if progress_callback:
             stdout = subprocess.PIPE
-            self.add_global_flag("-progress", "pipe:1", "-nostats")
+            self.add_global_flag("-progress", "pipe:1")
+            self.add_global_flag("-nostats")
             self.add_global_flag("-stats_period", progress_period)
 
         command = self.compile(overwrite=overwrite)
