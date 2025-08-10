@@ -1,9 +1,9 @@
 name: Deploy MkDocs Documentation
 
+
 on:
-  push:
-    branches:
-      - master
+  release:
+    types: [published]  # Only run when a release is published
 
 permissions:
   contents: write  # required to deploy to GitHub Pages
