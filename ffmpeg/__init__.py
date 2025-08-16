@@ -33,4 +33,4 @@ import logging
 logger = logging.getLogger("ffmpeg")
 
 
-__version__ = "0.0.15"
+__version__ = "0.1.0"
