@@ -16,6 +16,8 @@ It simplifies and Handles:
 - Output mapping & stream selection
 - Progress tracking with callbacks
 - Allows direct flags in command.
+- Scanning metadata with ffprobe.
+- Long filter graphs.
 
 ## Installation
 

@@ -5,7 +5,7 @@ pip install git+https://github.com/electro199/ffmpeg-studio.git
 ```
 
 !!! note
-This project does not install ffmpeg utility automatically.
+    This project does not install ffmpeg utility automatically.
 
 ---
 

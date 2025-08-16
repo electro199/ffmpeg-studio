@@ -1,14 +1,22 @@
 # Input
 
+In most cases, you will want to transform a file, and FFmpeg-Studio provides specialized classes to make input handling clear, consistent, and free from duplication.
+
 Available classes for taking media are:
 
-- `InputFile`: For Generic Inputs
-- `VideoFile`: For Video
-- `ImageFile`: For Image
-- `AudioFile`: For Audio
-- `VirtualVideo`: For Generating Videos
+- **InputFile**: A general-purpose input class for handling a wide range of media files. This is class can be used for stright forwad flag usage.
 
-Take input using `InputFile` it provide general input interface, use `FileInputOptions` to easily set flags or directly pass in kwargs
+- **VideoFile**: A dedicated input type tailored for video sources. It makes it easier to configure video-specific parameters such as frame rate, resolution, and stream mapping. This is particularly useful when processing high-resolution video content or when multiple video streams need to be managed within the same pipeline.
+
+- **ImageFile**: Designed for static image files, this class is ideal when building video slideshows, performing image-to-video conversions, or applying filters to single frames.
+
+- **AudioFile**: A specialized class for audio-only inputs, enabling precise handling of audio streams. It provides straightforward access to audio-specific settings such as sample rate, channel layouts, and codec handling. This is useful for workflows involving audio extraction, mixing, or track replacement in multimedia projects.
+
+- **VirtualVideo**: A powerful utility for generating synthetic video streams directly within the pipeline. This is especially useful for testing, debugging, or producing programmatically generated content such as blank backgrounds, color patterns, or animated test sources without relying on external media files.
+
+**Usage:**
+
+Different ways input can be handled based on usecase
 
 ```python
 from ffmpeg import InputFile, FileInputOptions, VideoFile
@@ -16,38 +24,40 @@ from ffmpeg import InputFile, FileInputOptions, VideoFile
 # if you know flags
 clip1 = InputFile("video.mp4", ss=1, t=10)
 
-# same but easy usage but limited flags
+# same but easy usage with limited flags
 clip = InputFile("video.mp4", FileInputOptions(start_time=1, duration=10))
 
 # same with VideoFile easiest
 clip = VideoFile("video.mp4").subclip(1, 10)
 
+# Results
 # ['-t', '10', '-ss', '1', '-i', 'video.mp4']
 ```
 
 # Filters
 
-Filters can be used with [`apply`](/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg-studio/api/#ffmpeg.filters.apply2), apply2 is for multi output filters like Split and Concat.
+A Filter is a component used to process and transform then input or its stream i.e audio from a video. This library extensively handles filters with built classes.
+filters can be used with [`apply`](/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg-studio/api/#ffmpeg.filters.apply2), apply2 is for multi output filters like Split and Concat. apply function make new output node in filter graph to be used in filter again or to be written in to output file while maintaining source.
 
-Usage:
+**Usage:**
 
 ```py
 clip = InputFile("image.png")
 clip_scaled = apply(Scale(1000, 1000), clip)
-
 ```
 
 # Export
 
-ffmpeg-studio comes with an easy-to-use `export` function that export the single output with multiple stream.
+For simple exporting ffmpeg-studio comes with an easy-to-use `export` function to export the single output with possibly multiple stream.
 
-combine audio and video from files and output them to a single file.
+Example:
 
-This code extracts the **video** from `video.mp4` and the **audio** from `video1.mp4`, then exports them into a single output file `out.mp4`.
+Combine audio and video from files and output them to a single file.
+
+This code extracts the **video** from `video1.mp4` and the **audio** from `video2.mp4`, then exports them into a single output file `out.mp4`.
 
 ```py
-from ffmpeg.inputs import VideoFile
-from ffmpeg import export
+from ffmpeg import VideoFile, export
 
 export(
     VideoFile("video1.mp4").video,  # Video stream from video.mp4
@@ -73,7 +83,8 @@ FFmpeg().output(
 ```
 
 !!! tip
-This method provides a more **explicit** control flow where each stream is mapped individually. you can provide flags for `-map` context with both stream suffixed flag or without.
+
+    This method provides a more **explicit** control flow where each stream is mapped individually. you can provide flags for `-map` context with both stream suffixed flag or without.
 
 ---
 
@@ -113,4 +124,4 @@ The above code is easy to understand which works like:
 - we set a `duration` so infinite loop can end
 - then set `frame_rate` at 60
 
-At end we make a FFmpeg and add a output with two stream mapping. The `Map` add stream(s) to a output file in this way we can add multiple streams to one output, for more complex use case see Advance Usage like Filtering, Multiple outputs or what is progress_callback.
+At end we make a `FFmpeg()` and add a output with two stream mapping. The `Map` add stream(s) to a output file in this way we can add multiple streams to one output.

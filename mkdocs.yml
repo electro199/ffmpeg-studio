@@ -53,6 +53,7 @@ plugins:
 nav:
   - Home: index.md
   - Installation: installation.md
+  - Overview : overview.md
   - Getting Started: getting-started.md
   - Advance Usage:
     - advance-usage/advance-usage.md
