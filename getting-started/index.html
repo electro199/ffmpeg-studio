@@ -11,14 +11,14 @@
         <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/getting-started/">
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../overview/">
       
       
         <link rel="next" href="../advance-usage/advance-usage/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.17">
     
     
       
@@ -275,6 +275,28 @@
       
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
     
   
   
@@ -318,10 +340,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -334,8 +356,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Advance Usage
           </label>
@@ -409,10 +431,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -425,8 +447,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             API Reference
           </label>
@@ -543,40 +565,54 @@
 
 
 <h1 id="input">Input</h1>
+<p>In most cases, you will want to transform a file, and FFmpeg-Studio provides specialized classes to make input handling clear, consistent, and free from duplication.</p>
 <p>Available classes for taking media are:</p>
 <ul>
-<li><code>InputFile</code>: For Generic Inputs</li>
-<li><code>VideoFile</code>: For Video</li>
-<li><code>ImageFile</code>: For Image</li>
-<li><code>AudioFile</code>: For Audio</li>
-<li><code>VirtualVideo</code>: For Generating Videos</li>
+<li>
+<p><strong>InputFile</strong>: A general-purpose input class for handling a wide range of media files. This is class can be used for stright forwad flag usage.</p>
+</li>
+<li>
+<p><strong>VideoFile</strong>: A dedicated input type tailored for video sources. It makes it easier to configure video-specific parameters such as frame rate, resolution, and stream mapping. This is particularly useful when processing high-resolution video content or when multiple video streams need to be managed within the same pipeline.</p>
+</li>
+<li>
+<p><strong>ImageFile</strong>: Designed for static image files, this class is ideal when building video slideshows, performing image-to-video conversions, or applying filters to single frames.</p>
+</li>
+<li>
+<p><strong>AudioFile</strong>: A specialized class for audio-only inputs, enabling precise handling of audio streams. It provides straightforward access to audio-specific settings such as sample rate, channel layouts, and codec handling. This is useful for workflows involving audio extraction, mixing, or track replacement in multimedia projects.</p>
+</li>
+<li>
+<p><strong>VirtualVideo</strong>: A powerful utility for generating synthetic video streams directly within the pipeline. This is especially useful for testing, debugging, or producing programmatically generated content such as blank backgrounds, color patterns, or animated test sources without relying on external media files.</p>
+</li>
 </ul>
-<p>Take input using <code>InputFile</code> it provide general input interface, use <code>FileInputOptions</code> to easily set flags or directly pass in kwargs</p>
+<p><strong>Usage:</strong></p>
+<p>Different ways input can be handled based on usecase</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">FileInputOptions</span><span class="p">,</span> <span class="n">VideoFile</span>
 
 <span class="c1"># if you know flags</span>
 <span class="n">clip1</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span> <span class="n">ss</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="c1"># same but easy usage but limited flags</span>
+<span class="c1"># same but easy usage with limited flags</span>
 <span class="n">clip</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span> <span class="n">FileInputOptions</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
 
 <span class="c1"># same with VideoFile easiest</span>
 <span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">subclip</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 
+<span class="c1"># Results</span>
 <span class="c1"># [&#39;-t&#39;, &#39;10&#39;, &#39;-ss&#39;, &#39;1&#39;, &#39;-i&#39;, &#39;video.mp4&#39;]</span>
 </code></pre></div>
 <h1 id="filters">Filters</h1>
-<p>Filters can be used with <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters like Split and Concat.</p>
-<p>Usage:</p>
+<p>A Filter is a component used to process and transform then input or its stream i.e audio from a video. This library extensively handles filters with built classes.
+filters can be used with <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters like Split and Concat. apply function make new output node in filter graph to be used in filter again or to be written in to output file while maintaining source.</p>
+<p><strong>Usage:</strong></p>
 <div class="highlight"><pre><span></span><code><span class="n">clip</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;image.png&quot;</span><span class="p">)</span>
 <span class="n">clip_scaled</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">clip</span><span class="p">)</span>
 </code></pre></div>
 <h1 id="export">Export</h1>
-<p>ffmpeg-studio comes with an easy-to-use <code>export</code> function that export the single output with multiple stream.</p>
-<p>combine audio and video from files and output them to a single file.</p>
-<p>This code extracts the <strong>video</strong> from <code>video.mp4</code> and the <strong>audio</strong> from <code>video1.mp4</code>, then exports them into a single output file <code>out.mp4</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.inputs</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoFile</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">export</span>
+<p>For simple exporting ffmpeg-studio comes with an easy-to-use <code>export</code> function to export the single output with possibly multiple stream.</p>
+<p>Example:</p>
+<p>Combine audio and video from files and output them to a single file.</p>
+<p>This code extracts the <strong>video</strong> from <code>video1.mp4</code> and the <strong>audio</strong> from <code>video2.mp4</code>, then exports them into a single output file <code>out.mp4</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoFile</span><span class="p">,</span> <span class="n">export</span>
 
 <span class="n">export</span><span class="p">(</span>
     <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video1.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">video</span><span class="p">,</span>  <span class="c1"># Video stream from video.mp4</span>
@@ -599,8 +635,8 @@
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-</div>
 <p>This method provides a more <strong>explicit</strong> control flow where each stream is mapped individually. you can provide flags for <code>-map</code> context with both stream suffixed flag or without.</p>
+</div>
 <hr />
 <h2 id="example">Example</h2>
 <p>Lets make a video from a image with audio with</p>
@@ -633,7 +669,7 @@ this provide useful flags that are applied to input in ffmpeg command.</p>
 <li>we set a <code>duration</code> so infinite loop can end</li>
 <li>then set <code>frame_rate</code> at 60</li>
 </ul>
-<p>At end we make a FFmpeg and add a output with two stream mapping. The <code>Map</code> add stream(s) to a output file in this way we can add multiple streams to one output, for more complex use case see Advance Usage like Filtering, Multiple outputs or what is progress_callback.</p>
+<p>At end we make a <code>FFmpeg()</code> and add a output with two stream mapping. The <code>Map</code> add stream(s) to a output file in this way we can add multiple streams to one output.</p>
 
 
 
@@ -665,7 +701,7 @@ this provide useful flags that are applied to input in ffmpeg command.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation">
+          <a href="../overview/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -675,7 +711,7 @@ this provide useful flags that are applied to input in ffmpeg command.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Installation
+                Overview
               </div>
             </div>
           </a>
@@ -724,10 +760,10 @@ this provide useful flags that are applied to input in ffmpeg command.</p>
     
     
       
-      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../assets/javascripts/bundle.92b07e13.min.js"></script>
       
     
   </body>

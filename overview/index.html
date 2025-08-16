@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/useful_info/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/overview/">
       
       
+        <link rel="prev" href="../installation/">
+      
+      
+        <link rel="next" href="../getting-started/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Useful info - ffmpeg-studio</title>
+        <title>Overview - ffmpeg-studio</title>
       
     
     
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ffmpeg-command-structure" class="md-skip">
+        <a href="#design" class="md-skip">
           Skip to content
         </a>
       
@@ -108,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Useful info
+              Overview
             
           </span>
         </div>
@@ -271,10 +275,30 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -285,6 +309,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#design" class="md-nav__link">
+    <span class="md-ellipsis">
+      Design
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter generation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-and-output-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input and output management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progress-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress tracking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata-and-probing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata and probing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-control-with-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct control with flags
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalable-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalable pipelines
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -541,9 +646,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ffmpeg-command-structure" class="md-nav__link">
+  <a href="#design" class="md-nav__link">
     <span class="md-ellipsis">
-      FFMPEG command structure
+      Design
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#filter-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filter generation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#input-and-output-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Input and output management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#progress-tracking" class="md-nav__link">
+    <span class="md-ellipsis">
+      Progress tracking
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata-and-probing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Metadata and probing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#direct-control-with-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      Direct control with flags
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scalable-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scalable pipelines
     </span>
   </a>
   
@@ -565,31 +724,25 @@
 
 
 
-  <h1>Useful info</h1>
+  <h1>Overview</h1>
 
-<h2 id="ffmpeg-command-structure">FFMPEG command structure</h2>
-<p>The FFmpeg have very complex command structure the position of flags can effect the output come. The command is mainly consist of input which can be be media (file/link on internet/or any supported protocol that ffmpeg supports), then optional filter flag that tell how input should be manipulated then map flag to set which stream should be used in output either the input file and/or the modified stream the is generated after filtering</p>
-<p>Lets see the command structure with examples:</p>
-<ol>
-<li>
-<p>ffmpeg command with single input and single output simplest form</p>
-<ul>
-<li>
-<p>structure:</p>
-<div class="highlight"><pre><span></span><code>ffmpeg [options] [[infile options] -i infile]... [[outfile options] outfile]...
-</code></pre></div>
-</li>
-<li>
-<p>example with -y to overwrite the </p>
-<div class="highlight"><pre><span></span><code>ffmpeg -y -t 30 input_file_path.mp4  -r 24 output_file_path.mp4 
-</code></pre></div>
-</li>
-</ul>
-</li>
-</ol>
-<p>usage: ffmpeg [options][[infile options] -i infile]... [filter ]...  [-map [outfile options] outfile]...</p>
-<p>ffmpeg <a class="autorefs autorefs-internal" title="Filters" href="../getting-started/#filters">[infile options] -i infile</a> [-map flags outfile]...</p>
-<p>multiple input, filter</p>
+<p>FFmpeg-Studio extends the power of FFmpeg with a clean, Pythonic interface.</p>
+<p>This library simplifies complex command construction, provides tools for safe quoting and escaping, and offers robust mechanisms for handling both input and output streams. It aims to make FFmpeg’s advanced capabilities more approachable while preserving its flexibility.</p>
+<h2 id="design">Design</h2>
+<p>The core design focuses on generating filters, tracking progress in real time, and integrating seamlessly with Python applications. It provides a solid foundation for building media processing pipelines ranging from simple format conversions to large-scale video processing tasks.</p>
+<p>Let’s look at a few possible uses of this library.</p>
+<h2 id="filter-generation">Filter generation</h2>
+<p>FFmpeg-Studio makes it easier to construct complex filter graphs by offering built-in filters and a flexible base class for creating custom ones. This allows you to chain together sophisticated transformations without manually managing the intricate FFmpeg syntax.</p>
+<h2 id="input-and-output-management">Input and output management</h2>
+<p>The library provides tools to handle multiple input streams and direct their outputs precisely. Stream selection and mapping are simplified, enabling workflows where different audio, video, or subtitle tracks need to be processed or combined.</p>
+<h2 id="progress-tracking">Progress tracking</h2>
+<p>With built-in callbacks, FFmpeg-Studio can track processing progress in real time. This is useful for monitoring long-running tasks or integrating into user-facing applications that require live feedback.</p>
+<h2 id="metadata-and-probing">Metadata and probing</h2>
+<p>The library integrates FFprobe to scan and extract metadata, giving you detailed insights into your media files. This helps when deciding how to structure conversions, analyze streams, or build dynamic workflows.</p>
+<h2 id="direct-control-with-flags">Direct control with flags</h2>
+<p>For scenarios requiring precise tuning, FFmpeg-Studio allows direct use of FFmpeg flags. This means you get the best of both worlds—Pythonic simplicity with the ability to drop down into raw FFmpeg power when needed.</p>
+<h2 id="scalable-pipelines">Scalable pipelines</h2>
+<p>Long filter graphs and complex command structures are supported, making it possible to build production-grade media pipelines that can scale from quick experiments to full-scale automation.</p>
 
 
 
@@ -616,6 +769,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Installation
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../getting-started/" class="md-footer__link md-footer__link--next" aria-label="Next: Getting Started">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Getting Started
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
