@@ -74,7 +74,6 @@ class BaseFilter:
             "'"
             + text.replace("\\", "\\\\")
             .replace("'", r"'\\\''")
-            .replace("%", r"\\%")
             .replace(":", "\\:")
             + "'"
         )

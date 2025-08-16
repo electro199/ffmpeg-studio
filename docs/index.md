@@ -11,13 +11,12 @@
 - Easily integrated into larger video processing workflows
 - Support for progress callback function
 
----
 
-# FFprobe and FFplay
+## FFprobe and FFplay
 
 Alongside `ffmpeg-studio`, this toolkit may also include convenient wrappers for:
 
-## `ffprobe`
+##  `ffprobe`
 
 A Python wrapper for the `ffprobe` utility to extract metadata from media files.
 
