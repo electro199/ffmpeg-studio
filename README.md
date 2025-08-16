@@ -114,3 +114,39 @@ For Debian/Ubuntu:
 ```sh
 sudo apt install ffmpeg
 ```
+
+## To-Do
+
+- [ ] All Input methods
+  - [x] Generic(Input) class
+  - [x] ImageFile class
+  - [x] VideoFile class
+  - [x] AudioFile class
+  - [x] VituralVideo class
+  - [ ] VituralAudio class
+
+- [x] Output options
+  - [x] Muliple output per command
+  - [x] filter_file for super long filters
+  - [x] Per map flags
+  - [x] Per output flags
+
+- [ ] Improve progress tracking  
+  - [x] Support callbacks with frame/time info  
+  - [ ] Provide async interface for streaming progress
+
+- [ ] Documentation & Examples  
+  - [x] Basic tutorials.
+  - [x] Showcase filtergraph construction with helpers  
+  - [ ] Detailed tutorials.
+  - [ ] Detailed example/gallery.
+
+- [ ] Testing & CI  
+  - [x] Publish to PyPI  every release
+  - [x] Publish Docs  every release
+  - [ ] Verify cross-platform behavior (Linux/Windows/macOS)  
+  - [ ] GitHub Actions for automated testing
+
+- [x] Packaging & Distribution  
+  - [x] Publish to PyPI  
+
