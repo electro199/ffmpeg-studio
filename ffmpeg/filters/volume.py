@@ -11,7 +11,7 @@ class Volume(BaseFilter, TimelineEditingMixin):
 
     def __init__(
         self,
-        value: str| float,
+        value: str | float,
         precision: Optional[
             Literal[
                 "fixed",

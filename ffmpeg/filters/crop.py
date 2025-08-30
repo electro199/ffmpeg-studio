@@ -1,5 +1,4 @@
 from .base import BaseFilter
-from .mixins.enable import TimelineEditingMixin
 
 
 class Crop(BaseFilter):
@@ -10,7 +9,7 @@ class Crop(BaseFilter):
         w: str | int,
         h: str | int,
         keep_aspect: bool = False,
-        **kwargs
+        **kwargs,
     ):
         super().__init__("crop")
         self.flags = {
@@ -21,6 +20,3 @@ class Crop(BaseFilter):
             "keep_aspect": keep_aspect,
         }
         self.flags.update(kwargs)
-
-    def build(self) -> str:
-        return super().build()

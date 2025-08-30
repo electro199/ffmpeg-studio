@@ -1,7 +1,7 @@
 """
 Apply FFmpeg filters to input streams or output from another filter.
 
-Use `apply` when filter outputs single output like Overlay, Text or Scale 
+Use `apply` when filter outputs single output like Overlay, Text or Scale
 Use `apply2` when filter outputs multiple outputs like Split or Concat
 
 Internally  it add input in parent list attr and return the output it helps filter to be flexible

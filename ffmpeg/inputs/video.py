@@ -88,7 +88,7 @@ class VideoFile(BaseInput):
         Example:
             You get 2nd audio stream from video like this.
             ```python
-            clip.get_stream(stream_index=1,stream_name="a")
+            clip.get_stream(stream_index=1, stream_name="a")
             ```
 
         Args:

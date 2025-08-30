@@ -1,51 +1,82 @@
 """
 This module provides methods to build and run FFmpeg with fine control commands.
 
-For simple usecase use `export`
+Example:
+    ```python
+    from ffmpeg import FFmpeg, InputFile, Map
+    ffmpeg = FFmpeg()
+    ffmpeg.output(Map(clip), path="output.mp4").run()
+    ```
 
+For simple usecase use `export` function it allows to export in one line, see example below
+    ```python
+    from ffmpeg import export, InputFile
+    clip = InputFile("input.mp4")
+    export(clip, path="output.mp4").run()
+    ```
 """
 
+import asyncio
 import logging
 import subprocess
 from pathlib import Path
-from typing import Any, Callable, Literal, Optional, Self
+from typing import Any, Callable, Coroutine, Literal, Optional, Self
 
 from .exception.exceptions import FFmpegException
 from .filters import BaseFilter
 from .inputs import BaseInput
 from .inputs.streams import StreamSpecifier
 from .output.output import Map, OutFile
-from .utils.commons import build_flags, parse_value, wrap_sqrtbrkt
+from .utils.commons import parse_value, wrap_sqrtbrkt
 
 logger = logging.getLogger("ffmpeg")
 
 
 class FFmpeg:
-    """FFmpeg Command Builder"""
+    def __init__(
+        self,
+        path: str = "ffmpeg",
+        use_filter_file=False,
+        filter_script_file="filters.txt",
+    ) -> None:
+        """
+        FFmpeg Command Builder
+        ================
+        This class provides methods to construct and execute FFmpeg commands.
+        ither Run or Compile the command to get the command list and run it manually.
 
-    def __init__(self) -> None:
+        Initialize the FFmpeg command builder.
+        Args:
+            path (str): Path to the ffmpeg executable. Defaults to "ffmpeg".
+            use_filter_file (bool): Whether to use a filter script file,useful for very long filter graphs. Defaults to False.
+            filter_script_file (str): Path to the filter script file if use_filter_file is True. Defaults to "filters.txt".
+        """
 
-        self.ffmpeg_path = "ffmpeg"
+        self.ffmpeg_path = path
         self._inputs: list[BaseInput] = []
         self._filter_nodes: list[BaseFilter] = []
         self._outputs: list[OutFile] = []
-        self.node_count: int = 0
-        self._global_flags: dict[str, str | float | None] = {}
+        self._node_count: int = 0
+        self._global_flags: dict[str, str | float | None] = {"-hide_banner": None}
 
-        self.filter_file = "filters.txt"
-        self.use_filter_file = False
+        self.filter_script_file = filter_script_file
+        self.use_filter_file = use_filter_file
 
         # Set Defaults
         self.reset(reset_global=True)
 
     def set_ffmpeg_path(self, path: str):
+        """
+        Set the path to the ffmpeg executable.
+        """
+
         self.ffmpeg_path = path
 
     def reset(self, reset_global=True) -> Self:
         """Reset all compilation data added"""
         self._inputs = []
         self._filter_nodes = []
-        self.node_count = 0
+        self._node_count = 0
         if reset_global:
             self._global_flags = {"-hide_banner": None}
         return self
@@ -55,7 +86,7 @@ class FFmpeg:
         self._global_flags[key] = value
         return self
 
-    def buid_global_flags(self):
+    def build_global_flags(self):
         cmd = []
         for key, value in self._global_flags.items():
             cmd.append(key)
@@ -83,7 +114,9 @@ class FFmpeg:
         """
         return f"n{i}o{j}{stream_char}"
 
-    def generate_inlink_name(self, parent: BaseInput | StreamSpecifier) -> str:
+    def generate_inlink_name(
+        self, parent: BaseInput | StreamSpecifier | BaseFilter
+    ) -> str:
         """Get different types of links that ffmpeg uses with different types of Object"""
         stream_specifier = ""
 
@@ -134,10 +167,10 @@ class FFmpeg:
             # gather outlink
             for j in range(filter.output_count):
                 filter_block += wrap_sqrtbrkt(
-                    self.generate_link_name(self.node_count, j)
+                    self.generate_link_name(self._node_count, j)
                 )
 
-            self.node_count += 1
+            self._node_count += 1
             filter_chain.append(filter_block)
 
         return filter_chain
@@ -189,13 +222,19 @@ class FFmpeg:
 
     def compile(self, overwrite=True) -> list[str]:
         """
-        Generate the command
-        This fuction gather and combine all of the different part of the command.
+        Generate the full FFmpeg command as a list of arguments.
 
+        This method collects and combines all the necessary parts of the FFmpeg command,
+        including global flags, input definitions, filter graphs, mapping, output flags,
+        and output file paths. It ensures that the command is constructed in the correct
+        order and with all required options for execution.
+
+        Returns:
+            list[str]: The complete FFmpeg command as a list of arguments.
         """
 
         if len(self._outputs) < 1:
-            raise RuntimeError()
+            raise RuntimeError("No outputs defined for the FFmpeg command.")
 
         self.reset(reset_global=False)
 
@@ -206,7 +245,7 @@ class FFmpeg:
 
         self.add_global_flag("-loglevel", "error")
 
-        command = [self.ffmpeg_path, *self.buid_global_flags()]
+        command = [self.ffmpeg_path, *self.build_global_flags()]
         # First flatten filters to add inputs automatically from last node order matters here
         filters = []
         for output in self._outputs:
@@ -218,8 +257,8 @@ class FFmpeg:
 
         if filters:
             if self.use_filter_file:
-                Path(self.filter_file).write_text(";\n".join(filters))
-                command.extend(("-filter_complex_script", self.filter_file))
+                Path(self.filter_script_file).write_text(";\n".join(filters))
+                command.extend(("-filter_complex_script", self.filter_script_file))
             else:
                 command.extend(("-filter_complex", ";".join(filters)))
 
@@ -227,22 +266,23 @@ class FFmpeg:
             for i, maps in enumerate(output.maps):  # one output can have multiple maps
                 command.extend(self.build_map(maps, i))
 
-            command.extend(build_flags(output.kvflags))
-            command.append(output.path)
+            command.extend(output.build())
 
         return list(map(str, command))
 
-    def output(self, *maps: Map, path: str, **kvflags) -> Self:
+    def output(
+        self, *maps: Map, path: str, metadata: Optional[dict[str, str]] = None, **kwargs
+    ) -> Self:
         """
         Create output for the command with map and output specific flags and the path for the output.
 
         Args:
-            maps: add output for export
-            path: output file path
-            kvflags: flags for output
-
+            *maps (Map): One or more Map instances defining the streams to include in the output.
+            path (str): The file path for the output media file.
+            metadata (dict[str, str]): Metadata to be added to the output file.
+            **kwargs: Additional keyword arguments representing output-specific
         """
-        self._outputs.append(OutFile(maps, path, **kvflags))
+        self._outputs.append(OutFile(maps, path, metadata=metadata, **kwargs))
         return self
 
     def run(
@@ -284,7 +324,7 @@ class FFmpeg:
             bufsize=1,
         )
 
-        if progress_callback:
+        if progress_callback is not None:
             assert process.stdout is not None
 
             # Read progress data
@@ -297,8 +337,12 @@ class FFmpeg:
                     progress_data[key] = parse_value(value.strip())
 
                 if "progress" in progress_data:
-                    if progress_callback:
+                    try:
                         progress_callback(progress_data)
+                    except Exception as e:
+                        logger.exception(
+                            f"Error in progress_callback: {e}. Continuing..."
+                        )
                     progress_data.clear()  # Reset for next update
 
             process.stdout.close()

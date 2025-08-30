@@ -5,8 +5,9 @@ from ..inputs import BaseInput
 from ..inputs.streams import StreamSpecifier
 
 
-def format_flags(flag:dict):
-    return  ", ".join([f"{k}={v}" for k, v in flag.items()])    
+def format_flags(flag: dict):
+    return ", ".join([f"{k}={v}" for k, v in flag.items()])
+
 
 def draw_filter_graph(
     ffmpeg: FFmpeg, output_path: str = "filter_graph", format: str = "png"
@@ -24,10 +25,10 @@ def draw_filter_graph(
     try:
         from graphviz import Digraph
     except ImportError as e:
-        e.add_note("Please Install `graphviz` \nSee Docs Installation at: https://graphviz.readthedocs.io/en/stable/manual.html#installation")
-        raise e 
-
-
+        e.add_note(
+            "Please Install `graphviz` \nSee Docs Installation at: https://graphviz.readthedocs.io/en/stable/manual.html#installation"
+        )
+        raise e
 
     if not ffmpeg._outputs:
         raise RuntimeError("No outputs defined - add at least one `output()` first.")

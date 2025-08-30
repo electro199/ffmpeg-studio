@@ -29,7 +29,6 @@ __all__ = [
     # util
     "apply",
     "apply2",
-
     # video
     "Scale",
     "EvalMode",
@@ -47,16 +46,13 @@ __all__ = [
     "Subtitles",
     "SetTimeBase",
     "SetSampleAspectRatio",
-
     # audio
     "AudioMix",
     "Volume",
     "AudioDelay",
-
     # general
     "Concat",
     "Split",
-
     # internal
     "BaseFilter",
     "OptionalStr",

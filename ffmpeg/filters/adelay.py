@@ -1,4 +1,4 @@
-from typing import Literal, Optional
+from typing import Optional
 
 from .base import BaseFilter
 from .mixins.enable import TimelineEditingMixin

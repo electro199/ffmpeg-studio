@@ -10,9 +10,6 @@ Requirements:
 
 """
 
-from . import inputs, filters, exception, ffplay, ffprobe
-from .output import output
-
 from .inputs import (
     InputFile,
     FileInputOptions,
@@ -26,11 +23,34 @@ from .output.output import Map, OutFile
 from .ffmpeg import FFmpeg, export
 from .utils.diagram import draw_filter_graph
 from .exception import FFmpegException, FFprobeException
-
-
+from . import inputs, filters, output, exception, ffplay, ffprobe
 import logging
 
 logger = logging.getLogger("ffmpeg")
 
 
-__version__ = "0.0.15"
+__version__ = "0.1.0"
+
+__all__ = [
+    "InputFile",
+    "FileInputOptions",
+    "VideoFile",
+    "ImageFile",
+    "AudioFile",
+    "VirtualVideo",
+    "apply",
+    "apply2",
+    "Map",
+    "OutFile",
+    "FFmpeg",
+    "export",
+    "draw_filter_graph",
+    "FFmpegException",
+    "FFprobeException",
+    "inputs",
+    "filters",
+    "exception",
+    "ffplay",
+    "ffprobe",
+    "__version__",
+]

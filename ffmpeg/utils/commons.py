@@ -30,11 +30,26 @@ def parse_value(value):
 
 
 def build_flags(kwflags: dict[str, Any]) -> list[str]:
-    """Generate flags"""
+    """
+    Generate flags for FFmpeg command from key-value pairs.
+    if value is bool, convert to int (True=1, False=0)
+    if value is None, skip the flag value part (y=None, ["-y"]).
+
+    Args:
+        kwflags (dict): Dictionary of key-value pairs representing flags.
+    Returns:
+        list: List of command-line flags for FFmpeg.
+    """
     flags = []
 
     for k, v in kwflags.items():
         flags.append(f"-{k}")
+
+        if v is None:
+            continue
+        elif isinstance(v, bool):
+            v = int(v)
+
         flags.append(str(v))
 
     return flags

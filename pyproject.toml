@@ -15,11 +15,16 @@ keywords = ["ffmpeg", "media", "video processing", "audio", "python", "wrapper",
 
 classifiers = [
     "Intended Audience :: Developers",
-    "Topic :: Multimedia :: Video",
+    "Natural Language :: English",
+    "Topic :: Multimedia",
     "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Multimedia :: Sound/Audio :: Analysis",
+    "Topic :: Multimedia :: Video",
+    "Topic :: Multimedia :: Video :: Capture",
+    "Topic :: Multimedia :: Video :: Conversion",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
-    "Operating System :: OS Independent"
+    "Operating System :: OS Independent",
 ]
 
 [project.urls]

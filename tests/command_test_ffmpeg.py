@@ -126,13 +126,13 @@ class TestFFmpeg(unittest.TestCase):
         ff.reset()
 
         self.assertEqual(default_flags, ff._global_flags)
-    
+
     def test_global_flags_custom(self):
         ff = FFmpeg()
         ff.reset()
         flags = ["someflag", "some_more_flag"]
 
-        ff.output(Map(InputFile("input.mp4")),path="out.mp4")
+        ff.output(Map(InputFile("input.mp4")), path="out.mp4")
 
         ff.add_global_flag(*flags)
         commamd = ff.compile()
@@ -143,9 +143,10 @@ class TestFFmpeg(unittest.TestCase):
     def test_compile_consistency(self):
         filtered = apply(Scale(width=1280, height=720), self.video)
         ff = FFmpeg().output(Map(filtered), path="scaled.mp4")
-        
+
         self.assertEqual(ff.compile(), ff.compile())
         self.assertEqual(ff.compile(), ff.compile())
+
 
 if __name__ == "__main__":
     unittest.main()

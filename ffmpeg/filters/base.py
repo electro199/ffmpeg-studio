@@ -1,5 +1,5 @@
 """
-Base For All Filters 
+Base For All Filters
 
 Command structure represented are like this:
 
@@ -15,7 +15,7 @@ Whole node in command
         [a]filter=2=d:s:d[b]
         |----Filter-----|
                         |*|
-                        StreamSpecifier 
+                        StreamSpecifier
 
 Filter holds :
     parent node reference either (StreamSpecifier or Input)
@@ -72,9 +72,7 @@ class BaseFilter:
             return text
         return (
             "'"
-            + text.replace("\\", "\\\\")
-            .replace("'", r"'\\\''")
-            .replace(":", "\\:")
+            + text.replace("\\", "\\\\").replace("'", r"'\\\''").replace(":", "\\:")
             + "'"
         )
 

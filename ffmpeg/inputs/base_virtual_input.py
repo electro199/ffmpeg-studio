@@ -17,9 +17,9 @@ class BaseVirtualInput(BaseInput):
         self.format_flag = format
         self.flags = flags or {}
         self.kwargs = kwargs
-        
+
         # Size is required to make support the get_size function
-        # most filters support size for output size otherwise 
+        # most filters support size for output size otherwise
         # _size can be used to pass the size
         if not (s := kwargs.get("_size")):
             s = kwargs["size"]

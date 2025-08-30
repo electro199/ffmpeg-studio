@@ -1,5 +1,5 @@
 from enum import IntEnum, StrEnum
-from typing import Unpack, TypedDict
+from typing import Self, Unpack, TypedDict
 from .base import BaseFilter
 
 
@@ -71,32 +71,198 @@ class AspectRatioMode(StrEnum):
     INCREASE = "increase"
 
 
-class ScaleFilterOptionsDict(TypedDict, total=False):
-
-    eval: EvalMode
-    interl: InterlacingMode
-    intent: Intent
-    in_color_matrix: ColorMatrix
-    out_color_matrix: ColorMatrix
-    in_range: IORange
-    out_range: IORange
-
-    in_chroma_loc: IOChromaLocation
-    out_chroma_loc: IOChromaLocation
-    in_primaries: IOPrimaries
-    out_primaries: IOPrimaries
-    force_original_aspect_ratio: AspectRatioMode
-    force_divisible_by: int
-    reset_sar: bool
-
-
 class Scale(BaseFilter):
-    def __init__(
-        self, width: float, height: float, **kwargs: Unpack[ScaleFilterOptionsDict]
-    ):
+    """
+    Represents the FFmpeg scale filter.
+
+    Args:
+        width (float): The width of the output video.
+        height (float): The height of the output video.
+    """
+    def __init__(self, width: float, height: float):
         super().__init__("scale")
-        self.width = width
-        self.height = height
-        self.flags = {}
-        self.flags.update({"width": width, "height": height})
-        self.flags.update(kwargs)
+        self.flags: dict[str, float | int | str | bool] = {"width": width, "height": height}
+
+    # --- helper methods for each option ---
+
+    def set_eval(self, mode: EvalMode) -> Self:
+        """
+        Set the evaluation mode. Useful for dynamic scaling.
+
+        Args:
+            mode (EvalMode): The evaluation mode ('init' or 'frame').
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["eval"] = mode
+        return self
+
+    def set_interlacing(self, mode: InterlacingMode) -> Self:
+        """
+        Set the interlacing mode. 
+
+        Args:
+            mode (InterlacingMode): The interlacing mode (1, 0, or -1).
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["interl"] = mode
+        return self
+
+    def set_intent(self, intent: Intent) -> Self:
+        """
+        Set the color intent.
+
+        Args:
+            intent (Intent): The color intent.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["intent"] = intent
+        return self
+
+    def set_in_color_matrix(self, matrix: ColorMatrix) -> Self:
+        """
+        Set the input color matrix.
+
+        Args:
+            matrix (ColorMatrix): The input color matrix.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["in_color_matrix"] = matrix
+        return self
+
+    def set_out_color_matrix(self, matrix: ColorMatrix) -> Self:
+        """
+        Set the output color matrix.
+
+        Args:
+            matrix (ColorMatrix): The output color matrix.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["out_color_matrix"] = matrix
+        return self
+
+    def set_in_range(self, rng: IORange) -> Self:
+        """
+        Set the input range.
+
+        Args:
+            rng (IORange): The input range.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["in_range"] = rng
+        return self
+
+    def set_out_range(self, rng: IORange) -> Self:
+        """
+        Set the output range.
+
+        Args:
+            rng (IORange): The output range.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["out_range"] = rng
+        return self
+
+    def set_in_chroma_location(self, loc: IOChromaLocation) -> Self:
+        """
+        Set the input chroma location.
+
+        Args:
+            loc (IOChromaLocation): The input chroma location.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["in_chroma_loc"] = loc
+        return self
+
+    def set_out_chroma_location(self, loc: IOChromaLocation) -> Self:
+        """
+        Set the output chroma location.
+
+        Args:
+            loc (IOChromaLocation): The output chroma location.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["out_chroma_loc"] = loc
+        return self
+
+    def set_in_primaries(self, primaries: IOPrimaries) -> Self:
+        """
+        Set the input color primaries.
+
+        Args:
+            primaries (IOPrimaries): The input color primaries.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["in_primaries"] = primaries
+        return self
+
+    def set_out_primaries(self, primaries: IOPrimaries) -> Self:
+        """
+        Set the output color primaries.
+
+        Args:
+            primaries (IOPrimaries): The output color primaries.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["out_primaries"] = primaries
+        return self
+
+    def set_aspect_ratio_mode(self, mode: AspectRatioMode) -> Self:
+        """
+        Set the aspect ratio mode.
+
+        Args:
+            mode (AspectRatioMode): The aspect ratio mode.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["force_original_aspect_ratio"] = mode
+        return self
+
+    def set_force_divisible_by(self, n: int) -> Self:
+        """
+        Set the force divisible by value.
+
+        Args:
+            n (int): The value to force divisibility by.
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["force_divisible_by"] = n
+        return self
+
+    def reset_sar(self, enable: bool = True) -> Self:
+        """
+        Reset the sample aspect ratio.
+
+        Args:
+            enable (bool): Whether to enable resetting SAR (default: True).
+
+        Returns:
+            Self: The current Scale instance.
+        """
+        self.flags["reset_sar"] = enable
+        return self

@@ -2,7 +2,6 @@
 Variety of math and logic fuctions for ffmpeg evaluation during runtime.
 """
 
-
 from typing import LiteralString
 
 

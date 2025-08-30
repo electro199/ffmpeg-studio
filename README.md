@@ -107,7 +107,7 @@ Using Homebrew:
 brew install ffmpeg
 ```
 
-#### Linux
+### Linux
 
 For Debian/Ubuntu:
 
@@ -117,7 +117,7 @@ sudo apt install ffmpeg
 
 ## To-Do
 
-- [ ] All Input methods
+- All Input methods
   - [x] Generic(Input) class
   - [x] ImageFile class
   - [x] VideoFile class
@@ -125,28 +125,28 @@ sudo apt install ffmpeg
   - [x] VituralVideo class
   - [ ] VituralAudio class
 
-- [x] Output options
+- Output options
   - [x] Muliple output per command
   - [x] filter_file for super long filters
   - [x] Per map flags
   - [x] Per output flags
 
-- [ ] Improve progress tracking  
+- Improve progress tracking  
   - [x] Support callbacks with frame/time info  
   - [ ] Provide async interface for streaming progress
 
-- [ ] Documentation & Examples  
+- Documentation & Examples  
   - [x] Basic tutorials.
   - [x] Showcase filtergraph construction with helpers  
   - [ ] Detailed tutorials.
   - [ ] Detailed example/gallery.
 
-- [ ] Testing & CI  
+- Testing & CI  
   - [x] Publish to PyPI  every release
   - [x] Publish Docs  every release
   - [ ] Verify cross-platform behavior (Linux/Windows/macOS)  
   - [ ] GitHub Actions for automated testing
 
-- [x] Packaging & Distribution  
+- Packaging & Distribution  
   - [x] Publish to PyPI  
 

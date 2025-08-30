@@ -69,16 +69,16 @@ class XFade(BaseFilter):
     ):
         """
         Combine two videos with transition.
-        
-        Note: 
+
+        Note:
             Requires same size and fps and aspect ratio.
         """
         super().__init__("xfade")
 
-        if name == "custom" and not isinstance(expression, str):
-            raise TypeError("Expression must be a string")
-
         if name not in self.all_transitions:
             raise TypeError("Transtion name should ", self.all_transitions)
+
+        if name == "custom" and expression is None:
+            raise TypeError("Expression must be a string")
 
         self.flags = {"transition": name, "offset": offset, "duration": duration}
