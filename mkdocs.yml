@@ -47,17 +47,16 @@ plugins:
             heading_level: 2
             # show_if_no_docstring: true
             docstring_section_style: table
-            merge_init_into_class: true
+            # merge_init_into_class: true
             show_symbol_type_heading: true
-            inherited_members: true
+            # inherited_members: true
 nav:
   - Home: index.md
   - Installation: installation.md
   - Overview : overview.md
   - Getting Started: getting-started.md
-  - Advance Usage:
-    - advance-usage/advance-usage.md
-    - advance-usage/useful_info.md
+  - Guide:
+    - Basics: guide/basics.md
   - API Reference: 
     - Inputs: api_reference/inputs.md
     - Filters: api_reference/filters.md

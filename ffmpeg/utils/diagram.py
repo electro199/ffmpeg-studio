@@ -1,3 +1,13 @@
+"""
+This module provides functionality to visualize the FFmpeg filter graph using Graphviz.
+It constructs a directed graph representing inputs, filters, and outputs, and saves it as an image file.
+It is not part of the core ffmpeg functionality and is intended for debugging and visualization purposes.
+
+Requires:
+    graphviz module (install via pip and binaries as needed).
+"""
+
+
 import itertools
 
 from ..ffmpeg import FFmpeg

@@ -37,6 +37,7 @@ def build_flags(kwflags: dict[str, Any]) -> list[str]:
 
     Args:
         kwflags (dict): Dictionary of key-value pairs representing flags.
+
     Returns:
         list: List of command-line flags for FFmpeg.
     """
@@ -56,6 +57,19 @@ def build_flags(kwflags: dict[str, Any]) -> list[str]:
 
 
 def build_name_kvargs_format(name: str, flags: dict) -> str:
+    """
+    Build a formatted string for FFmpeg filter options. Automatically skips None values and converts bool int.
+    Args:
+        name (str): The name of the filter.
+        flags (dict): A dictionary of key-value pairs representing filter options.
+
+    Example:
+        ```python
+        build_name_kvargs_format("scale", {"w": 1280, "h": 720, "force_original_aspect_ratio": "decrease"})
+        returns "scale=w=1280:h=720:force_original_aspect_ratio=decrease"
+        ```
+    """
+
     s = []
     for k, v in flags.items():
         if v is None:

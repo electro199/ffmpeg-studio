@@ -1,3 +1,9 @@
+"""
+This module contains various FFmpeg filters as Python classes.
+The filters Always Inherit from BaseFilter class and Optionally TimelineEditingMixin if they support timeline editing.
+
+"""
+
 from .scale import (
     Scale,
     EvalMode,

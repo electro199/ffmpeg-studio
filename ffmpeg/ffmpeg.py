@@ -19,8 +19,9 @@ Example:
 For simple usecase use `export` function it allows to export in one line, see example below
     ```python
     from ffmpeg import export, InputFile
+
     clip = InputFile("input.mp4")
-    export(clip, path="output.mp4").run()
+    export(clip, path="output.mkv").run()
     ```
 """
 

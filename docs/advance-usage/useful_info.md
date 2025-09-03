@@ -11,15 +11,15 @@ Lets see the command structure with examples:
         ffmpeg [options] [[infile options] -i infile]... [[outfile options] outfile]...
         ```
 
-    - example with -y to overwrite the 
+    - example with `-y` to overwrite the 
         
         ```
         ffmpeg -y -t 30 input_file_path.mp4  -r 24 output_file_path.mp4 
         ```
 
-usage: ffmpeg [options] [[infile options] -i infile]... [filter ]...  [-map [outfile options] outfile]...
+usage: `ffmpeg [options] [[infile options] -i infile]... [filter ]...  [-map [outfile options] outfile]...`
 
-ffmpeg [[infile options] -i infile] [filters] [-map flags outfile]...
+ffmpeg `[[infile options] -i infile] [filters] [-map flags outfile]...`
 
 
 multiple input, filter

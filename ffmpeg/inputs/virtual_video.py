@@ -161,7 +161,6 @@ class VirtualVideo(BaseVirtualInput):
     ):
         """
         Parameters:
-            size : set video size (default "320x240")
             rate : set video rate (default "25")
             duration : set video duration (default -0.000001)
             sar : set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)
@@ -307,7 +306,8 @@ class VirtualVideo(BaseVirtualInput):
     ):
         """
         Parameters:
-            size : set video size (default "320x240")
+            color : set color
+            duration: set video duration 
             rate : set video rate (default "25")
             duration : set video duration (default -0.000001)
             sar : set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)

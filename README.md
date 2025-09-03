@@ -35,7 +35,7 @@ pip install git+https://github.com/electro199/ffmpeg-studio.git
 
 ## Usage
 
-ffmpeg-studio support complex Filters and can be used with [`apply`](https://electro199.github.io/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](https://electro199.github.io/ffmpeg-studio/api/#ffmpeg.filters.apply2), apply2 is for multioutput filters like `Split` and `Concat`.
+ffmpeg-studio support complex Filters and can be used with [`apply`](https://electro199.github.io/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](https://electro199.github.io/ffmpeg-studio/api/#ffmpeg.filters.apply2).
 
 ```py
 from ffmpeg import FFmpeg, InputFile, FileInputOptions, Map
@@ -56,7 +56,7 @@ upscaled_clip = apply(Overlay(overlay, x=0, y=10), clip)
 
 # run command
 ffmpeg = (
-    FFmpeg().output(Map(upscaled_clip), path="out.mp4").run(progress_callback=print)
+    FFmpeg().output(upscaled_clip, path="out.mp4").run(progress_callback=print)
 )
 ```
 
