@@ -17,7 +17,7 @@ class AudioFile(BaseInput):
         Args:
             filepath (str): The path to the audio file to be processed.
         """
-        super().__init__()
+        super().__init__(stream_type="a")
         self.filepath = filepath
 
     def build_input_flags(self) -> list[str]:

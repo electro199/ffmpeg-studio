@@ -19,6 +19,14 @@ class TestFFmpeg(unittest.TestCase):
 
         self.audio = InputFile("audio.mp3", FileInputOptions(duration=5))
 
+        self.filter_script_name = "filters_tests.txt"
+
+    def doCleanups(self) -> None:
+        # Clean up any temporary files if created
+        if os.path.exists(self.filter_script_name):
+            os.remove(self.filter_script_name)
+        return super().doCleanups()
+
     def test_output_compilation(self):
         ff = FFmpeg().output(Map(self.video), Map(self.audio), path="output.mp4")
         command = ff.compile(overwrite=True)
@@ -118,13 +126,57 @@ class TestFFmpeg(unittest.TestCase):
         self.assertIn("scale=width=1280:height=720", " ".join(command))
         self.assertEqual("scaled.mp4", command[-1])
 
+    def test_filter_script(self):
+        filtered = apply(Scale(width=1280, height=720), self.video)
+        ff = FFmpeg(
+            use_filter_file=True, filter_script_file=self.filter_script_name
+        ).output(Map(filtered), path="scaled.mp4")
+        command = ff.compile()
+
+        self.assertIn("-filter_complex_script", command)
+
+        # Check if the filter script file is created and contains the correct filter
+        script_index = command.index("-filter_complex_script") + 1
+        script_path = command[script_index]
+        self.assertTrue(os.path.exists(script_path))
+        with open(script_path, "r") as f:
+            content = f.read()
+
+        self.assertIn("scale=width=1280:height=720", content)
+
+    def test_filter_long_script(self):
+
+        input_clip = self.video
+        times = 20
+        for _ in range(
+            times
+        ):  # Chain multiple scales to ensure it exceeds typical command line length
+            input_clip = apply(Scale(width=1280, height=720), input_clip)
+
+        ff = FFmpeg(
+            use_filter_file=True, filter_script_file=self.filter_script_name
+        ).output(Map(input_clip), path="long_scaled.mp4")
+        command = ff.compile()
+        self.assertIn("-filter_complex_script", command)
+
+        # make sure the scale filter is in the script
+        script_index = command.index("-filter_complex_script") + 1
+        script_path = command[script_index]
+
+        self.assertTrue(os.path.exists(script_path))
+        with open(script_path, "r") as f:
+            content = f.read()
+
+        self.assertIn("scale=width=1280:height=720", content)
+
+        # count how many scale filters are in the script
+        self.assertEqual(content.count("scale=width=1280:height=720"), times)
+
     def test_global_flags_default_reset(self):
         ff = FFmpeg()
 
         default_flags = ff._global_flags
-
         ff.reset()
-
         self.assertEqual(default_flags, ff._global_flags)
 
     def test_global_flags_custom(self):
@@ -146,6 +198,17 @@ class TestFFmpeg(unittest.TestCase):
 
         self.assertEqual(ff.compile(), ff.compile())
         self.assertEqual(ff.compile(), ff.compile())
+
+    def test_outputs(self):
+        ff = (
+            FFmpeg()
+            .output(Map(self.video), path="out1.mp4")
+            .output(Map(self.audio), path="out2.mp3")
+        )
+
+        self.assertEqual(len(ff._outputs), 2)
+        self.assertEqual(ff._outputs[0].path, "out1.mp4")
+        self.assertEqual(ff._outputs[1].path, "out2.mp3")
 
 
 if __name__ == "__main__":

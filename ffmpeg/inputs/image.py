@@ -17,7 +17,7 @@ class ImageFile(BaseInput):
         Args:
             filepath (str): The path to the image file to be processed.
         """
-        super().__init__()
+        super().__init__(stream_type="v") # Images are treated as video streams in ffmpeg
         self.filepath = filepath
 
     def build_input_flags(self) -> list[str]:

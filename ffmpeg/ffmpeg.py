@@ -4,8 +4,16 @@ This module provides methods to build and run FFmpeg with fine control commands.
 Example:
     ```python
     from ffmpeg import FFmpeg, InputFile, Map
+
     ffmpeg = FFmpeg()
+
     ffmpeg.output(Map(clip), path="output.mp4").run()
+
+    # or for async
+    await ffmpeg.output(Map(clip), path="output.mp4").run_async()
+
+    or multiple outputs
+    ffmpeg.output(Map(clip1), path="output1.mp4").output(Map(clip2), path="output2.mp4").run()
     ```
 
 For simple usecase use `export` function it allows to export in one line, see example below
@@ -22,7 +30,7 @@ import subprocess
 from pathlib import Path
 from typing import Any, Callable, Coroutine, Literal, Optional, Self
 
-from .exception.exceptions import FFmpegException
+from .exception.exceptions import FFmpegCompileError, FFmpegException
 from .filters import BaseFilter
 from .inputs import BaseInput
 from .inputs.streams import StreamSpecifier
@@ -36,20 +44,19 @@ class FFmpeg:
     def __init__(
         self,
         path: str = "ffmpeg",
-        use_filter_file=False,
-        filter_script_file="filters.txt",
+        use_filter_file: bool = False,
+        filter_script_file: str = "filters.txt",
     ) -> None:
         """
-        FFmpeg Command Builder
-        ================
         This class provides methods to construct and execute FFmpeg commands.
-        ither Run or Compile the command to get the command list and run it manually.
+        either Run or Compile the command to get the command list and run it manually.
 
         Initialize the FFmpeg command builder.
+
         Args:
-            path (str): Path to the ffmpeg executable. Defaults to "ffmpeg".
-            use_filter_file (bool): Whether to use a filter script file,useful for very long filter graphs. Defaults to False.
-            filter_script_file (str): Path to the filter script file if use_filter_file is True. Defaults to "filters.txt".
+            path: Path to the ffmpeg executable.".
+            use_filter_file: Whether to use a filter script file,useful for very long filter graphs.
+            filter_script_file: Path to the filter script file if use_filter_file is True.
         """
 
         self.ffmpeg_path = path
@@ -72,7 +79,7 @@ class FFmpeg:
 
         self.ffmpeg_path = path
 
-    def reset(self, reset_global=True) -> Self:
+    def reset(self, reset_global: bool = True) -> Self:
         """Reset all compilation data added"""
         self._inputs = []
         self._filter_nodes = []
@@ -86,7 +93,7 @@ class FFmpeg:
         self._global_flags[key] = value
         return self
 
-    def build_global_flags(self):
+    def build_global_flags(self) -> list[str]:
         cmd = []
         for key, value in self._global_flags.items():
             cmd.append(key)
@@ -105,7 +112,7 @@ class FFmpeg:
             return True
         return False
 
-    def generate_link_name(self, i, j, stream_char="") -> str:
+    def get_outname(self, i: Any, j: Any, stream_char: str = "") -> str:
         """
         make names for link names
 
@@ -128,7 +135,7 @@ class FFmpeg:
         if isinstance(parent, BaseInput):
             input_name = f"{self._inputs.index(parent)}{stream_specifier}"  # idx
         else:
-            input_name = self.generate_link_name(
+            input_name = self.get_outname(
                 self._filter_nodes.index(parent), output_n, stream_specifier
             )
         return input_name
@@ -166,9 +173,7 @@ class FFmpeg:
 
             # gather outlink
             for j in range(filter.output_count):
-                filter_block += wrap_sqrtbrkt(
-                    self.generate_link_name(self._node_count, j)
-                )
+                filter_block += wrap_sqrtbrkt(self.get_outname(self._node_count, j))
 
             self._node_count += 1
             filter_chain.append(filter_block)
@@ -204,9 +209,7 @@ class FFmpeg:
             sub_command.extend(inp.build_input_flags())
         return sub_command
 
-    def build_map(
-        self, map: Map, map_index
-    ) -> tuple[Literal["-map"], str, *tuple[Any, ...]]:
+    def build_map(self, map: Map, map_index) -> list[str]:
 
         node = map.node
         stream = self.generate_inlink_name(node)
@@ -217,10 +220,10 @@ class FFmpeg:
         if not isinstance(node, BaseInput):
             stream = wrap_sqrtbrkt(stream)
 
-        flags = map.build(map_index=map_index)
-        return ("-map", stream, *flags)
+        flags = map.build(stream, map_index=map_index)
+        return flags
 
-    def compile(self, overwrite=True) -> list[str]:
+    def compile(self, overwrite: bool = True) -> list[str]:
         """
         Generate the full FFmpeg command as a list of arguments.
 
@@ -230,11 +233,11 @@ class FFmpeg:
         order and with all required options for execution.
 
         Returns:
-            list[str]: The complete FFmpeg command as a list of arguments.
+            The complete FFmpeg command as a list of arguments.
         """
 
         if len(self._outputs) < 1:
-            raise RuntimeError("No outputs defined for the FFmpeg command.")
+            raise FFmpegCompileError("No outputs defined for the FFmpeg command.")
 
         self.reset(reset_global=False)
 
@@ -271,18 +274,25 @@ class FFmpeg:
         return list(map(str, command))
 
     def output(
-        self, *maps: Map, path: str, metadata: Optional[dict[str, str]] = None, **kwargs
+        self,
+        *maps: Map | BaseInput | StreamSpecifier,
+        path: str,
+        metadata: Optional[dict[str, str]] = None,
+        **kwargs,
     ) -> Self:
         """
-        Create output for the command with map and output specific flags and the path for the output.
+        Create output for the with streams mapped to it.
 
         Args:
-            *maps (Map): One or more Map instances defining the streams to include in the output.
-            path (str): The file path for the output media file.
-            metadata (dict[str, str]): Metadata to be added to the output file.
-            **kwargs: Additional keyword arguments representing output-specific
+            *maps: One or more `Map` objects or input nodes to include in the output.
+            path: The file path for the output media file.
+            metadata: Metadata to be added to the output file.
+            **kwargs (dict[str, Any]): Additional keyword arguments representing output-specific
         """
-        self._outputs.append(OutFile(maps, path, metadata=metadata, **kwargs))
+        wrapped_maps = [
+            Map(node) if not isinstance(node, Map) else node for node in maps
+        ]
+        self._outputs.append(OutFile(wrapped_maps, path, metadata=metadata, **kwargs))
         return self
 
     def run(
@@ -295,8 +305,8 @@ class FFmpeg:
         Run the FFmpeg command.
 
         Args:
-            progress_callback:
-                Function that can be used to track progress of the process running data can be mix of None and actual values
+            progress_callback:\
+            Function that can be used to track progress of the process running data can be mix of None and actual values
             progress_period: Set period at which progress_callback is called
             overwrite: overwrite the output if already exists
 
@@ -351,16 +361,84 @@ class FFmpeg:
         if process.returncode != 0:
             raise FFmpegException(process.stderr.read(), process.returncode)
 
+    async def run_async(
+        self,
+        progress_callback: Optional[Callable[[dict], Coroutine[Any, Any, None]]] = None,
+        progress_period: float = 0.5,
+        overwrite: bool = True,
+    ) -> None:
+        """
+        Asynchronously run the FFmpeg command.
+
+        Args:
+            progress_callback:
+                Function that can be used to track progress of the process running data can be mix of None and actual values
+            progress_period: Set period at which progress_callback is called
+            overwrite: overwrite the output if already exists
+
+        """
+
+        stdout = None
+        stderr = asyncio.subprocess.PIPE
+
+        if progress_callback:
+            stdout = asyncio.subprocess.PIPE
+            self.add_global_flag("-progress", "pipe:1")
+            self.add_global_flag("-nostats")
+            self.add_global_flag("-stats_period", progress_period)
+
+        command = self.compile(overwrite=overwrite)
+        logger.debug(f"Running (async): {command}")
+
+        process = await asyncio.create_subprocess_exec(
+            *command,
+            stdout=stdout,
+            stderr=stderr,
+        )
+
+        if progress_callback:
+            assert process.stdout is not None
+
+            progress_data = {}
+
+            while True:
+                line = await process.stdout.readline()
+                if not line:
+                    break
+                line = line.decode().strip()
+                if "=" in line:
+                    key, value = line.split("=", 1)
+                    progress_data[key] = parse_value(value.strip())
+
+                if "progress" in progress_data:
+                    if progress_callback:
+                        try:
+                            await progress_callback(progress_data)
+                        except Exception as e:
+                            logger.exception(
+                                f"Error in progress_callback: {e}. Continuing..."
+                            )
+                    progress_data.clear()
+
+        await process.wait()
+
+        if process.returncode != 0:
+            stderr_output = ""
+            if process.stderr:
+                stderr_output = await process.stderr.read()
+            raise FFmpegException(stderr_output, process.returncode)
+
 
 def export(*nodes: BaseInput | StreamSpecifier, path: str, **kwargs) -> FFmpeg:
     """
     Exports a clip by processing the given input nodes and saving the output to the specified path.
 
     Args:
-        nodes (BaseInput | StreamSpecifier): One or more input nodes representing media sources.
-        path (str): The output file path where the exported clip will be saved.
+        nodes: One or more input nodes representing media sources.
+        path : The output file path where the exported clip will be saved.
         kwargs (dict[str, Any]): flags for Output
+        
     Returns:
-        FFmpeg: An FFmpeg instance configured with the given inputs and output path.
+        FFmpeg instance configured with the given inputs and output path.
     """
     return FFmpeg().output(*(Map(node) for node in nodes), path=path, **kwargs)

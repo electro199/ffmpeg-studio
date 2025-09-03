@@ -32,45 +32,42 @@ class MetadataMixin:
         return flags
 
 
-# TODO stream_type can be inferred from input node
 class Map(MetadataMixin):
     def __init__(
         self,
         node: BaseInput | StreamSpecifier,
         suffix_flags: Optional[dict] = None,
         stream_type: Optional[Literal["a", "v", "s", "d", "t", "V"]] = None,
+        metadata: Optional[dict[str, str]] = None,
         **flags,
     ) -> None:
         """
-        Represents a single input stream mapping for an FFmpeg output.
-
-        This class encapsulates an input source (`BaseInput` or `StreamSpecifier`) along with
-        optional stream type and FFmpeg-specific flags that will be applied during the mapping.
-
+        Represents a mapping of an input stream to an output.
+        This class wraps an input node (like a file or filter), optional flags, and metadata.
+        
         Args:
-            node (BaseInput | StreamSpecifier): The input source to map (either a full input or a specific stream).
-            suffix_flags (Optional[dict], optional): Additional flags to apply **after** the `-map` option.
-            stream_type (Optional[Literal["a", "v", "s", "d", "t", "V"]], optional): A shortcut to specify audio ('a'), video ('v'), or subtitle ('s') streams.
-            **flags: Additional key-value FFmpeg flags applied directly to the mapping.
-
-        Example:
-            ```python
-            Map(VideoFile("in.mp4").video, stream_type="v", codec="libx264")
-            ```
+            node: The input node or stream specifier to map from.
+            suffix_flags: Flags that apply specifically to this map, like `-c:v`.
+            stream_type: Stream type specifier ('a', 'v', 's', 'd', 't', 'V').
+            metadata: Metadata key-value pairs to add to this mapped stream.
+            **flags: Additional key-value FFmpeg flags for this map (e.g., `disposition=default`).
         """
         super().__init__()
         self.node = node
-        self.stream_type = stream_type
-        self.suffix_flags = {}
-        if suffix_flags:
-            self.suffix_flags = {**suffix_flags}
-        self.flags = {**flags}
+        # If node is a StreamSpecifier, use its stream_type if not provided
+        self.stream_type = stream_type or (
+            getattr(node, "stream_type", None) if isinstance(node, BaseInput) else None
+        )
+        self.suffix_flags = dict(suffix_flags) if suffix_flags else {}
+        self.flags = dict(flags)
+        self._metadata = metadata or {}
 
-    def build(self, map_index) -> list[str]:
+    def build(self, stream: str, map_index: int) -> list[str]:
 
-        flags = []
         # use stream type like foo:v
         stream_type_specfier = f":{self.stream_type}" if self.stream_type else ""
+
+        flags: list[str] = [f"-map{stream_type_specfier}", stream]
 
         for k, v in self.suffix_flags.items():
             flags.append(f"-{k}{stream_type_specfier}:{map_index}")
@@ -80,7 +77,7 @@ class Map(MetadataMixin):
             flags.append(f"-{k}")
             flags.append(str(v))
 
-        flags.extend(self.build_metadata(stream_type_specfier))
+        flags.extend(self.build_metadata(f":s{stream_type_specfier}:{map_index}"))
 
         return flags
 
@@ -132,3 +129,4 @@ class OutFile(MetadataMixin):
         Includes metadata, flags and output path.
         """
         return [*build_flags(self.kvflags), *self.build_metadata(), self.path]
+    

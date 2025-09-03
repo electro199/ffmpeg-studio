@@ -20,7 +20,7 @@ class VideoFile(BaseInput):
         Args:
             filepath (str): The path to the video file to be processed.
         """
-        super().__init__()
+        super().__init__(stream_type="v") 
         self.filepath = filepath
 
     @property

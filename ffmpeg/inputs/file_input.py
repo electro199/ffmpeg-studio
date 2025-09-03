@@ -14,6 +14,7 @@ class InputFile(BaseInput):
     def __init__(
         self, filepath: str, options: Optional[FileInputOptions] = None, **kwargs
     ) -> None:
+        super().__init__() # No specific stream type for general input 
         self.filepath = filepath
         self.options = options
         self.flags = kwargs
