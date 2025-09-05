@@ -15,7 +15,7 @@ class AudioFile(BaseInput):
         Initializes the AudioFile object with the specified file path.
 
         Args:
-            filepath (str): The path to the audio file to be processed.
+            filepath: The path to the audio file to be processed.
         """
         super().__init__(stream_type="a")
         self.filepath = filepath
@@ -77,8 +77,8 @@ class AudioFile(BaseInput):
         This will not make a new copy until exported.
 
         Args:
-            start (float): The start time of the subclip in seconds.
-            end (float): The end time of the subclip in seconds.
+            start: The start time of the subclip in seconds.
+            end: The end time of the subclip in seconds.
 
         Returns:
             AudioFile: The updated AudioFile object with the subclip flags set.

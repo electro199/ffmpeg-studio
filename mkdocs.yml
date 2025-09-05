@@ -25,11 +25,13 @@ theme:
 
 markdown_extensions:
   - pymdownx.highlight:
-      linenums: false
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - admonition
   - pymdownx.details
   - pymdownx.superfences
-
+  - pymdownx.snippets:
 
 plugins:
   - search
@@ -53,13 +55,27 @@ plugins:
 nav:
   - Home: index.md
   - Installation: installation.md
-  - Overview : overview.md
+  - Features : features.md
   - Getting Started: getting-started.md
-  - Guide:
-    - Basics: guide/basics.md
+  # - Guide:
+  - Basics : basics.md
+  #   - Basics: guide/basics.md
+    # - Inputs: guide/inputs.md
+    # - Filters: guide/filters.md
+    # - Outputs: guide/outputs.md
+    # - Advanced: guide/advanced.md
+
+  - Examples:
+    - Conversion: example/conversion.md
+    - Audio Mixing: example/audio_mixing.md
+    - Mosaic: example/mosaic.md
+    - Graph Diagram: example/ghraph_diagram.md
+    - Progress Bar: example/progress_bar.md
+    - Text Fuzzing: example/text_fuzzing.md   
+
   - API Reference: 
+    - Index : api_reference/index.md
     - Inputs: api_reference/inputs.md
     - Filters: api_reference/filters.md
-    - api_reference/api.md
   # - FAQ: faq.md
   # - Contributing: contributing.md

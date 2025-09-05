@@ -11,7 +11,6 @@ This approach makes it easier to escape and build complex FFmpeg commands progra
 It allows you to inspect metadata or other properties of existing files. For example, you can use `VideoFile.get_duration` to retrieve the duration of a video, `VideoFile.get_size` to get its dimensions, or iterate over a `VideoFile` object to access its streams.
 
 # General Flow
-
 For most part you will want to edit or create media files which always flow this pattern:
 
 1. Create InputFile or VideoFile.

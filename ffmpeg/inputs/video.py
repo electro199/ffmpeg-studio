@@ -18,7 +18,7 @@ class VideoFile(BaseInput):
         Initializes the VideoFile object with the specified file path.
 
         Args:
-            filepath (str): The path to the video file to be processed.
+            filepath: The path to the video file to be processed.
         """
         super().__init__(stream_type="v") 
         self.filepath = filepath
@@ -27,9 +27,6 @@ class VideoFile(BaseInput):
     def audio(self) -> StreamSpecifier:
         """
         Access the audio stream of the video file.
-
-        Returns:
-            StreamSpecifier: A StreamSpecifier object for the audio stream.
         """
         return StreamSpecifier(self, stream_name="a")
 
@@ -37,9 +34,6 @@ class VideoFile(BaseInput):
     def video(self) -> StreamSpecifier:
         """
         Access the video stream of the video file.
-
-        Returns:
-            StreamSpecifier
         """
         return StreamSpecifier(self, stream_name="v")
 
@@ -49,7 +43,7 @@ class VideoFile(BaseInput):
         Access the subtitle stream of the video file.
 
         Returns:
-            StreamSpecifier: A StreamSpecifier object for the subtitle stream.
+            A StreamSpecifier object for the subtitle stream.
         """
         return StreamSpecifier(self, stream_name="s")
 
@@ -92,8 +86,8 @@ class VideoFile(BaseInput):
             ```
 
         Args:
-            stream_index (int): The index of the stream (e.g., 0 for the first stream).
-            stream_name (Optional[Literal["a", "v", "s", "d", "t", "V"]]): The name of the stream
+            stream_index: The index of the stream (e.g., 0 for the first stream).
+            stream_name: The name of the stream
                 to retrieve
                 - `a` -> audio
                 - `v` -> video
@@ -104,7 +98,7 @@ class VideoFile(BaseInput):
                 If not provided, retrieves the stream by index.
 
         Returns:
-            StreamSpecifier: A StreamSpecifier object for the requested stream.
+            A StreamSpecifier object for the requested stream.
         """
         return StreamSpecifier(self, stream_name=stream_name, stream_index=stream_index)
 
@@ -116,7 +110,7 @@ class VideoFile(BaseInput):
         the video file to be processed.
 
         Returns:
-            list[str]: A list of input flags for FFmpeg, including the file path.
+            A list of input flags for FFmpeg, including the file path.
         """
         command = self.build()
         command.extend(["-i", self.filepath])
@@ -128,11 +122,11 @@ class VideoFile(BaseInput):
         This will not make a new copy until exported.
 
         Args:
-            start (float): The start time of the subclip in seconds.
-            end (float): The end time of the subclip in seconds.
+            start: The start time of the subclip in seconds.
+            end: The end time of the subclip in seconds.
 
         Returns:
-            VideoFile: The updated VideoFile object with the subclip flags set.
+            The updated VideoFile object with the subclip flags set.
         """
         self.flags.update((("ss", start), ("t", end)))
         return self
@@ -144,12 +138,12 @@ class VideoFile(BaseInput):
         duration and setting the frame rate.
 
         Args:
-            imgpath (str): The path to the image file to use as a video.
-            duration (float): The duration of the video in seconds.
-            fps (int): The frame rate of the video.
+            imgpath: The path to the image file to use as a video.
+            duration: The duration of the video in seconds.
+            fps: The frame rate of the video.
 
         Returns:
-            VideoFile: A VideoFile object created from the image file.
+            A VideoFile object created from the image file.
         """
         c = cls(imgpath)
         c.flags["loop"] = 1
@@ -188,7 +182,7 @@ class VideoFile(BaseInput):
         in the video file.
 
         Returns:
-            float: duration in seconds.
+            Duration in seconds.
         """
         data = ffprobe(
             self.filepath,

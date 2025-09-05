@@ -1,5 +1,5 @@
 from .base_options import BaseOptions
-from typing import Literal, Optional
+from typing import Optional
 
 
 class FileInputOptions(BaseOptions):

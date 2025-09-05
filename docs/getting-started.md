@@ -1,5 +1,7 @@
 # Getting Started
 
+General Flow of using ffmpeg-studio, it has three main components: 
+
 - Input: Classes to handle different types of input files like video, audio, image, etc.
 - Filters: Functions and classes to apply various filters to the input streams.
 - Export: Functions to export the processed streams to output files.
@@ -12,9 +14,9 @@ Available classes for taking media are:
 
 - [**`InputFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile): A general-purpose input class for handling a wide range of media files. This is class can be used for stright forwad flag usage.
 
-- [**`VideoFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile): A dedicated input type tailored for video sources. It makes it easier to configure video-specific parameters such as frame rate, resolution, and stream mapping. This is particularly useful when processing high-resolution video content or when multiple video streams need to be managed within the same pipeline.
+- [**`VideoFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile): A dedicated input type tailored for video sources. It makes it easier to configure video-specific parameters such as frame rate, resolution, and stream mapping.
 
-- [**`ImageFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile): Designed for static image files, this class is ideal when building video slideshows, performing image-to-video conversions, or applying filters to single frames.
+- [**`ImageFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile): Designed for static image files, this class is ideal when working with formats like PNG, JPEG, or BMP. It provides options for handling image. 
 
 - [**`AudioFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudiotFile): A specialized class for audio-only inputs, enabling precise handling of audio streams. It provides straightforward access to audio-specific settings such as sample rate, channel layouts, and codec handling. This is useful for workflows involving audio extraction, mixing, or track replacement in multimedia projects.
 
@@ -52,11 +54,14 @@ clip = InputFile("image.png")
 clip_scaled = apply(Scale(1000, 1000), clip)
 ```
 
+!!! Warning
+    Filters contain parent info they are not independent, so do not reuse like them in multiple places.
+    If you want to reuse them create new instance.
+
 ## Export
+For straightforward exporting, ffmpeg-studio provides a convenient [`export`](/ffmpeg-studio/api_reference/api/#ffmpeg.ffmpeg.export) function. This allows you to quickly export a single output file containing one or more streams.
 
-For simple exporting ffmpeg-studio comes with an easy-to-use [`export`](/ffmpeg-studio/api_reference/api/#ffmpeg.ffmpeg.export) function to export the single output with possibly multiple stream.
-
-Example:
+**Example:**
 
 Combine audio and video from files and output them to a single file.
 

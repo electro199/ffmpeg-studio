@@ -4,32 +4,28 @@ The filters Always Inherit from BaseFilter class and Optionally TimelineEditingM
 
 """
 
-from .scale import (
-    Scale,
-    EvalMode,
-    AspectRatioMode,
-    ColorMatrix,
-    Intent,
-    InterlacingMode,
-    IOChromaLocation,
-    IOPrimaries,
-    IORange,
-)
+from .adelay import AudioDelay
+from .amix import AudioMix
+from .apply_filter import apply, apply2
+from .base import BaseFilter, OptionalStr
+from .concat import Concat
+from .crop import Crop
+from .delogo import Delogo
 from .draw_box import Box
 from .draw_text import Text
+from .hstack import HorizontalStack
+from .mixins.enable import TimelineEditingMixin
 from .overlay import Overlay
+from .sar import SetSampleAspectRatio
+from .scale import (AspectRatioMode, ColorMatrix, EvalMode, Intent,
+                    InterlacingMode, IOChromaLocation, IOPrimaries, IORange,
+                    Scale)
 from .split import Split
-from .base import BaseFilter, OptionalStr
-from .xfade import XFade
 from .subtitles import Subtitles
 from .timebase import SetTimeBase
-from .apply_filter import apply, apply2
-from .concat import Concat
-from .sar import SetSampleAspectRatio
-from .mixins.enable import TimelineEditingMixin
-from .amix import AudioMix
 from .volume import Volume
-from .adelay import AudioDelay
+from .vstack import VerticalStack
+from .xfade import XFade
 
 __all__ = [
     # util
@@ -52,6 +48,10 @@ __all__ = [
     "Subtitles",
     "SetTimeBase",
     "SetSampleAspectRatio",
+    "VerticalStack",
+    "HorizontalStack",
+    "Crop",
+    "Delogo",
     # audio
     "AudioMix",
     "Volume",

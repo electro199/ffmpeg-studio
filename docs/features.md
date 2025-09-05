@@ -6,7 +6,6 @@ This library simplifies complex command construction, provides tools for safe qu
 
 The core design focuses on generating filters, tracking progress in real time, and integrating seamlessly with Python applications. It provides a solid foundation for building media processing pipelines ranging from simple format conversions to large-scale video processing tasks.
 
-Let’s look at a few possible uses of this library.
 
 ## Filter generation
 FFmpeg-Studio makes it easier to construct complex filter graphs by offering built-in filters and a flexible base class for creating custom ones. This allows you to chain together sophisticated transformations without manually managing the intricate FFmpeg syntax.

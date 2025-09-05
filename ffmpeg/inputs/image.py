@@ -15,7 +15,7 @@ class ImageFile(BaseInput):
         Initializes the ImageFile object with the specified file path.
 
         Args:
-            filepath (str): The path to the image file to be processed.
+            filepath: The path to the image file to be processed.
         """
         super().__init__(stream_type="v") # Images are treated as video streams in ffmpeg
         self.filepath = filepath
@@ -28,7 +28,7 @@ class ImageFile(BaseInput):
         the video file to be processed.
 
         Returns:
-            list[str]: A list of input flags for FFmpeg, including the file path.
+            A list of input flags for FFmpeg, including the file path.
         """
         command = self.build()
         command.extend(["-i", self.filepath])
@@ -42,7 +42,7 @@ class ImageFile(BaseInput):
         in the image file.
 
         Returns:
-            tuple[int, int]: A tuple containing the width and height of the image.
+            A tuple containing the width and height of the image.
         """
         data = ffprobe(
             self.filepath,

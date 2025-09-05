@@ -1,9 +1,11 @@
-from ffmpeg import FFmpeg, FileInputOptions, InputFile, Map, apply, draw_filter_graph
+from ffmpeg import (FFmpeg, FileInputOptions, InputFile, Map, apply,
+                    draw_filter_graph)
 from ffmpeg.filters import Overlay, Scale
 
 # Do Filter as usual
 ffmpeg = FFmpeg()
 
+# Exmple filter graph
 clip = InputFile("video.mp4", FileInputOptions(duration=10))
 overlay = InputFile("overlay.png")
 

@@ -310,7 +310,6 @@ class FFmpeg:
             Function that can be used to track progress of the process running data can be mix of None and actual values
             progress_period: Set period at which progress_callback is called
             overwrite: overwrite the output if already exists
-
         """
 
         stdout = None

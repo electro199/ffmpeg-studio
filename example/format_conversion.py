@@ -1,5 +1,8 @@
-from ffmpeg.inputs import InputFile
-from ffmpeg import export
+"""
+Example Convert Input from one format to another without any filter
+"""
+
+from ffmpeg import InputFile, export
 
 
 export(

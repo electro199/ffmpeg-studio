@@ -44,7 +44,7 @@ class Map(MetadataMixin):
         """
         Represents a mapping of an input stream to an output.
         This class wraps an input node (like a file or filter), optional flags, and metadata.
-        
+
         Args:
             node: The input node or stream specifier to map from.
             suffix_flags: Flags that apply specifically to this map, like `-c:v`.
@@ -86,7 +86,7 @@ class OutFile(MetadataMixin):
     def __init__(
         self,
         maps: Iterable[Map],
-        path,
+        path: str,
         *,
         metadata: Optional[dict[str, str]] = None,
         **kvflags,
@@ -98,9 +98,9 @@ class OutFile(MetadataMixin):
         and any output flags.
 
         Args:
-            maps (Iterable[Map]): List of `Map` objects defining which input streams to include.
-            path (str): Output file path (e.g., `"out.mp4"`).
-            metadata (dict[str, str]): Metadata key-value pairs to add to the output file.
+            maps: List of `Map` objects defining which input streams to include.
+            path: Output file path (e.g., `"out.mp4"`).
+            metadata : Metadata key-value pairs to add to the output file.
             **kvflags: Additional key-value FFmpeg output flags (e.g., `crf=23`, `preset="fast"`).
 
         Example:
@@ -129,4 +129,3 @@ class OutFile(MetadataMixin):
         Includes metadata, flags and output path.
         """
         return [*build_flags(self.kvflags), *self.build_metadata(), self.path]
-    
