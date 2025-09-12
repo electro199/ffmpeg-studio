@@ -1,6 +1,7 @@
+from ffmpeg.inputs.base_input import BaseInput
 from .base import BaseFilter
 from ..inputs.streams import StreamSpecifier
-
+from ..inputs import BaseInput, StreamSpecifier
 
 class VerticalStack(BaseFilter):
     """
@@ -8,21 +9,13 @@ class VerticalStack(BaseFilter):
 
     """
 
-    def __init__(self, *nodes, end_on_shortest: bool = False):
+    def __init__(self, *nodes: BaseInput, end_on_shortest: bool = False):
         super().__init__("vstack")
         self.clips = nodes
         self.parent_nodes = []
-        self.flags["inputs"] = (
-            len(self.clips) + 1
-        )  # assuming the first one is from apply function
         self.flags["shortest"] = int(end_on_shortest)
 
-    def get_outputs(self):
-        if self.clips != self.parent_nodes:
-            self.parent_nodes.extend(self.clips)
-
-        return (
-            StreamSpecifier(self)
-            if self.output_count == 1
-            else [StreamSpecifier(self, i) for i in range(self.output_count)]
-        )
+    def register_parent(self, *node: BaseInput | StreamSpecifier):
+        self.check_register()
+        self.parent_nodes.extend(node)
+        self.flags["inputs"] = len(self.clips) + len(self.parent_nodes)

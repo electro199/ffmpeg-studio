@@ -202,11 +202,26 @@ cython_debug/
 .cursorindexingignore
 
 # Marimo
-
-
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# ignore any assets outside assets folder 
+*.mp4
+*.mkv
+*.png
+*.jpg
+*.jpeg
+*.webp
+
+# But do not ignore assets inside assets folder
+!assets/*.mp4
+!assets/*.mkv
+!assets/*.png
+!assets/*.jpg
+!assets/*.jpeg
+!assets/*.webp
+
 .pypirc
 
 __pycache__/

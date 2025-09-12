@@ -12,7 +12,7 @@ from ..inputs import BaseInput, StreamSpecifier
 
 
 def apply(
-    node: BaseFilter,
+    filter_obj: BaseFilter,
     *parent: BaseInput | StreamSpecifier,
 ) -> StreamSpecifier:
     """
@@ -22,18 +22,22 @@ def apply(
     to a filter node and returns a single output stream from the filter.
 
     Args:
-        node (BaseFilter): The filter node to apply.
-        *parent (BaseInput | StreamSpecifier): Input nodes to connect to the filter.
+        filter_obj: The filter node to apply.
+        *parent: Input nodes to connect to the filter.
 
     Returns:
-        StreamSpecifier: The resulting single output stream from the filter.
+        The resulting single output stream from the filter.
     """
-    node.parent_nodes.extend(parent)
-    return node.get_outputs()  # type: ignore
+    if filter_obj.output_count > 1:
+        raise ValueError(
+            "Filter has multiple outputs, use apply2 function instead of apply"
+        )
+    filter_obj.register_parent(*parent)
+    return filter_obj.get_outputs()  # type: ignore
 
 
 def apply2(
-    node: BaseFilter,
+    filter_obj: BaseFilter,
     *parent: BaseInput | StreamSpecifier,
 ) -> list[StreamSpecifier]:
     """
@@ -43,11 +47,14 @@ def apply2(
     to a filter node and returns a list of all output streams from the filter.
 
     Args:
-        node (BaseFilter): The filter node to apply.
-        *parent (BaseInput | StreamSpecifier): Input nodes to connect to the filter.
+        filter_obj: The filter node to apply.
+        *parent: Input nodes to connect to the filter.
 
     Returns:
-        list[StreamSpecifier]: A list of output streams from the filter.
+        A list of output streams from the filter.
     """
-    node.parent_nodes.extend(parent)
-    return node.get_outputs()  # type: ignore
+    if filter_obj.output_count < 2:
+        raise ValueError("Filter has single output, use apply function instead of apply2")
+    
+    filter_obj.register_parent(*parent)
+    return filter_obj.get_outputs()  # type: ignore

@@ -1,7 +1,7 @@
-from typing import Optional
+from ..inputs import BaseInput, StreamSpecifier
+from ..inputs.streams import StreamSpecifier
 from .base import BaseFilter
 from .mixins.enable import TimelineEditingMixin
-from ..inputs.streams import StreamSpecifier
 
 
 class Overlay(BaseFilter, TimelineEditingMixin):
@@ -10,20 +10,21 @@ class Overlay(BaseFilter, TimelineEditingMixin):
 
     """
 
-    def __init__(self, overlay_input: Optional["BaseInput"], x: int, y: int):
+    def __init__(
+        self, overlay_input: BaseInput, x: str | float, y: str | float, **kwargs
+    ):
+
         super().__init__("overlay")
         self.overlay_node = overlay_input
-        self.flags["x"] = x
-        self.flags["y"] = y
+        self.flags.update(kwargs)
+        self.flags["x"] = self.escape_arguments(x)
+        self.flags["y"] = self.escape_arguments(y)
 
+    def register_parent(self, *background: BaseInput | StreamSpecifier):
         # Expecting two inputs by default (background and overlay)
+        self.check_register()
+        if len(background) > 1:
+            raise ValueError("Overlay filter expects only one background input")
 
-    def get_outputs(self):
-        if self.overlay_node not in self.parent_nodes:
-            self.parent_nodes.append(self.overlay_node)
-
-        return (
-            StreamSpecifier(self)
-            if self.output_count == 1
-            else [StreamSpecifier(self, i) for i in range(self.output_count)]
-        )
+        self.parent_nodes.extend(background)
+        self.parent_nodes.append(self.overlay_node)

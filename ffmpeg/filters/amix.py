@@ -1,6 +1,9 @@
 from typing import Literal, Optional
+
+from ffmpeg.inputs.base_input import BaseInput
+
+from ..inputs import BaseInput, StreamSpecifier
 from .base import BaseFilter
-from ..inputs.streams import StreamSpecifier
 
 
 class AudioMix(BaseFilter):
@@ -23,22 +26,16 @@ class AudioMix(BaseFilter):
         weights: Optional[list[float]] = None,
     ):
         super().__init__("amix")
-        self.clips = nodes
-        self.parent_nodes = []
-        self.flags["inputs"] = (
-            len(self.clips) + 1
-        )  # assuming the first one is from apply function
+        self.parent_nodes = [*nodes]
         self.flags["duration"] = end_on
         self.flags["normalize"] = normalize
         self.flags["weights"] = " ".join(map(str, weights)) if weights else None
         self.flags["dropout_transition"] = dropout_transition
 
-    def get_outputs(self):
-        if self.clips != self.parent_nodes:
-            self.parent_nodes.extend(self.clips)
+    def register_parent(self, *node: BaseInput | StreamSpecifier):
+        self.check_register()
+        self.parent_nodes.extend(node)
+        self.flags["inputs"] = len(self.parent_nodes)
 
-        return (
-            StreamSpecifier(self)
-            if self.output_count == 1
-            else [StreamSpecifier(self, i) for i in range(self.output_count)]
-        )
+    def get_outputs(self):
+        return [StreamSpecifier(self, i) for i in range(self.output_count)]

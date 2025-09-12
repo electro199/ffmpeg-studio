@@ -23,16 +23,15 @@ Filter holds :
 
 """
 
-from typing import Optional, TypeVar, Union
+from typing import Any, Optional, TypeVar, Union
 from ..inputs.streams import StreamSpecifier
 from ..inputs.base_input import BaseInput
 from ..utils import build_name_kvargs_format
 
 
 OptionalStr = TypeVar("OptionalStr", None, str, Optional[str])
-"""
-String or None Type
-"""
+"""String or None Type"""
+
 
 
 class BaseFilter:
@@ -46,10 +45,20 @@ class BaseFilter:
         self.parent_nodes: list[BaseInput | StreamSpecifier] = []
         self.parent_stream: list[int | str | None] = []
 
+        self.registered_parents = False
         self.output_count = 1
 
-    def add_input(self, node: Union[BaseInput, StreamSpecifier]):
-        self.parent_nodes.append(node)
+    def register_parent(self, *node: Union[BaseInput, StreamSpecifier]):
+        """Register parent nodes only once."""
+        self.check_register()
+        self.parent_nodes.extend(node)
+
+    def check_register(self):
+        if self.registered_parents:
+            raise RuntimeError(
+                "Parent nodes can only be registered once, Please make new filter instance"
+            )
+        self.registered_parents = True
 
     def build(self) -> str:
         return build_name_kvargs_format(self.filter_name, self.flags)
@@ -61,14 +70,14 @@ class BaseFilter:
             else [StreamSpecifier(self, i) for i in range(self.output_count)]
         )
 
-    def escape_arguments(self, text: OptionalStr) -> OptionalStr:
+    def escape_arguments(self, text: Any) -> Any | str:
         """
         Escapes all characters that require escaping in FFmpeg filter arguments.
 
         Returns:
             None if text was None otherwise new str with escaped chars
         """
-        if text is None:
+        if not isinstance(text, str):
             return text
         return (
             "'"

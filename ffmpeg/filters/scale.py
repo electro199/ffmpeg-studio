@@ -1,5 +1,5 @@
 from enum import IntEnum, StrEnum
-from typing import Self, Unpack, TypedDict
+from typing import Self
 from .base import BaseFilter
 
 
@@ -76,8 +76,8 @@ class Scale(BaseFilter):
     Represents the FFmpeg scale filter.
 
     Args:
-        width (float): The width of the output video.
-        height (float): The height of the output video.
+        width: The width of the output video.
+        height: The height of the output video.
     """
     def __init__(self, width: float, height: float):
         super().__init__("scale")
@@ -90,7 +90,7 @@ class Scale(BaseFilter):
         Set the evaluation mode. Useful for dynamic scaling.
 
         Args:
-            mode (EvalMode): The evaluation mode ('init' or 'frame').
+            mode: The evaluation mode.
 
         Returns:
             Self: The current Scale instance.
@@ -103,7 +103,7 @@ class Scale(BaseFilter):
         Set the interlacing mode. 
 
         Args:
-            mode (InterlacingMode): The interlacing mode (1, 0, or -1).
+            mode: The interlacing mode.
 
         Returns:
             Self: The current Scale instance.
@@ -116,7 +116,7 @@ class Scale(BaseFilter):
         Set the color intent.
 
         Args:
-            intent (Intent): The color intent.
+            intent: The color intent.
 
         Returns:
             Self: The current Scale instance.
@@ -129,7 +129,7 @@ class Scale(BaseFilter):
         Set the input color matrix.
 
         Args:
-            matrix (ColorMatrix): The input color matrix.
+            matrix: The input color matrix.
 
         Returns:
             Self: The current Scale instance.
@@ -142,7 +142,7 @@ class Scale(BaseFilter):
         Set the output color matrix.
 
         Args:
-            matrix (ColorMatrix): The output color matrix.
+            matrix: The output color matrix.
 
         Returns:
             Self: The current Scale instance.
@@ -155,7 +155,7 @@ class Scale(BaseFilter):
         Set the input range.
 
         Args:
-            rng (IORange): The input range.
+            rng: The input range.
 
         Returns:
             Self: The current Scale instance.
@@ -168,7 +168,7 @@ class Scale(BaseFilter):
         Set the output range.
 
         Args:
-            rng (IORange): The output range.
+            rng: The output range.
 
         Returns:
             Self: The current Scale instance.
@@ -181,7 +181,7 @@ class Scale(BaseFilter):
         Set the input chroma location.
 
         Args:
-            loc (IOChromaLocation): The input chroma location.
+            loc: The input chroma location.
 
         Returns:
             Self: The current Scale instance.
@@ -194,7 +194,7 @@ class Scale(BaseFilter):
         Set the output chroma location.
 
         Args:
-            loc (IOChromaLocation): The output chroma location.
+            loc: The output chroma location.
 
         Returns:
             Self: The current Scale instance.
@@ -207,7 +207,7 @@ class Scale(BaseFilter):
         Set the input color primaries.
 
         Args:
-            primaries (IOPrimaries): The input color primaries.
+            primaries: The input color primaries.
 
         Returns:
             Self: The current Scale instance.
@@ -220,7 +220,7 @@ class Scale(BaseFilter):
         Set the output color primaries.
 
         Args:
-            primaries (IOPrimaries): The output color primaries.
+            primaries: The output color primaries.
 
         Returns:
             Self: The current Scale instance.
@@ -233,7 +233,7 @@ class Scale(BaseFilter):
         Set the aspect ratio mode.
 
         Args:
-            mode (AspectRatioMode): The aspect ratio mode.
+            mode: The aspect ratio mode.
 
         Returns:
             Self: The current Scale instance.
@@ -246,7 +246,7 @@ class Scale(BaseFilter):
         Set the force divisible by value.
 
         Args:
-            n (int): The value to force divisibility by.
+            n: The value to force divisibility by.
 
         Returns:
             Self: The current Scale instance.
@@ -259,7 +259,7 @@ class Scale(BaseFilter):
         Reset the sample aspect ratio.
 
         Args:
-            enable (bool): Whether to enable resetting SAR (default: True).
+            enable: Whether to enable resetting SAR.
 
         Returns:
             Self: The current Scale instance.
