@@ -7,7 +7,6 @@ Requires:
     graphviz module (install via pip and binaries as needed).
 """
 
-
 import itertools
 
 from ..ffmpeg import FFmpeg
@@ -20,7 +19,11 @@ def format_flags(flag: dict):
 
 
 def draw_filter_graph(
-    ffmpeg: FFmpeg, output_path: str = "filter_graph", format: str = "png"
+    ffmpeg: FFmpeg,
+    file_name: str = "filter_graph",
+    format: str = "png",
+    fontsize: int = 10,
+    dpi: int = 140,
 ) -> None:
     """
     Visualises the FFmpeg filter graph and saves it as an image.
@@ -51,7 +54,7 @@ def draw_filter_graph(
 
     # ── 2. Start the dot graph ──
     dot = Digraph(name="FFmpegFilterGraph", format=format)
-    dot.attr(rankdir="LR", dpi=str(3000), fontsize="10")
+    dot.attr(rankdir="LR", dpi=str(dpi), fontsize=str(fontsize))
 
     # Helper to assign deterministic unique IDs
     uid = itertools.count()
@@ -162,4 +165,4 @@ def draw_filter_graph(
                 dot.edge(src_id, out_id)
     # ── 6. Render ──
 
-    dot.render(filename=output_path, cleanup=True)
+    dot.render(filename=file_name, cleanup=True)
