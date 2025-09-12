@@ -11,7 +11,11 @@ class Overlay(BaseFilter, TimelineEditingMixin):
     """
 
     def __init__(
-        self, overlay_input: BaseInput, x: str | float, y: str | float, **kwargs
+        self,
+        overlay_input: BaseInput | StreamSpecifier,
+        x: str | float,
+        y: str | float,
+        **kwargs,
     ):
 
         super().__init__("overlay")
