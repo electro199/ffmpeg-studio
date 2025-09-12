@@ -8,6 +8,7 @@ from .adelay import AudioDelay
 from .amix import AudioMix
 from .apply_filter import apply, apply2
 from .base import BaseFilter, OptionalStr
+from .base import BaseFilter
 from .concat import Concat
 from .crop import Crop
 from .delogo import Delogo
@@ -63,6 +64,5 @@ __all__ = [
     "Split",
     # internal
     "BaseFilter",
-    "OptionalStr",
     "TimelineEditingMixin",
 ]

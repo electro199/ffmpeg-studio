@@ -29,11 +29,6 @@ from ..inputs.base_input import BaseInput
 from ..utils import build_name_kvargs_format
 
 
-OptionalStr = TypeVar("OptionalStr", None, str, Optional[str])
-"""String or None Type"""
-
-
-
 class BaseFilter:
     """Base class for all FFmpeg filters."""
 
