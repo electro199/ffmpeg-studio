@@ -54,10 +54,12 @@ __all__ = [
     "Delogo",
     # audio
     "AudioMix",
+    "AudioFormat",
     "Volume",
     "AudioDelay",
     # general
     "Concat",
+    "Format",
     "Split",
     # internal
     "BaseFilter",
