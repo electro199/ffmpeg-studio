@@ -7,7 +7,6 @@ The filters Always Inherit from BaseFilter class and Optionally TimelineEditingM
 from .adelay import AudioDelay
 from .amix import AudioMix
 from .apply_filter import apply, apply2
-from .base import BaseFilter, OptionalStr
 from .base import BaseFilter
 from .concat import Concat
 from .crop import Crop
