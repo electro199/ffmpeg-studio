@@ -6,7 +6,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")
 
 import unittest
 from unittest.mock import patch, MagicMock
-from ffmpeg import FFmpeg, Map, FileInputOptions, InputFile, apply
+from ffmpeg import FFmpeg, Map, FileInputOptions, InputFile, apply, apply2
 from ffmpeg.filters import Scale, BaseFilter
 
 
@@ -171,6 +171,32 @@ class TestFFmpeg(unittest.TestCase):
 
         # count how many scale filters are in the script
         self.assertEqual(content.count("scale=width=1280:height=720"), times)
+
+    def test_filter_register_once(self):
+        scale = Scale(width=1280, height=720)
+        filtered = apply(scale, self.video)
+        ff = FFmpeg().output(Map(filtered), path="scaled.mp4")
+        command = ff.compile()
+
+        # The scale filter should only be registered once
+        filter = command[command.index("-filter_complex") + 1]
+        self.assertEqual(filter.count("scale"), 1)
+
+        with self.assertRaises(RuntimeError):
+            apply(scale, self.video)
+
+    def test_wrong_apply(self):
+        # if user use apply with multiple outputs filter should raise error
+        filter = BaseFilter("dummy")
+        filter.output_count = 2
+        with self.assertRaises(ValueError):
+            apply(filter, self.video)
+
+        # if user use apply2 with single output filter should raise error
+        filter = BaseFilter("dummy")
+        filter.output_count = 1
+        with self.assertRaises(ValueError):
+            apply2(filter, self.video)
 
     def test_global_flags_default_reset(self):
         ff = FFmpeg()
