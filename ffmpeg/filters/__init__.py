@@ -18,15 +18,25 @@ from .hstack import HorizontalStack
 from .mixins.enable import TimelineEditingMixin
 from .overlay import Overlay
 from .sar import SetSampleAspectRatio
-from .scale import (AspectRatioMode, ColorMatrix, EvalMode, Intent,
-                    InterlacingMode, IOChromaLocation, IOPrimaries, IORange,
-                    Scale)
+from .scale import (
+    AspectRatioMode,
+    ColorMatrix,
+    EvalMode,
+    Intent,
+    InterlacingMode,
+    IOChromaLocation,
+    IOPrimaries,
+    IORange,
+    Scale,
+)
 from .split import Split
 from .subtitles import Subtitles
 from .timebase import SetTimeBase
 from .volume import Volume
 from .vstack import VerticalStack
 from .xfade import XFade
+from .format import Format
+from .aformat import AudioFormat
 
 __all__ = [
     # util
