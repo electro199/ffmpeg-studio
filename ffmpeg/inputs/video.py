@@ -148,7 +148,7 @@ class VideoFile(BaseInput):
         c = cls(imgpath)
         c.flags["loop"] = 1
         c.flags["t"] = duration
-        c.flags["framerate"] = fps
+        c.flags["r"] = fps
         return c
 
     def get_size(self) -> tuple[int, int]:
