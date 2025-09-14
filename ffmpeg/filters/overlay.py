@@ -24,9 +24,9 @@ class Overlay(BaseFilter, TimelineEditingMixin):
         self.flags["x"] = self.escape_arguments(x)
         self.flags["y"] = self.escape_arguments(y)
 
-    def register_parent(self, *background: BaseInput | StreamSpecifier):
+    def _register_parent(self, *background: BaseInput | StreamSpecifier):
         # Expecting two inputs by default (background and overlay)
-        self.check_register()
+        self._check_register()
         if len(background) > 1:
             raise ValueError("Overlay filter expects only one background input")
 

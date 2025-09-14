@@ -23,9 +23,10 @@ Filter holds :
 
 """
 
-from typing import Any, Optional, TypeVar, Union
-from ..inputs.streams import StreamSpecifier
+from typing import Any, Union
+
 from ..inputs.base_input import BaseInput
+from ..inputs.streams import StreamSpecifier
 from ..utils import build_name_kvargs_format
 
 
@@ -38,27 +39,26 @@ class BaseFilter:
         self.flags: dict = {}  # all args
 
         self.parent_nodes: list[BaseInput | StreamSpecifier] = []
-        self.parent_stream: list[int | str | None] = []
 
         self.registered_parents = False
         self.output_count = 1
 
-    def register_parent(self, *node: Union[BaseInput, StreamSpecifier]):
+    def _register_parent(self, *node: Union[BaseInput, StreamSpecifier]):
         """Register parent nodes only once."""
-        self.check_register()
+        self._check_register()
         self.parent_nodes.extend(node)
 
-    def check_register(self):
+    def _check_register(self):
         if self.registered_parents:
             raise RuntimeError(
                 "Parent nodes can only be registered once, Please make new filter instance"
             )
         self.registered_parents = True
 
-    def build(self) -> str:
+    def _build(self) -> str:
         return build_name_kvargs_format(self.filter_name, self.flags)
 
-    def get_outputs(self):
+    def _get_outputs(self):
         return (
             StreamSpecifier(self)
             if self.output_count == 1

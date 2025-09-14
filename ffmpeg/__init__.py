@@ -17,6 +17,7 @@ from .inputs import (
     ImageFile,
     AudioFile,
     VirtualVideo,
+    VirtualAudio,
 )
 from .filters import apply, apply2
 from .output.output import Map, OutFile
@@ -38,6 +39,7 @@ __all__ = [
     "ImageFile",
     "AudioFile",
     "VirtualVideo",
+    "VirtualAudio",
     "apply",
     "apply2",
     "Map",

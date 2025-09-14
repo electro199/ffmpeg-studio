@@ -16,7 +16,7 @@ class HorizontalStack(BaseFilter):
         self.parent_nodes = []
         self.flags["shortest"] = int(end_on_shortest)
 
-    def register_parent(self, *node: BaseInput | StreamSpecifier):
-        self.check_register()
+    def _register_parent(self, *node: BaseInput | StreamSpecifier):
+        self._check_register()
         self.parent_nodes.extend(node)
         self.flags["inputs"] = len(self.clips) + len(self.parent_nodes)

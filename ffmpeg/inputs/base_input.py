@@ -10,11 +10,11 @@ class BaseInput(ABC):
         self.stream_type = stream_type
 
     @abstractmethod
-    def build_input_flags(self) -> list[str]:
+    def _build_input_flags(self) -> list[str]:
         raise NotImplementedError()
 
-    def build(self):
+    def _build(self):
         return build_flags(self.flags)
 
-    def get_outputs(self):
+    def _get_outputs(self):
         return StreamSpecifier(self)

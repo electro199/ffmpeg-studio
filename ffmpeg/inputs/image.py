@@ -20,7 +20,7 @@ class ImageFile(BaseInput):
         super().__init__(stream_type="v") # Images are treated as video streams in ffmpeg
         self.filepath = filepath
 
-    def build_input_flags(self) -> list[str]:
+    def _build_input_flags(self) -> list[str]:
         """
         Builds the FFmpeg input flags for the video file.
 
@@ -30,7 +30,7 @@ class ImageFile(BaseInput):
         Returns:
             A list of input flags for FFmpeg, including the file path.
         """
-        command = self.build()
+        command = self._build()
         command.extend(["-i", self.filepath])
         return command
 

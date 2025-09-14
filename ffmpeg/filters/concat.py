@@ -25,6 +25,6 @@ class Concat(BaseFilter):
         self.parent_nodes = list(nodes)
         self.flags = {"n": n, "v": v, "a": a, "unsafe": unsafe}
 
-    def get_outputs(self):
+    def _get_outputs(self):
         self.output_count = self.flags["v"] + self.flags["a"]
         return [StreamSpecifier(self, i) for i in range(self.output_count)]

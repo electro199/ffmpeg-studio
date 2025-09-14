@@ -94,7 +94,7 @@ class FFmpeg:
         self._global_flags[key] = value
         return self
 
-    def build_global_flags(self) -> list[str]:
+    def _build_global_flags(self) -> list[str]:
         cmd = []
         for key, value in self._global_flags.items():
             cmd.append(key)
@@ -102,7 +102,7 @@ class FFmpeg:
                 cmd.append(str(value))
         return cmd
 
-    def is_input_exporting(self, node: BaseInput | StreamSpecifier) -> bool:
+    def _is_input_exporting(self, node: BaseInput | StreamSpecifier) -> bool:
         """Check if Output is Input without any filter applied"""
         if isinstance(node, StreamSpecifier):
             node = node.parent
@@ -113,7 +113,7 @@ class FFmpeg:
             return True
         return False
 
-    def get_outname(self, i: Any, j: Any, stream_char: str = "") -> str:
+    def _get_outname(self, i: Any, j: Any, stream_char: str = "") -> str:
         """
         make names for link names
 
@@ -122,7 +122,7 @@ class FFmpeg:
         """
         return f"n{i}o{j}{stream_char}"
 
-    def generate_inlink_name(
+    def _generate_inlink_name(
         self, parent: BaseInput | StreamSpecifier | BaseFilter
     ) -> str:
         """Get different types of links that ffmpeg uses with different types of Object"""
@@ -136,28 +136,29 @@ class FFmpeg:
         if isinstance(parent, BaseInput):
             input_name = f"{self._inputs.index(parent)}{stream_specifier}"  # idx
         else:
-            input_name = self.get_outname(
+            input_name = self._get_outname(
                 self._filter_nodes.index(parent), output_n, stream_specifier
             )
         return input_name
 
-    def build_filter(
+    def _build_filter(
         self, last_node: BaseInput | StreamSpecifier
     ) -> list[Any] | Literal[""]:
         """Builds the final FFmpeg chains"""
 
         # If the output is Base Input return no need to add a filter
-        if self.is_input_exporting(last_node):
+        if self._is_input_exporting(last_node):
             return ""
 
         self._inputs_tmp: list[BaseInput] = []
-        flat_graph: list[BaseFilter] | None = self.flatten_graph(last_node)
+        flat_graph: list[BaseFilter] | None = self._flatten_graph(last_node)
 
         if flat_graph is None:
             return ""
 
         self._filter_nodes.extend(flat_graph[::-1])
         self._inputs.extend(self._inputs_tmp[::-1])
+        del self._inputs_tmp
 
         filter_chain = []
 
@@ -167,21 +168,21 @@ class FFmpeg:
 
             # gather parents
             for parent in filter.parent_nodes:
-                filter_block += wrap_sqrtbrkt(self.generate_inlink_name(parent))
+                filter_block += wrap_sqrtbrkt(self._generate_inlink_name(parent))
 
             # gather args
-            filter_block += filter.build()
+            filter_block += filter._build()
 
             # gather outlink
             for j in range(filter.output_count):
-                filter_block += wrap_sqrtbrkt(self.get_outname(self._node_count, j))
+                filter_block += wrap_sqrtbrkt(self._get_outname(self._node_count, j))
 
             self._node_count += 1
             filter_chain.append(filter_block)
 
         return filter_chain
 
-    def flatten_graph(
+    def _flatten_graph(
         self, node: BaseInput | StreamSpecifier
     ) -> list[BaseFilter] | None:
         stack = [node]
@@ -203,17 +204,17 @@ class FFmpeg:
                 stack.extend(reversed(current.parent_nodes))
         return collected_nodes or None
 
-    def build_inputs(self) -> list[str]:
+    def _build_inputs(self) -> list[str]:
 
         sub_command = []
         for inp in self._inputs:
-            sub_command.extend(inp.build_input_flags())
+            sub_command.extend(inp._build_input_flags())
         return sub_command
 
-    def build_map(self, map: Map, map_index) -> list[str]:
+    def _build_map(self, map: Map, map_index) -> list[str]:
 
         node = map.node
-        stream = self.generate_inlink_name(node)
+        stream = self._generate_inlink_name(node)
 
         if isinstance(node, StreamSpecifier):
             node = node.parent
@@ -221,7 +222,7 @@ class FFmpeg:
         if not isinstance(node, BaseInput):
             stream = wrap_sqrtbrkt(stream)
 
-        flags = map.build(stream, map_index=map_index)
+        flags = map._build(stream, map_index=map_index)
         return flags
 
     def compile(self, overwrite: bool = True) -> list[str]:
@@ -249,14 +250,14 @@ class FFmpeg:
 
         self.add_global_flag("-loglevel", "error")
 
-        command = [self.ffmpeg_path, *self.build_global_flags()]
+        command = [self.ffmpeg_path, *self._build_global_flags()]
         # First flatten filters to add inputs automatically from last node order matters here
         filters = []
         for output in self._outputs:
             for map_ in output.maps:
-                filters.extend(self.build_filter(map_.node))
+                filters.extend(self._build_filter(map_.node))
 
-        if inputs := self.build_inputs():
+        if inputs := self._build_inputs():
             command.extend(inputs)
 
         if filters:
@@ -268,9 +269,9 @@ class FFmpeg:
 
         for output in self._outputs:
             for i, maps in enumerate(output.maps):  # one output can have multiple maps
-                command.extend(self.build_map(maps, i))
+                command.extend(self._build_map(maps, i))
 
-            command.extend(output.build())
+            command.extend(output._build())
 
         return list(map(str, command))
 

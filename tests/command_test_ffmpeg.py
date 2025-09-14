@@ -38,8 +38,8 @@ class TestFFmpeg(unittest.TestCase):
 
     def test_generate_inlink_name_for_input(self):
         ff = FFmpeg()
-        ff.is_input_exporting(self.video)
-        name = ff.generate_inlink_name(self.video)
+        ff._is_input_exporting(self.video)
+        name = ff._generate_inlink_name(self.video)
         self.assertEqual(name, "0:v:0")  # 0th input, video stream, 0th index
 
     @patch("ffmpeg.ffmpeg.subprocess.Popen")
@@ -93,9 +93,9 @@ class TestFFmpeg(unittest.TestCase):
 
     def test_input_export_once(self):
         ff = FFmpeg()
-        ff.is_input_exporting(self.video)
+        ff._is_input_exporting(self.video)
         # Re-exporting the same input should not add it again
-        ff.is_input_exporting(self.video)
+        ff._is_input_exporting(self.video)
         self.assertEqual(len(ff._inputs), 1)
 
     def test_filter_handling(self):

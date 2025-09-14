@@ -50,7 +50,7 @@ def draw_filter_graph(
     ffmpeg.reset()
     for out in ffmpeg._outputs:
         for m in out.maps:
-            ffmpeg.build_filter(m.node)  # populates _inputs/_filter_nodes
+            ffmpeg._build_filter(m.node)  # populates _inputs/_filter_nodes
 
     # ── 2. Start the dot graph ──
     dot = Digraph(name="FFmpegFilterGraph", format=format)

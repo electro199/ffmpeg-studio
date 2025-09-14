@@ -102,7 +102,7 @@ class VideoFile(BaseInput):
         """
         return StreamSpecifier(self, stream_name=stream_name, stream_index=stream_index)
 
-    def build_input_flags(self) -> list[str]:
+    def _build_input_flags(self) -> list[str]:
         """
         Builds the FFmpeg input flags for the video file.
 
@@ -112,7 +112,7 @@ class VideoFile(BaseInput):
         Returns:
             A list of input flags for FFmpeg, including the file path.
         """
-        command = self.build()
+        command = self._build()
         command.extend(["-i", self.filepath])
         return command
 

@@ -27,7 +27,7 @@ class BaseVirtualInput(BaseInput):
             kwargs.pop("_size")
         self.__size: str = s
 
-    def build_input_flags(self) -> list[str]:
+    def _build_input_flags(self) -> list[str]:
         """
         Builds the FFmpeg input flags for the video file.
 
@@ -53,7 +53,7 @@ class BaseVirtualInput(BaseInput):
         w, h = self.__size.split("x")
         return int(w), int(h)
 
-    def build(self) -> list:
+    def _build(self) -> list:
         return ["-f", self.format_flag, "-i", self.input_flag]
 
     # ---------------------- VIDEO SOURCES ----------------------

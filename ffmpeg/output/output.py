@@ -19,7 +19,7 @@ class MetadataMixin:
         """
         self._metadata[key] = value
 
-    def build_metadata(self, stream_spec: str = "") -> list[str]:
+    def _build_metadata(self, stream_spec: str = "") -> list[str]:
         """
         Expand stored metadata into FFmpeg args.
         """
@@ -62,7 +62,7 @@ class Map(MetadataMixin):
         self.flags = dict(flags)
         self._metadata = metadata or {}
 
-    def build(self, stream: str, map_index: int) -> list[str]:
+    def _build(self, stream: str, map_index: int) -> list[str]:
 
         # use stream type like foo:v
         stream_type_specfier = f":{self.stream_type}" if self.stream_type else ""
@@ -77,7 +77,7 @@ class Map(MetadataMixin):
             flags.append(f"-{k}")
             flags.append(str(v))
 
-        flags.extend(self.build_metadata(f":s{stream_type_specfier}:{map_index}"))
+        flags.extend(self._build_metadata(f":s{stream_type_specfier}:{map_index}"))
 
         return flags
 
@@ -123,9 +123,9 @@ class OutFile(MetadataMixin):
         self.kvflags = kvflags
         self._metadata = metadata or {}
 
-    def build(self) -> list[str]:
+    def _build(self) -> list[str]:
         """
         Build output flags.
         Includes metadata, flags and output path.
         """
-        return [*build_flags(self.kvflags), *self.build_metadata(), self.path]
+        return [*build_flags(self.kvflags), *self._build_metadata(), self.path]

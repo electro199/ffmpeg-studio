@@ -19,7 +19,7 @@ class InputFile(BaseInput):
         self.options = options
         self.flags = kwargs
 
-    def build_input_flags(self) -> list[str]:
+    def _build_input_flags(self) -> list[str]:
         command = []
         if self.options:
             command.extend(self.options.build())

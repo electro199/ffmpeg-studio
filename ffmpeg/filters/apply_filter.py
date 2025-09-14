@@ -32,8 +32,8 @@ def apply(
         raise ValueError(
             "Filter has multiple outputs, use apply2 function instead of apply"
         )
-    filter_obj.register_parent(*parent)
-    return filter_obj.get_outputs()  # type: ignore
+    filter_obj._register_parent(*parent)
+    return filter_obj._get_outputs()  # type: ignore
 
 
 def apply2(
@@ -56,5 +56,5 @@ def apply2(
     if filter_obj.output_count < 2:
         raise ValueError("Filter has single output, use apply function instead of apply2")
     
-    filter_obj.register_parent(*parent)
-    return filter_obj.get_outputs()  # type: ignore
+    filter_obj._register_parent(*parent)
+    return filter_obj._get_outputs()  # type: ignore
