@@ -20,16 +20,16 @@ class Format(BaseFilter):
         It accepts the following parameters:
 
         Arguments:
-            pix_fmts:
+            pixel_format:
                 A `|`-separated list of pixel format names, such as "pix_fmts=yuv420p|monow|rgb24".
 
-            color_spaces:
+            color_space:
                 A `|`-separated list of color space names, such as "color_spaces=bt709|bt470bg|bt2020nc".
 
-            color_ranges:
+            color_range:
                 A `|`-separated list of color range names, such as "color_ranges=tv|pc".
 
-            alpha_modes:
+            alpha_mode:
                 A `|`-separated list of color range names, such as "alpha_modes=straight|premultiplied".
         """
         super().__init__("format")
