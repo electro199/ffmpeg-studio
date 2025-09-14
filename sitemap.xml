@@ -2,42 +2,66 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://electro199.github.io/ffmpeg-studio/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/basics/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/features/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://electro199.github.io/ffmpeg-studio/getting-started/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://electro199.github.io/ffmpeg-studio/installation/</loc>
-         <lastmod>2025-08-16</lastmod>
-    </url>
-    <url>
-         <loc>https://electro199.github.io/ffmpeg-studio/overview/</loc>
-         <lastmod>2025-08-16</lastmod>
-    </url>
-    <url>
-         <loc>https://electro199.github.io/ffmpeg-studio/useful_info/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://electro199.github.io/ffmpeg-studio/advance-usage/advance-usage/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://electro199.github.io/ffmpeg-studio/advance-usage/useful_info/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
-         <loc>https://electro199.github.io/ffmpeg-studio/api_reference/api/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <loc>https://electro199.github.io/ffmpeg-studio/api_reference/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://electro199.github.io/ffmpeg-studio/api_reference/filters/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <lastmod>2025-09-14</lastmod>
     </url>
     <url>
          <loc>https://electro199.github.io/ffmpeg-studio/api_reference/inputs/</loc>
-         <lastmod>2025-08-16</lastmod>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/example/audio_mixing/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/example/conversion/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/example/ghraph_diagram/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/example/mosaic/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/example/progress_bar/</loc>
+         <lastmod>2025-09-14</lastmod>
+    </url>
+    <url>
+         <loc>https://electro199.github.io/ffmpeg-studio/example/text_fuzzing/</loc>
+         <lastmod>2025-09-14</lastmod>
     </url>
 </urlset>
