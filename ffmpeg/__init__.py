@@ -29,7 +29,7 @@ import logging
 logger = logging.getLogger("ffmpeg")
 
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 __all__ = [
     "InputFile",
@@ -54,3 +54,4 @@ __all__ = [
     "ffprobe",
     "__version__",
 ]
+
