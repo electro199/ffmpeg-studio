@@ -13,14 +13,14 @@ class VideoFile(BaseInput):
     creating subclips, and retrieving the video file's resolution.
     """
 
-    def __init__(self, filepath: str) -> None:
+    def __init__(self, filepath: str, **kwargs) -> None:
         """
         Initializes the VideoFile object with the specified file path.
 
         Args:
             filepath: The path to the video file to be processed.
         """
-        super().__init__(stream_type="v") 
+        super().__init__(stream_type="v", **kwargs)
         self.filepath = filepath
 
     @property

@@ -20,6 +20,7 @@ class VirtualVideo(BaseVirtualInput):
         cls,
         width: int,
         height: int,
+        duration: Optional[int] = None,
         pattern: Optional[int] = None,
         rate: Optional[int] = None,
         random_fill_ratio: Optional[float] = None,
@@ -45,7 +46,12 @@ class VirtualVideo(BaseVirtualInput):
 
             kwargs.update(k=v)
 
-        return cls("cellauto", size=f"{width}x{height}", **kwargs)
+        return cls(
+            "cellauto",
+            size=f"{width}x{height}",
+            flags=dict(t=duration),  # this filter does not take duration like normal
+            **kwargs,
+        )
 
     @classmethod
     def from_life(
@@ -175,8 +181,8 @@ class VirtualVideo(BaseVirtualInput):
     @classmethod
     def from_testsrc2(
         cls,
-        height: int,
         width: int,
+        height: int,
         duration: Optional[float] = None,
         rate: int = 25,
         sar: Optional[int] = None,
@@ -191,8 +197,8 @@ class VirtualVideo(BaseVirtualInput):
     @classmethod
     def from_smptehdbars(
         cls,
-        height: int,
         width: int,
+        height: int,
         duration: Optional[float] = None,
         rate: int = 25,
         sar: Optional[int] = None,
@@ -206,8 +212,8 @@ class VirtualVideo(BaseVirtualInput):
     @classmethod
     def from_smptebars(
         cls,
-        height: int,
         width: int,
+        height: int,
         duration: Optional[float] = None,
         rate: int = 25,
         sar: Optional[int] = None,
@@ -245,9 +251,9 @@ class VirtualVideo(BaseVirtualInput):
     @classmethod
     def from_ddagrab(
         cls,
-        output_idx: int,
         width: int,
         height: int,
+        output_idx: int,
         draw_mouse: Optional[bool] = None,
         rate: int = 30,
         offset_x: Optional[int] = None,
@@ -307,7 +313,7 @@ class VirtualVideo(BaseVirtualInput):
         """
         Parameters:
             color : set color
-            duration: set video duration 
+            duration: set video duration
             rate : set video rate (default "25")
             duration : set video duration (default -0.000001)
             sar : set video sample aspect ratio (from 0 to INT_MAX) (default 1/1)

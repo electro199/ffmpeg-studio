@@ -1,4 +1,4 @@
-from typing import Any, Literal, Optional
+from typing import Any, Optional
 
 from ..utils import build_flags, build_name_kvargs_format
 from .file_input import BaseInput
@@ -12,10 +12,9 @@ class BaseVirtualInput(BaseInput):
         flags: Optional[dict[str, Any]] = None,
         **kwargs,
     ) -> None:
-        super().__init__()
+        super().__init__(**flags or {})
         self.name = name
         self.format_flag = format
-        self.flags = flags or {}
         self.kwargs = kwargs
 
         # Size is required to make support the get_size function

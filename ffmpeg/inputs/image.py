@@ -10,14 +10,16 @@ class ImageFile(BaseInput):
     building FFmpeg input flags
     """
 
-    def __init__(self, filepath: str) -> None:
+    def __init__(self, filepath: str, **kwargs) -> None:
         """
         Initializes the ImageFile object with the specified file path.
 
         Args:
             filepath: The path to the image file to be processed.
         """
-        super().__init__(stream_type="v") # Images are treated as video streams in ffmpeg
+        super().__init__(
+            stream_type="v", **kwargs
+        )  # Images are treated as video streams in ffmpeg
         self.filepath = filepath
 
     def _build_input_flags(self) -> list[str]:

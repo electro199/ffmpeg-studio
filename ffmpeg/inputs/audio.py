@@ -10,14 +10,14 @@ class AudioFile(BaseInput):
     building FFmpeg input flags
     """
 
-    def __init__(self, filepath: str) -> None:
+    def __init__(self, filepath: str, **kwargs) -> None:
         """
         Initializes the AudioFile object with the specified file path.
 
         Args:
             filepath: The path to the audio file to be processed.
         """
-        super().__init__(stream_type="a")
+        super().__init__(stream_type="a", **kwargs)
         self.filepath = filepath
 
     def _build_input_flags(self) -> list[str]:
