@@ -12,17 +12,30 @@ In most cases, you will want to transform a file, and FFmpeg-Studio provides spe
 
 Available classes for taking media are:
 
-- [**`InputFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile): A general-purpose input class for handling a wide range of media files. This is class can be used for stright forwad flag usage.
+| Class              | Purpose                                                                   | Typical Use Case                                                           |
+| ------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [**`VideoFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile))    | Video-specific input with helpers for trimming, resolution, and metadata. | Cutting video segments, accessing video/audio streams.                     |
+| [**`AudioFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudioFile))    | Audio-only input with specialized handling for audio streams.             | Audio extraction, mixing, replacing tracks.                                |
+| [**`ImageFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile))    | Static image input.                                                       | Overlays, slideshows, or looping images as video.                          |
+| [**`VirtualVideo`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VirtualVideo)) | Synthetic video sources using FFmpeg's built-in generators.               | Test patterns, color fills, gradients, fractals, programmatic backgrounds. |
+| [**`InputFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile))    | Generic input for any media file or URL supported by FFmpeg.              | Flexible option when no specialized class fits.                            |
 
-- [**`VideoFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile): A dedicated input type tailored for video sources. It makes it easier to configure video-specific parameters such as frame rate, resolution, and stream mapping.
+### Define input
 
-- [**`ImageFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile): Designed for static image files, this class is ideal when working with formats like PNG, JPEG, or BMP. It provides options for handling image. 
+Define  Input object like below this will make a object with path to the video.
+This will not check if path is valid or not.
 
-- [**`AudioFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudiotFile): A specialized class for audio-only inputs, enabling precise handling of audio streams. It provides straightforward access to audio-specific settings such as sample rate, channel layouts, and codec handling. This is useful for workflows involving audio extraction, mixing, or track replacement in multimedia projects.
+```python
+from ffmpeg import VideoFile
 
-- [**`VirtualVideo`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VirtualVideo): A powerful utility for generating synthetic video streams directly within the pipeline. This is especially useful for testing, debugging, or producing programmatically generated content such as blank backgrounds, color patterns, or animated test sources without relying on external media files.
 
-**Usage:**
+clip = VideoFile("video.mp4")
+clip = clip.subclip(1, 10)
+
+```
+
+
+
 
 Different ways input can be handled based on usecase
 
@@ -44,10 +57,12 @@ VideoFile("video.mp4").subclip(1, 10)
 
 ## Filters
 
-A Filter is a component used to process and transform then input or its stream i.e audio from a video. This library extensively handles filters with built classes.
-filters can be used with [`apply`](/ffmpeg-studio/api_reference/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg-studio/api_reference/api/#ffmpeg.filters.apply2), apply2 is for multi output filters like Split and Concat. apply function make new output node in filter graph to be used in filter again or to be written in to output file while maintaining source.
+A Filter is a component used to process and transform the input or its stream i.e audio from a video.
 
-**Usage:**
+This library extensively handles filters with built classes.
+filters can be used with [`apply`](/ffmpeg-studio/api_reference/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg-studio/api_reference/api/#ffmpeg.filters.apply2),
+apply2 is for multi output filters like Split and Concat.
+apply function make new output node in filter graph to be used in filter again or to be written in to output file while maintaining source.
 
 ```py
 clip = InputFile("image.png")
@@ -55,13 +70,13 @@ clip_scaled = apply(Scale(1000, 1000), clip)
 ```
 
 !!! Warning
-    Filters contain parent info they are not independent, so do not reuse like them in multiple places.
-    If you want to reuse them create new instance.
+    Filters contain parent info they are not independent, do not reuse them in more then one apply function.
+    If you want to reuse them create new instance with same arguments.
 
 ## Export
-For straightforward exporting, ffmpeg-studio provides a convenient [`export`](/ffmpeg-studio/api_reference/api/#ffmpeg.ffmpeg.export) function. This allows you to quickly export a single output file containing one or more streams.
+For straightforward exporting, ffmpeg-studio provides a convenient [`export`](/ffmpeg-studio/api_reference/api/#ffmpeg.ffmpeg.export) function.
+This allows you to quickly export a single output file containing one or more streams.
 
-**Example:**
 
 Combine audio and video from files and output them to a single file.
 
@@ -72,7 +87,7 @@ from ffmpeg import VideoFile, export
 
 export(
     VideoFile("video1.mp4").video,  # Video stream from video.mp4
-    VideoFile("video2.mp4").audio,  # Audio stream from video1.mp4
+    VideoFile("video2.mp4").audio,  # Audio stream(s) from video1.mp4
     path="out.mp4",  # Output path
 ).run()
 

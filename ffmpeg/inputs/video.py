@@ -48,7 +48,7 @@ class VideoFile(BaseInput):
         return StreamSpecifier(self, stream_name="s")
 
     def __iter__(self) -> Iterator[StreamSpecifier]:
-        for stream in ffprobe(self.filepath, ["-show_streams"])["streams"]:
+        for stream in ffprobe(self.filepath)["streams"]:
             yield StreamSpecifier(
                 self,
                 stream_index=stream.get("index"),

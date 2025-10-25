@@ -20,6 +20,7 @@ theme:
     - content.code.copy
     - content.admonitions
     - content.tabs.link
+    - navigation.section
   code:
     highlight_theme: material-dark
 
@@ -52,18 +53,22 @@ plugins:
             # merge_init_into_class: true
             show_symbol_type_heading: true
             # inherited_members: true
+
 nav:
   - Home: index.md
   - Installation: installation.md
   - Features : features.md
   - Getting Started: getting-started.md
-  # - Guide:
   - Basics : basics.md
-  #   - Basics: guide/basics.md
-    # - Inputs: guide/inputs.md
-    # - Filters: guide/filters.md
-    # - Outputs: guide/outputs.md
-    # - Advanced: guide/advanced.md
+  - Tutorials:
+    - tutorial/making_input.md
+    - tutorial/video_input.md
+    - tutorial/subclip.md
+    - tutorial/stream_selection.md
+    - tutorial/stream_iteration.md
+    - tutorial/media_info.md
+    - tutorial/global_flags.md
+    - tutorial/output.md
 
   - Examples:
     - Conversion: example/conversion.md
@@ -77,5 +82,6 @@ nav:
     - Index : api_reference/index.md
     - Inputs: api_reference/inputs.md
     - Filters: api_reference/filters.md
+
   # - FAQ: faq.md
   # - Contributing: contributing.md

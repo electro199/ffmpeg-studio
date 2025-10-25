@@ -37,6 +37,7 @@ def ffprobe(
     )
 
     cmd = [f"ffprobe", *flags, file_path]
+    print(cmd)
     result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
     if result.returncode != 0:
         raise FFprobeException(msg=result.stderr, return_code=result.returncode)
