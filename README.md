@@ -57,10 +57,15 @@ overlay = apply(Scale(100, 100), overlay)
 # apply overlay filter with overlay on upscaled_clip
 upscaled_clip = apply(Overlay(overlay, x=0, y=10), clip)
 
+
+ffmpeg = FFmpeg()
+
+# add output
+ffmpeg.output(upscaled_clip, path="out.mp4")
+
 # run command
-ffmpeg = (
-    FFmpeg().output(upscaled_clip, path="out.mp4").run(progress_callback=print)
-)
+ffmpeg.run(progress_callback=print)
+
 ```
 
 For simple media conversion :
