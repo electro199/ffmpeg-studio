@@ -7,17 +7,20 @@
 
 ffmpeg-studio provides a Pythonic interface to FFmpeg, allowing users to construct and execute FFmpeg commands programmatically.
 
+
 It simplifies and Handles:
 
 - Complex filter generation
 - All popular Filters and Baseclass for custom filters
-- Safe quoting & escaping
+- Automatic Safe quoting & escaping
 - Input handling & stream selection
 - Output mapping & stream selection
 - Progress tracking with callbacks
 - Allows direct flags in command.
 - Scanning metadata with ffprobe.
 - Long filter graphs.
+
+![diagram](docs/assets/images/filter_graph.jpg)
 
 ## Installation
 
