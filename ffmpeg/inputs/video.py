@@ -116,19 +116,19 @@ class VideoFile(BaseInput):
         command.extend(["-i", self.filepath])
         return command
 
-    def subclip(self, start: float, end: float) -> "VideoFile":
+    def subclip(self, start: float | str, duration: float | str) -> "VideoFile":
         """
         Defines a subclip from the video file by setting the start and end times.
         This will not make a new copy until exported.
 
         Args:
             start: The start time of the subclip in seconds.
-            end: The end time of the subclip in seconds.
+            duration: The duration of the subclip in seconds.
 
         Returns:
             The updated VideoFile object with the subclip flags set.
         """
-        self.flags.update((("ss", start), ("t", end)))
+        self.flags.update((("ss", start), ("t", duration)))
         return self
 
     @classmethod

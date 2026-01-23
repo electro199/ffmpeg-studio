@@ -71,19 +71,19 @@ class AudioFile(BaseInput):
         ][0]
         return float(data["duration"])
 
-    def subclip(self, start: float, end: float) -> "AudioFile":
+    def subclip(self, start: float, duration: float) -> "AudioFile":
         """
         Defines a subclip from the Audio file by setting the start and end times.
         This will not make a new copy until exported.
 
         Args:
             start: The start time of the subclip in seconds.
-            end: The end time of the subclip in seconds.
+            duration: The duration of the subclip in seconds.
 
         Returns:
             AudioFile: The updated AudioFile object with the subclip flags set.
         """
-        self.flags.update((("ss", start), ("t", end)))
+        self.flags.update((("ss", start), ("t", duration)))
         return self
 
     def __repr__(self) -> str:
