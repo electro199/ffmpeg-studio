@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/advance-usage/useful_info/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/tutorial/media_info/">
       
       
+        <link rel="prev" href="../stream_iteration/">
+      
+      
+        <link rel="next" href="../global_flags/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Useful info - ffmpeg-studio</title>
+        <title>Duration & Size - ffmpeg-studio</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ffmpeg-command-structure" class="md-skip">
+        <a href="#duration-size" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Useful info
+              Duration &amp; Size
             
           </span>
         </div>
@@ -364,18 +368,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -396,7 +402,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -414,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/making_input/" class="md-nav__link">
+      <a href="../making_input/" class="md-nav__link">
         
   
   
@@ -442,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/video_input/" class="md-nav__link">
+      <a href="../video_input/" class="md-nav__link">
         
   
   
@@ -470,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/subclip/" class="md-nav__link">
+      <a href="../subclip/" class="md-nav__link">
         
   
   
@@ -498,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_selection/" class="md-nav__link">
+      <a href="../stream_selection/" class="md-nav__link">
         
   
   
@@ -526,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_iteration/" class="md-nav__link">
+      <a href="../stream_iteration/" class="md-nav__link">
         
   
   
@@ -551,10 +557,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../tutorial/media_info/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Duration &amp; Size
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -570,6 +603,59 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#duration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Duration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Under the hood
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -582,7 +668,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/global_flags/" class="md-nav__link">
+      <a href="../global_flags/" class="md-nav__link">
         
   
   
@@ -610,7 +696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/output/" class="md-nav__link">
+      <a href="../output/" class="md-nav__link">
         
   
   
@@ -1015,6 +1101,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1023,10 +1111,32 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ffmpeg-command-structure" class="md-nav__link">
+  <a href="#duration" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FFMPEG command structure
+        Duration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#size" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#under-the-hood" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Under the hood
       
     </span>
   </a>
@@ -1050,31 +1160,44 @@
 
 
 
-  <h1>Useful info</h1>
-
-<h2 id="ffmpeg-command-structure">FFMPEG command structure</h2>
-<p>The FFmpeg have very complex command structure the position of flags can effect the output come. The command is mainly consist of input which can be be media (file/link on internet/or any supported protocol that ffmpeg supports), then optional filter flag that tell how input should be manipulated then map flag to set which stream should be used in output either the input file and/or the modified stream the is generated after filtering</p>
-<p>Lets see the command structure with examples:</p>
-<ol>
-<li>
-<p>ffmpeg command with single input and single output simplest form</p>
+<h1 id="duration-size">Duration &amp; Size</h1>
+<p>Many inputs in <code>ffmpeg-studio</code> expose convenience methods to quickly inspect common properties like <strong>duration</strong> and <strong>size</strong>. These are thin wrappers around <code>ffprobe</code>, so you don’t need to manually parse JSON output.</p>
+<hr />
+<h2 id="duration">Duration</h2>
+<p>You can query the total playtime of a media file in <strong>seconds (float)</strong>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;sample.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_duration</span><span class="p">()</span>   <span class="c1"># -&gt; 125.38</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">AudioFile</span><span class="p">(</span><span class="s2">&quot;audio.mp3&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_duration</span><span class="p">()</span>     <span class="c1"># -&gt; 215.72</span>
+</span></code></pre></div>
 <ul>
-<li>
-<p>structure:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ffmpeg [options] [[infile options] -i infile]... [[outfile options] outfile]...
-</span></code></pre></div>
-</li>
-<li>
-<p>example with <code>-y</code> to overwrite the </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ffmpeg -y -t 30 input_file_path.mp4  -r 24 output_file_path.mp4 
-</span></code></pre></div>
-</li>
+<li><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile.get_duration"><strong>VideoFile.get_duration()</strong></a> → returns the full duration of the video.</li>
+<li><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudioFile.get_duration"><strong>AudioFile.get_duration()</strong></a> → returns the full duration of the audio.</li>
 </ul>
-</li>
-</ol>
-<p>usage: <code>ffmpeg [options] [[infile options] -i infile]... [filter ]...  [-map [outfile options] outfile]...</code></p>
-<p>ffmpeg <code>[[infile options] -i infile] [filters] [-map flags outfile]...</code></p>
-<p>multiple input, filter</p>
+<hr />
+<h2 id="size">Size</h2>
+<p>For visual inputs, you can query the <strong>frame size</strong> in pixels as <code>(width, height)</code>.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;sample.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span>       <span class="c1"># -&gt; (1920, 1080)</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">ImageFile</span><span class="p">(</span><span class="s2">&quot;cover.jpg&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span>        <span class="c1"># -&gt; (800, 800)</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">VirtualVideo</span><span class="p">(</span><span class="s2">&quot;testsrc&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">get_size</span><span class="p">()</span>       <span class="c1"># -&gt; (640, 480)</span>
+</span></code></pre></div>
+<ul>
+<li><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile.get_size"><strong>VideoFile.get_size()</strong></a> → frame resolution of the video.</li>
+<li><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile.get_size"><strong>ImageFile.get_size()</strong></a> → image resolution.</li>
+<li><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VirtualVideo.get_size"><strong>VirtualVideo.get_size()</strong></a> → resolution of generated test video sources.</li>
+</ul>
+<hr />
+<h2 id="under-the-hood">Under the hood</h2>
+<p>These helpers internally call <code>ffprobe</code> with stream-level queries:</p>
+<ul>
+<li><strong>Duration</strong> → reads <code>format.duration</code> and converts to <code>float</code>.</li>
+<li><strong>Size</strong> → reads <code>stream.width</code> and <code>stream.height</code> from the first video stream.</li>
+</ul>
+<p>This avoids you having to run something like:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ffprobe<span class="w"> </span>-v<span class="w"> </span>error<span class="w"> </span>-select_streams<span class="w"> </span>v:0<span class="w"> </span>-show_entries<span class="w"> </span><span class="nv">stream</span><span class="o">=</span>width,height<span class="w"> </span>-of<span class="w"> </span>json<span class="w"> </span>sample.mp4
+</span></code></pre></div>
+<p>or</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ffprobe<span class="w"> </span>-v<span class="w"> </span>error<span class="w"> </span>-show_entries<span class="w"> </span><span class="nv">format</span><span class="o">=</span>duration<span class="w"> </span>-of<span class="w"> </span>json<span class="w"> </span>song.mp3
+</span></code></pre></div>
+<p>Your code just calls <code>.get_duration()</code> / <code>.get_size()</code> directly.</p>
 
 
 
@@ -1101,6 +1224,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../stream_iteration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Iterating Video Streams">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Iterating Video Streams
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../global_flags/" class="md-footer__link md-footer__link--next" aria-label="Next: Global flags">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Global flags
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

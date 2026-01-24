@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/advance-usage/useful_info/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/tutorial/global_flags/">
       
       
+        <link rel="prev" href="../media_info/">
+      
+      
+        <link rel="next" href="../output/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Useful info - ffmpeg-studio</title>
+        <title>Global flags - ffmpeg-studio</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ffmpeg-command-structure" class="md-skip">
+        <a href="#global-flags" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Useful info
+              Global flags
             
           </span>
         </div>
@@ -364,18 +368,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -396,7 +402,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -414,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/making_input/" class="md-nav__link">
+      <a href="../making_input/" class="md-nav__link">
         
   
   
@@ -442,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/video_input/" class="md-nav__link">
+      <a href="../video_input/" class="md-nav__link">
         
   
   
@@ -470,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/subclip/" class="md-nav__link">
+      <a href="../subclip/" class="md-nav__link">
         
   
   
@@ -498,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_selection/" class="md-nav__link">
+      <a href="../stream_selection/" class="md-nav__link">
         
   
   
@@ -526,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_iteration/" class="md-nav__link">
+      <a href="../stream_iteration/" class="md-nav__link">
         
   
   
@@ -554,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/media_info/" class="md-nav__link">
+      <a href="../media_info/" class="md-nav__link">
         
   
   
@@ -579,10 +585,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../tutorial/global_flags/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Global flags
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -598,6 +631,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Usage
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -610,7 +674,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/output/" class="md-nav__link">
+      <a href="../output/" class="md-nav__link">
         
   
   
@@ -1015,6 +1079,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1023,10 +1089,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ffmpeg-command-structure" class="md-nav__link">
+  <a href="#usage" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FFMPEG command structure
+        Usage
       
     </span>
   </a>
@@ -1050,31 +1116,28 @@
 
 
 
-  <h1>Useful info</h1>
-
-<h2 id="ffmpeg-command-structure">FFMPEG command structure</h2>
-<p>The FFmpeg have very complex command structure the position of flags can effect the output come. The command is mainly consist of input which can be be media (file/link on internet/or any supported protocol that ffmpeg supports), then optional filter flag that tell how input should be manipulated then map flag to set which stream should be used in output either the input file and/or the modified stream the is generated after filtering</p>
-<p>Lets see the command structure with examples:</p>
-<ol>
-<li>
-<p>ffmpeg command with single input and single output simplest form</p>
+<h1 id="global-flags">Global flags</h1>
+<p>Global flags are used change settings for whole runtime, you can use <code>add_global_flag</code> to set custom flags, These flags are automatic added duration command generation in <code>FFmpeg.compile()</code>:</p>
 <ul>
-<li>
-<p>structure:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ffmpeg [options] [[infile options] -i infile]... [[outfile options] outfile]...
-</span></code></pre></div>
-</li>
-<li>
-<p>example with <code>-y</code> to overwrite the </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ffmpeg -y -t 30 input_file_path.mp4  -r 24 output_file_path.mp4 
-</span></code></pre></div>
-</li>
+<li><code>-y</code> or <code>-n</code> to set overwrite outfile.</li>
+<li><code>-loglevel error</code> to only read errors.</li>
+<li><code>-hide_banner</code> to avoid extra pipe writes and cleaner output.</li>
 </ul>
-</li>
-</ol>
-<p>usage: <code>ffmpeg [options] [[infile options] -i infile]... [filter ]...  [-map [outfile options] outfile]...</code></p>
-<p>ffmpeg <code>[[infile options] -i infile] [filters] [-map flags outfile]...</code></p>
-<p>multiple input, filter</p>
+<h2 id="usage">Usage</h2>
+<p>The <code>add_global_flag</code> take raw flags with single value :</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">FFmpeg</span><span class="p">()</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">add_global_flag</span><span class="p">(</span><span class="s2">&quot;-recast_media&quot;</span><span class="p">)</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1">## ffmpeg -recast_media -i ....</span>
+</span></code></pre></div>
+<p>or key value pair :</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">FFmpeg</span><span class="p">()</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">add_global_flag</span><span class="p">(</span><span class="s2">&quot;-hwaccel_output_format&quot;</span><span class="p">,</span> <span class="s2">&quot;d3d11&quot;</span><span class="p">)</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">add_global_flag</span><span class="p">(</span><span class="s2">&quot;-hwaccel&quot;</span><span class="p">,</span> <span class="s2">&quot;d3d11va&quot;</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># ffmpeg -y -hwaccel_output_format d3d11 -hwaccel d3d11va -i ....</span>
+</span></code></pre></div>
 
 
 
@@ -1101,6 +1164,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../media_info/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Duration &amp;amp; Size">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Duration &amp; Size
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../output/" class="md-footer__link md-footer__link--next" aria-label="Next: Outputs">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Outputs
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

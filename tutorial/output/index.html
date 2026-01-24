@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/advance-usage/useful_info/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/tutorial/output/">
       
       
+        <link rel="prev" href="../global_flags/">
+      
+      
+        <link rel="next" href="../../example/conversion/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Useful info - ffmpeg-studio</title>
+        <title>Outputs - ffmpeg-studio</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ffmpeg-command-structure" class="md-skip">
+        <a href="#outputs" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Useful info
+              Outputs
             
           </span>
         </div>
@@ -364,18 +368,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -396,7 +402,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -414,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/making_input/" class="md-nav__link">
+      <a href="../making_input/" class="md-nav__link">
         
   
   
@@ -442,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/video_input/" class="md-nav__link">
+      <a href="../video_input/" class="md-nav__link">
         
   
   
@@ -470,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/subclip/" class="md-nav__link">
+      <a href="../subclip/" class="md-nav__link">
         
   
   
@@ -498,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_selection/" class="md-nav__link">
+      <a href="../stream_selection/" class="md-nav__link">
         
   
   
@@ -526,7 +532,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_iteration/" class="md-nav__link">
+      <a href="../stream_iteration/" class="md-nav__link">
         
   
   
@@ -554,7 +560,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/media_info/" class="md-nav__link">
+      <a href="../media_info/" class="md-nav__link">
         
   
   
@@ -582,7 +588,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/global_flags/" class="md-nav__link">
+      <a href="../global_flags/" class="md-nav__link">
         
   
   
@@ -607,10 +613,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../tutorial/output/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Outputs
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -626,6 +659,37 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#multiple-outputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multiple Outputs
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1015,6 +1079,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1023,10 +1089,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ffmpeg-command-structure" class="md-nav__link">
+  <a href="#multiple-outputs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FFMPEG command structure
+        Multiple Outputs
       
     </span>
   </a>
@@ -1050,31 +1116,86 @@
 
 
 
-  <h1>Useful info</h1>
-
-<h2 id="ffmpeg-command-structure">FFMPEG command structure</h2>
-<p>The FFmpeg have very complex command structure the position of flags can effect the output come. The command is mainly consist of input which can be be media (file/link on internet/or any supported protocol that ffmpeg supports), then optional filter flag that tell how input should be manipulated then map flag to set which stream should be used in output either the input file and/or the modified stream the is generated after filtering</p>
-<p>Lets see the command structure with examples:</p>
-<ol>
-<li>
-<p>ffmpeg command with single input and single output simplest form</p>
+<h1 id="outputs">Outputs</h1>
+<p>Outputs in <strong>ffmpeg-studio</strong> define where and how your processed media is exported.
+Every graph of filters and inputs eventually needs to be connected to one or more outputs.</p>
+<p>An output usually specifies:</p>
 <ul>
-<li>
-<p>structure:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ffmpeg [options] [[infile options] -i infile]... [[outfile options] outfile]...
-</span></code></pre></div>
-</li>
-<li>
-<p>example with <code>-y</code> to overwrite the </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ffmpeg -y -t 30 input_file_path.mp4  -r 24 output_file_path.mp4 
-</span></code></pre></div>
-</li>
+<li>The <strong>stream</strong> (image, audio, or video) to be written</li>
+<li>The <strong>path</strong> (file name or stream sink)</li>
+<li>Optional <strong>encoding options</strong> (format, codec, etc.)</li>
 </ul>
-</li>
-</ol>
-<p>usage: <code>ffmpeg [options] [[infile options] -i infile]... [filter ]...  [-map [outfile options] outfile]...</code></p>
-<p>ffmpeg <code>[[infile options] -i infile] [filters] [-map flags outfile]...</code></p>
-<p>multiple input, filter</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span><span class="p">,</span> <span class="n">VideoFile</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply</span><span class="p">,</span> <span class="n">Scale</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">video</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">scaled</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">),</span> <span class="n">video</span><span class="p">)</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="p">(</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="n">FFmpeg</span><span class="p">()</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">scaled</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">)</span>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">)</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># Results in:</span>
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># ffmpeg -hide_banner -y -loglevel error -i input.mp4 \</span>
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="c1"># -filter_complex [0]scale=width=1280:height=720[n0o0] \</span>
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># -map [n0o0] out.mp4</span>
+</span></code></pre></div>
+<hr />
+<h2 id="multiple-outputs">Multiple Outputs</h2>
+<p>ffmpeg-studio supports <strong>multiple outputs in a single command</strong> by simply chaining additional <code>.output()</code> calls.</p>
+<p>This is particularly useful if you want export export a section from large edits or to save intermediate results (like a scaled logo) while also producing the final composed video .</p>
+<p>Exporting both the <strong>final overlaid video</strong> and the <strong>scaled logo</strong>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span><span class="p">,</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">VideoFile</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Overlay</span>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Load logo and scale it</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;image.png&quot;</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="n">scaled_logo</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">logo</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># Load video and scale to HD</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">video</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">scaled_video</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">),</span> <span class="n">video</span><span class="p">)</span>
+</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Make Clones with Split filter</span>
+</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="n">scaled_logo_1</span><span class="p">,</span> <span class="n">scaled_logo_2</span> <span class="o">=</span> <span class="n">apply2</span><span class="p">(</span><span class="n">Split</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">scaled_logo</span><span class="p">)</span>
+</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="c1"># Overlay logo on video</span>
+</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="n">final_video</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Overlay</span><span class="p">(</span><span class="n">scaled_logo_1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">scaled_video</span><span class="p">)</span>
+</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">FFmpeg</span><span class="p">()</span>
+</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>
+</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
+</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="c1"># Export the water marked video</span>
+</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">final_video</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">)</span>
+</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="c1"># Export the scaled logo at same time</span>
+</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">scaled_logo_2</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;scaled_logo.png&quot;</span><span class="p">)</span>
+</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>
+</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>
+</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="c1"># Results:</span>
+</span><span id="__span-1-31"><a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="c1"># ffmpeg -hide_banner -y -loglevel error -i image.png -i video.mp4 </span>
+</span><span id="__span-1-32"><a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="c1"># -filter_complex [0]scale=width=200:height=200[n0o0];</span>
+</span><span id="__span-1-33"><a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="c1">#                 [n0o0]split=2[n1o0][n1o1];</span>
+</span><span id="__span-1-34"><a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="c1">#                 [1]scale=width=1920:height=1080[n2o0];</span>
+</span><span id="__span-1-35"><a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="c1">#                 [n2o0][n1o0]overlay=x=0:y=0[n3o0] </span>
+</span><span id="__span-1-36"><a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="c1">#</span>
+</span><span id="__span-1-37"><a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="c1"># -map [n3o0] out.mp4 -map [n1o1] scaled_logo.png</span>
+</span></code></pre></div>
+<hr />
+<h1 id="key-takeaways">Key Takeaways</h1>
+<ul>
+<li><code>.output()</code> can be called multiple times in the same command.</li>
+<li>This avoids running <code>ffmpeg</code> multiple times for related exports saving decoding/encoding cost.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Re-using the same stream in more than one .output() without splitting can cause ffmpeg errors (e.g., “Stream [n0o0] already used”).</p>
+<p>If you need the same stream in multiple outputs, explicitly split it with the <code>Split</code> filter before mapping it to different outputs.</p>
+</div>
 
 
 
@@ -1101,6 +1222,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../global_flags/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Global flags">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Global flags
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../example/conversion/" class="md-footer__link md-footer__link--next" aria-label="Next: Conversion">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Conversion
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">

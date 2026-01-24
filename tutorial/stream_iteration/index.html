@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/advance-usage/useful_info/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/tutorial/stream_iteration/">
       
       
+        <link rel="prev" href="../stream_selection/">
+      
+      
+        <link rel="next" href="../media_info/">
       
       
         
@@ -21,7 +25,7 @@
     
     
       
-        <title>Useful info - ffmpeg-studio</title>
+        <title>Iterating Video Streams - ffmpeg-studio</title>
       
     
     
@@ -74,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ffmpeg-command-structure" class="md-skip">
+        <a href="#iterating-video-streams" class="md-skip">
           Skip to content
         </a>
       
@@ -110,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Useful info
+              Iterating Video Streams
             
           </span>
         </div>
@@ -364,18 +368,20 @@
       
   
   
+    
   
   
+  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -396,7 +402,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -414,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/making_input/" class="md-nav__link">
+      <a href="../making_input/" class="md-nav__link">
         
   
   
@@ -442,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/video_input/" class="md-nav__link">
+      <a href="../video_input/" class="md-nav__link">
         
   
   
@@ -470,7 +476,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/subclip/" class="md-nav__link">
+      <a href="../subclip/" class="md-nav__link">
         
   
   
@@ -498,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_selection/" class="md-nav__link">
+      <a href="../stream_selection/" class="md-nav__link">
         
   
   
@@ -523,10 +529,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../tutorial/stream_iteration/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Iterating Video Streams
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -542,6 +575,48 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#loop-over-all-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Loop over all Streams
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-all-audio-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extract All Audio Streams
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -554,7 +629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/media_info/" class="md-nav__link">
+      <a href="../media_info/" class="md-nav__link">
         
   
   
@@ -582,7 +657,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/global_flags/" class="md-nav__link">
+      <a href="../global_flags/" class="md-nav__link">
         
   
   
@@ -610,7 +685,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/output/" class="md-nav__link">
+      <a href="../output/" class="md-nav__link">
         
   
   
@@ -1015,6 +1090,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1023,10 +1100,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#ffmpeg-command-structure" class="md-nav__link">
+  <a href="#loop-over-all-streams" class="md-nav__link">
     <span class="md-ellipsis">
       
-        FFMPEG command structure
+        Loop over all Streams
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extract-all-audio-streams" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extract All Audio Streams
       
     </span>
   </a>
@@ -1050,31 +1138,41 @@
 
 
 
-  <h1>Useful info</h1>
-
-<h2 id="ffmpeg-command-structure">FFMPEG command structure</h2>
-<p>The FFmpeg have very complex command structure the position of flags can effect the output come. The command is mainly consist of input which can be be media (file/link on internet/or any supported protocol that ffmpeg supports), then optional filter flag that tell how input should be manipulated then map flag to set which stream should be used in output either the input file and/or the modified stream the is generated after filtering</p>
-<p>Lets see the command structure with examples:</p>
-<ol>
-<li>
-<p>ffmpeg command with single input and single output simplest form</p>
+<h1 id="iterating-video-streams">Iterating Video Streams</h1>
+<p>Working with media files often requires knowing exactly what streams are inside: multiple audio tracks, subtitles, or attachments. Instead of guessing or hardcoding stream indices, you can iterate over them directly.</p>
+<p>When Iterating the we call the ffprobe to get all streams and give user list of <code>StreamSpecifier</code> with index and metadata from the ffprobe. This allow users flexiblity to use while processing streams.</p>
+<h2 id="loop-over-all-streams">Loop over all Streams</h2>
+<p>Lets print all Streams and the codec_type</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;movie.mkv&quot;</span><span class="p">)</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">clip</span><span class="p">:</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span>  <span class="n">s</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;codec_type&#39;</span><span class="p">])</span>
+</span></code></pre></div>
+<p>Example output:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;StreamSpecifier stream_index=0 stream_name=None&gt; video
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>&lt;StreamSpecifier stream_index=1 stream_name=None&gt; audio
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>&lt;StreamSpecifier stream_index=2 stream_name=None&gt; subtitle
+</span></code></pre></div>
+<h2 id="extract-all-audio-streams">Extract All Audio Streams</h2>
+<p>Here  we checking if codec type is audio we are exporting stream into new file using multioutput feature and exporting at once.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;movie.mkv&quot;</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">audio_streams</span> <span class="o">=</span> <span class="p">[</span><span class="n">stream</span> <span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">clip</span> <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;codec_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;audio&quot;</span><span class="p">]</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">FFmpeg</span><span class="p">()</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">audio_streams</span><span class="p">:</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;track_</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">stream_index</span><span class="si">}</span><span class="s2">.mp3&quot;</span><span class="p">)</span>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h1 id="under-the-hood">Under the hood</h1>
 <ul>
-<li>
-<p>structure:</p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ffmpeg [options] [[infile options] -i infile]... [[outfile options] outfile]...
-</span></code></pre></div>
-</li>
-<li>
-<p>example with <code>-y</code> to overwrite the </p>
-<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ffmpeg -y -t 30 input_file_path.mp4  -r 24 output_file_path.mp4 
-</span></code></pre></div>
-</li>
+<li>Iteration triggers a <strong>probe</strong> of the input file using <strong><code>ffprobe</code></strong>.</li>
+<li>The probe returns metadata about <em>all</em> streams in the file.</li>
+<li>Each stream is wrapped as a <code>StreamSpecifier</code> object with its index.</li>
+<li>This makes <code>__iter__</code> <strong>validated and accurate</strong> — you always get the real list of streams.</li>
 </ul>
-</li>
-</ol>
-<p>usage: <code>ffmpeg [options] [[infile options] -i infile]... [filter ]...  [-map [outfile options] outfile]...</code></p>
-<p>ffmpeg <code>[[infile options] -i infile] [filters] [-map flags outfile]...</code></p>
-<p>multiple input, filter</p>
+<p>It’s slower because it calls <code>ffprobe</code>, but safer and more flexible.</p>
 
 
 
@@ -1101,6 +1199,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../stream_selection/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Stream Selection">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Stream Selection
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../media_info/" class="md-footer__link md-footer__link--next" aria-label="Next: Duration &amp;amp; Size">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Duration &amp; Size
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
