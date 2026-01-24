@@ -118,12 +118,12 @@ class VideoFile(BaseInput):
 
     def subclip(self, start: float | str, duration: float | str) -> "VideoFile":
         """
-        Defines a subclip from the video file by setting the start and end times.
+        Defines a subclip from the video file by setting the start and duration.
         This will not make a new copy until exported.
 
         Args:
-            start: The start time of the subclip in seconds.
-            duration: The duration of the subclip in seconds.
+            start: The start time of the subclip.
+            duration: The duration of the subclip.
 
         Returns:
             The updated VideoFile object with the subclip flags set.
@@ -132,7 +132,7 @@ class VideoFile(BaseInput):
         return self
 
     @classmethod
-    def from_imagefile(cls, imgpath: str, duration: float, fps: int) -> "VideoFile":
+    def from_imagefile(cls, imgpath: str, duration: float | str, fps: int) -> "VideoFile":
         """
         Creates a VideoFile object from an image file, looping it for the given
         duration and setting the frame rate.
