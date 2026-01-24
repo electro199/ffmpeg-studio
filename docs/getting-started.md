@@ -14,12 +14,11 @@ Available classes for taking media are:
 
 | Class              | Purpose                                                                   | Typical Use Case                                                           |
 | ------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [**`VideoFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile))    | Video-specific input with helpers for trimming, resolution, and metadata. | Cutting video segments, accessing video/audio streams.                     |
-| [**`AudioFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudioFile))    | Audio-only input with specialized handling for audio streams.             | Audio extraction, mixing, replacing tracks.                                |
-| [**`ImageFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile))    | Static image input.                                                       | Overlays, slideshows, or looping images as video.                          |
-| [**`VirtualVideo`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VirtualVideo)) | Synthetic video sources using FFmpeg's built-in generators.               | Test patterns, color fills, gradients, fractals, programmatic backgrounds. |
-| [**`InputFile`**]((/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile))    | Generic input for any media file or URL supported by FFmpeg.              | Flexible option when no specialized class fits.                            |
-
+| [**`VideoFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile)    | Video-specific input with helpers for trimming, resolution, and metadata. | Cutting video segments, accessing video/audio streams.                     |
+| [**`AudioFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudioFile)    | Audio-only input with specialized handling for audio streams.             | Audio extraction, mixing, replacing tracks.                                |
+| [**`ImageFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile)    | Static image input.                                                       | Overlays, slideshows, or looping images as video.                          |
+| [**`VirtualVideo`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VirtualVideo) | Synthetic video sources using FFmpeg's built-in generators.               | Test patterns, color fills, gradients, fractals, programmatic backgrounds. |
+| [**`InputFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile)    | Generic input for any media file or URL supported by FFmpeg.              | Flexible option when no specialized class fits.                            |
 ### Define input
 
 Define  Input object like below this will make a object with path to the video.

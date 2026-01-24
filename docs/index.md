@@ -14,10 +14,8 @@
 ## Table of Contents
 
 - [Installation](/ffmpeg-studio/installation)
-- [Overview](/ffmpeg-studio/overview)
 - [Getting Started](/ffmpeg-studio/getting-started/)
 - [Basic Usage](/ffmpeg-studio/basics/)
-- [Advanced Features]()
 - [FFprobe and FFplay](#ffprobe-and-ffplay)
 
 
