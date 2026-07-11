@@ -6,6 +6,11 @@ class HorizontalStack(BaseFilter):
     """
     Represents an hstack filter that combines streams.
 
+    Usage:
+        ```
+        vstack = HorizontalStack(input1, input2, end_on_shortest=True)
+        apply(vstack, input3, input4)
+        ```
     """
 
     def __init__(
