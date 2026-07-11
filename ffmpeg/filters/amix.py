@@ -36,6 +36,3 @@ class AudioMix(BaseFilter):
         self._check_register()
         self.parent_nodes.extend(node)
         self.flags["inputs"] = len(self.parent_nodes)
-
-    def _get_outputs(self):
-        return [StreamSpecifier(self, i) for i in range(self.output_count)]
