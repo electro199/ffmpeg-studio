@@ -17,6 +17,9 @@ class Text(BaseFilter, TimelineEditingMixin):
     using the libfreetype library.
     """
 
+    windows_font_path_prefix = "C://Windows/Fonts/"
+    linux_font_path_prefix = "/usr/share/fonts/truetype/freefont/"
+
     def __init__(
         self,
         text: str,
@@ -53,8 +56,8 @@ class Text(BaseFilter, TimelineEditingMixin):
             return fontname  # Already a full path
 
         if os.name == "nt":
-            return f"C://Windows/Fonts/{fontname}"
-        return f"/usr/share/fonts/truetype/freefont/{fontname}"
+            return f"{self.windows_font_path_prefix}{fontname}"
+        return f"{self.linux_font_path_prefix}{fontname}"
 
     # text expansion escaping relies on
     # self.escape_arguments to escape `:` and `\`
