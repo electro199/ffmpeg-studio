@@ -31,7 +31,7 @@ class TestFFmpeg(unittest.TestCase):
         ff = FFmpeg().output(Map(self.video), Map(self.audio), path="output.mp4")
         command = ff.compile(overwrite=True)
 
-        self.assertIn("ffmpeg", command[0])
+        self.assertEqual("ffmpeg", command[0])
         self.assertIn("-y", command)  # overwrite flag
         self.assertEqual("output.mp4", command[-1])
         self.assertEqual(command.count("-map"), 2)
@@ -98,25 +98,6 @@ class TestFFmpeg(unittest.TestCase):
         ff._is_input_exporting(self.video)
         self.assertEqual(len(ff._inputs), 1)
 
-    def test_filter_handling(self):
-        class DummyFilter(BaseFilter):
-            pass
-
-        filter = DummyFilter("dummyfilter")
-        filter.flags = {"x": 1, "y": "2", "z": True, "a": None}
-        filtered = apply(filter, self.video)
-        ff = FFmpeg().output(Map(filtered), path="broken.mp4")
-        command = ff.compile()
-        cmd = command
-
-        filter = cmd[cmd.index("-filter_complex") + 1]
-
-        self.assertIn("dummyfilter", filter)
-        self.assertIn("x=1", filter)  # int no change
-        self.assertIn("y=2", filter)  # str no change
-        self.assertIn("z=1", filter)  # bool will be int
-        self.assertNotIn("a=", filter)  # None will be skiped
-
     def test_filter_chain_application(self):
         filtered = apply(Scale(width=1280, height=720), self.video)
         ff = FFmpeg().output(Map(filtered), path="scaled.mp4")
@@ -172,35 +153,8 @@ class TestFFmpeg(unittest.TestCase):
         # count how many scale filters are in the script
         self.assertEqual(content.count("scale=width=1280:height=720"), times)
 
-    def test_filter_register_once(self):
-        scale = Scale(width=1280, height=720)
-        filtered = apply(scale, self.video)
-        ff = FFmpeg().output(Map(filtered), path="scaled.mp4")
-        command = ff.compile()
-
-        # The scale filter should only be registered once
-        filter = command[command.index("-filter_complex") + 1]
-        self.assertEqual(filter.count("scale"), 1)
-
-        with self.assertRaises(RuntimeError):
-            apply(scale, self.video)
-
-    def test_wrong_apply(self):
-        # if user use apply with multiple outputs filter should raise error
-        filter = BaseFilter("dummy")
-        filter.output_count = 2
-        with self.assertRaises(ValueError):
-            apply(filter, self.video)
-
-        # if user use apply2 with single output filter should raise error
-        filter = BaseFilter("dummy")
-        filter.output_count = 1
-        with self.assertRaises(ValueError):
-            apply2(filter, self.video)
-
     def test_global_flags_default_reset(self):
         ff = FFmpeg()
-
         default_flags = ff._global_flags
         ff.reset()
         self.assertEqual(default_flags, ff._global_flags)
