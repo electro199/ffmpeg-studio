@@ -1,15 +1,24 @@
-### Install Library
+---
+title: Install ffmpeg-studio and FFmpeg
+description: Install ffmpeg-studio and FFmpeg on Windows, Linux, or macOS to start building Python video editing and audio processing workflows.
+---
+
+## Install with pip
+
+Install ffmpeg-studio using following command:
 
 ```sh
 pip install ffmpeg-studio
 ```
 
 !!! note
-    This project does not install ffmpeg utility automatically.
+    This project does not install the FFmpeg binary automatically.
 
 ---
 
 ## Install FFmpeg
+
+To run ffmpeg-studio successfully, you also need the FFmpeg command-line tools installed on your system.
 
 Use any of these methods:
 
@@ -21,9 +30,9 @@ Using winget:
 winget install --id=Gyan.FFmpeg  -e
 ```
 
-Or download and install FFmpeg from official website:
+OR download and install FFmpeg from official website:
 
-1. Download the latest FFmpeg build from [here](https://www.gyan.dev/ffmpeg/builds/).
+1. Download the latest FFmpeg build from [Offcial Website](https://www.gyan.dev/ffmpeg/builds/).
 2. Extract the archive and add the `bin` directory to your system `PATH`.
 
 #### Linux

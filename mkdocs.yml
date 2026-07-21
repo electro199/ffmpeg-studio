@@ -1,4 +1,6 @@
 site_name: ffmpeg-studio
+site_description: Pythonic FFmpeg tools for video editing, audio mixing, subtitles, filters, and media automation in Python.
+site_author: Electro199
 site_url: https://electro199.github.io/ffmpeg-studio/
 
 theme:

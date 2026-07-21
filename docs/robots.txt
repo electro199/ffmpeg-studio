@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://electro199.github.io/ffmpeg-studio/sitemap.xml
