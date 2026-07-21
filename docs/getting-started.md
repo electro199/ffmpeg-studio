@@ -1,14 +1,19 @@
+---
+title: Getting started with ffmpeg-studio
+description: Learn the basics of using ffmpeg-studio in Python for FFmpeg input handling, filter graphs, and media export.
+---
+
 # Getting Started
 
-General Flow of using ffmpeg-studio, it has three main components: 
+Getting started with ffmpeg-studio is straightforward. The library is organized around three core steps for most Python FFmpeg workflows:
 
-- Input: Classes to handle different types of input files like video, audio, image, etc.
-- Filters: Functions and classes to apply various filters to the input streams.
-- Export: Functions to export the processed streams to output files.
+- Input: handle video, audio, image, and other media sources with dedicated classes
+- Filters: apply transformations such as scaling, cropping, overlays, and subtitles
+- Export: render the processed streams to a final output file
 
 ## Input
 
-In most cases, you will want to transform a file, and FFmpeg-Studio provides specialized classes to make input handling clear, consistent, and free from duplication.
+In most cases, you will want to transform a file, and ffmpeg-studio provides specialized classes to make input handling clear, consistent, and easy to reuse.
 
 Available classes for taking media are:
 

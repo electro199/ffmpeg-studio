@@ -1,34 +1,43 @@
+---
+title: Python FFmpeg library for video editing and audio processing
+description: Learn how ffmpeg-studio helps Python developers build FFmpeg pipelines for video editing, audio mixing, subtitles, overlays, and media automation.
+---
+
 # FFmpeg-studio
 
-**FFmpeg-studio** is a Pythonic interface to [FFmpeg](https://ffmpeg.org/), designed to simplify the construction and execution of FFmpeg commands. It allows developers and power users to build complex audio/video processing pipelines in a more readable and flexible way.
+**ffmpeg-studio** is a Pythonic interface to [FFmpeg](https://ffmpeg.org/) for developers who want to build powerful video and audio workflows without writing long shell commands. It is a practical choice for Python users working on media conversion, transcoding, overlays, subtitles, and batch processing.
 
+## Why developers use ffmpeg-studio
+
+- Build FFmpeg pipelines in Python with a readable and chainable API
+- Create video editing workflows such as trimming, scaling, and overlaying
+- Mix audio tracks, extract streams, and automate media processing jobs
+- Work with filter graphs for subtitles, fades, crops, and other effects
+- Generate FFmpeg commands programmatically for scripts and applications
 
 ## Key Features
 
 - Clean, chainable API to compose FFmpeg commands
 - Automatic escaping of command-line arguments
-- Support for both simple and advanced filter graphs
-- Easily integrated into larger video processing workflows
-- Support for progress callback function
+- Support for simple and advanced filter graphs
+- Easy integration into larger video and audio processing workflows
+- Built-in support for progress callbacks
 
-## Table of Contents
+## Start here
 
 - [Installation](/ffmpeg-studio/installation)
 - [Getting Started](/ffmpeg-studio/getting-started/)
 - [Basic Usage](/ffmpeg-studio/basics/)
 - [FFprobe and FFplay](#ffprobe-and-ffplay)
 
-
-
 ## FFprobe and FFplay
 
-Alongside `ffmpeg-studio`, this toolkit may also include convenient wrappers for:
+Alongside ffmpeg-studio, this toolkit can also include convenient wrappers for common FFmpeg companion tools.
 
-##  `ffprobe`
+### ffprobe
 
-A Python wrapper for the `ffprobe` utility to extract metadata from media files.
+A Python wrapper for the ffprobe utility to extract metadata from media files and inspect streams.
 
+### ffplay
 
-## `ffplay`
-
-A Python wrapper for  `ffplay` for previewing media via Python.
+A Python wrapper for ffplay for previewing media from Python-based workflows.
