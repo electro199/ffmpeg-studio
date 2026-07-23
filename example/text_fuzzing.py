@@ -4,24 +4,6 @@ Fuzzed Text Sliding Video Generator using FFmpeg
 This script generates a video with randomized fuzzed text appearing in short,
 sliding time windows. Each fuzzed text sample is drawn onto a white background
 video using FFmpeg's `drawtext` filter.
-
-Key features:
-- Random text is generated using special characters, whitespace, and punctuation.
-- Each text appears for a brief duration, then slides to the next.
-
-
-The purpose is to test and visualize how FFmpeg handles text rendering with
-complex characters and escaping rules in filter graphs.
-
-Output:
-- A video `out.mp4` is produced showing 100 different fuzzed strings.
-
-Requirements:
-- ffmpeg in path.
-
-Example use case:
-- Testing FFmpeg drawtext escaping
-- Visual inspection of character handling in subtitles or overlays
 """
 
 import random
@@ -42,6 +24,7 @@ def fuzz_text(length=10):
 
 # Loop to run fuzz text
 v = InputFile("color=white:500x300", f="lavfi", r=60)
+
 for i in range(100):
     text_value = fuzz_text()
     print(f"Fuzzing with text: {repr(text_value)}")
@@ -56,5 +39,5 @@ for i in range(100):
     )
 
 f = FFmpeg()
-f.output(Map(v), t=round(end, 3), path=f"out.mp4")
+f.output(Map(v), t=round(end, 3), path=f"out.gif")
 f.run()

@@ -72,8 +72,8 @@ nav:
     - tutorial/output.md
 
   - Examples:
-    - Conversion: example/conversion.md
-    - Audio Mixing: example/audio_mixing.md
+    - Conversion: exampleformat_conversion.md
+    - Merge Streams: example/merge_streams.md
     - Mosaic: example/mosaic.md
     - Graph Diagram: example/graph_diagram.md
     - Progress Bar: example/progress_bar.md

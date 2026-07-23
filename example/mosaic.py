@@ -1,41 +1,31 @@
 """
-Example of creating a mosaic of videos with Vstack and HStack filters
+Example: build a 2x2 video mosaic (grid) using ffmpeg-studio's
+VerticalStack and HorizontalStack filters.
 """
 
 import glob
 
 from ffmpeg import FFmpeg, InputFile
-from ffmpeg.filters import HorizontalStack, Scale, VerticalStack, apply, Split
+from ffmpeg.filters import HorizontalStack, Scale, VerticalStack, apply
 
-# Get all mkv files in video folder
-# Make sure you have some mkv files in the video folder
-# Or change the path to your own mkv files
-videos = glob.glob(r"Videos/*.mkv")
+# Grab up to 4 videos from a folder. Point this at your own directory.
+videos = glob.glob(r"Videos/*.mkv")[:4]
 
-# Create mosaic of 4 videos
-inputs = [apply(Scale(500, 500), InputFile(video)) for video in videos[:4]]
+if len(videos) < 4:
+    raise ValueError(
+        f"Need at least 4 videos to build a 2x2 mosaic, found {len(videos)}"
+    )
 
-ff = FFmpeg()
+# Scale each video down to a uniform 500x500 tile before stacking.
+inputs = [apply(Scale(500, 500), InputFile(video)) for video in videos]
 
-# Stack first two videos and next two videos vertically
-#
-# Providing inputs directly to VerticalStack is also supported
-vertical_stack_1 = apply(VerticalStack(inputs[0], inputs[1]))
-# vertical_stack_1 = apply(Scale(500, 500), vertical_stack_1)
+# Stack videos into two columns: [0] over [1], and [2] over [3].
+left_column = apply(VerticalStack(inputs[0], inputs[1]))
+right_column = apply(VerticalStack(inputs[2], inputs[3], end_on_shortest=True))
 
-# Providing inputs via apply is also supported
-vertical_stack_2 = apply(VerticalStack(inputs[2], end_on_shortest=True), inputs[3])
-# vertical_stack_2 = apply(Scale(500, 500), vertical_stack_2)
+# Combine both columns side by side into a single 2x2 grid.
+grid = apply(HorizontalStack(left_column, right_column, end_on_shortest=True))
 
-grid = apply(HorizontalStack(vertical_stack_1, vertical_stack_2, end_on_shortest=True))
-
-# Set maximum duration of output video
-max_duration = 10
-ff.output(
-    grid,
-    t=max_duration,
-    path="grid.mp4",
-)
-
-# Run the ffmpeg command
-ff.run(progress_callback=print)
+ffmpeg = FFmpeg()
+ffmpeg.output(grid, t=10, path="grid.mp4")  # cap output at 10 seconds
+ffmpeg.run(progress_callback=print)

@@ -1,30 +1,34 @@
 """
-This module provides methods to build and run FFmpeg with fine control commands.
+A Pythonic interface for building and running FFmpeg commands, including
+complex filter graphs, without hand-writing raw filter strings.
 
 Example:
-    ```python
+```python
     from ffmpeg import FFmpeg, InputFile, Map
 
     ffmpeg = FFmpeg()
 
     ffmpeg.output(Map(clip), path="output.mp4").run()
 
-    # or for async
+    # or run asynchronously
     await ffmpeg.output(Map(clip), path="output.mp4").run_async()
+```
 
-    or multiple outputs
+    Multiple outputs can be chained in a single command:
+
+```python
     ffmpeg.output(Map(clip1), path="output1.mp4").output(Map(clip2), path="output2.mp4").run()
-    ```
+```
 
-For simple usecase use `export` function it allows to export in one line, see example below
-    ```python
+For simple cases, use the `export` function to export in one line:
+
+```python
     from ffmpeg import export, InputFile
 
     clip = InputFile("input.mp4")
     export(clip, path="output.mkv").run()
-    ```
+```
 """
-
 import asyncio
 import logging
 import subprocess

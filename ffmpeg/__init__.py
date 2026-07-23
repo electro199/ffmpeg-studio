@@ -1,13 +1,12 @@
 """
-FFmpeg Wrapper for Python
+Pythonic FFmpeg wrapper for building and running commands, including complex filter graphs.
 
-This module provides a Pythonic interface to FFmpeg, allowing users to construct and execute FFmpeg commands programmatically.
-It simplifies video and audio processing tasks such as format conversion, filtering, and transcoding.
-
+This module provides a Pythonic interface to FFmpeg, letting you construct and execute
+FFmpeg commands programmatically — video/audio conversion, filtering, and transcoding —
+without hand-writing raw shell commands or filter_complex strings.
 
 Requirements:
-- FFmpeg must be installed and accessible via the system path.
-
+- FFmpeg must be installed and accessible on the system PATH.
 """
 
 from .inputs import (
@@ -54,4 +53,3 @@ __all__ = [
     "ffprobe",
     "__version__",
 ]
-
