@@ -1,3 +1,8 @@
+---
+title: FFmpeg input types in Python with ffmpeg-studio
+description: An overview of ffmpeg-studio's input classes — InputFile, VideoFile, AudioFile, ImageFile — and how to choose the right one for your FFmpeg pipeline.
+---
+
 # Inputs Types
 
 Inputs are the **entry point** to every FFmpeg pipeline. They define *where your media comes from* — whether that’s a video file, audio file, image, or even a generated test pattern.

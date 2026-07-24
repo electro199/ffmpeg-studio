@@ -11,6 +11,8 @@ Install: `pip install ffmpeg-studio` (requires FFmpeg installed separately and a
 - [Home](https://electro199.github.io/ffmpeg-studio/): Overview, key features, and why developers use ffmpeg-studio.
 - [Installation](https://electro199.github.io/ffmpeg-studio/installation/): How to install the package and FFmpeg itself on Windows, macOS, and Linux.
 - [Getting Started](https://electro199.github.io/ffmpeg-studio/getting-started/): First steps and a minimal working example.
+- [Basics](https://electro199.github.io/ffmpeg-studio/basics/): Core concepts and the general workflow for building FFmpeg pipelines.
+- [FAQ](https://electro199.github.io/ffmpeg-studio/FAQ/): Frequently asked questions about installation, filter graphs, async support, and comparisons to alternatives.
 
 ## Tutorials
 
@@ -25,8 +27,8 @@ Install: `pip install ffmpeg-studio` (requires FFmpeg installed separately and a
 
 ## Examples
 
-- [Conversion](https://electro199.github.io/ffmpeg-studio/exampleformat_conversion/): Simple format/container conversion.
-- [Audio Mixing](https://electro199.github.io/ffmpeg-studio/example/audio_mixing/): Mixing multiple audio tracks.
+- [Conversion](https://electro199.github.io/ffmpeg-studio/example/format_conversion/): Simple format/container conversion.
+- [Merge Streams](https://electro199.github.io/ffmpeg-studio/example/merge_streams/): Combining a video stream from one file with an audio stream from another.
 - [Mosaic](https://electro199.github.io/ffmpeg-studio/example/mosaic/): Building a video mosaic/grid layout with overlays.
 - [Graph Diagram](https://electro199.github.io/ffmpeg-studio/example/graph_diagram/): Visualizing generated filter graphs.
 - [Progress Bar](https://electro199.github.io/ffmpeg-studio/example/progress_bar/): Tracking encode progress with callbacks.

@@ -1,3 +1,8 @@
+---
+title: ffmpeg-studio Basics — how it works
+description: An overview of how ffmpeg-studio builds FFmpeg commands from Python objects — inputs, filters, and outputs — and the general workflow for editing media.
+---
+
 # Basics
 
 # Overview

@@ -1,3 +1,8 @@
+---
+title: Trim and subclip video/audio in Python with ffmpeg-studio
+description: How to extract a portion of a media file by seeking to a start and end time using ffmpeg-studio's subclip method, without modifying the original file.
+---
+
 # Subclip
 
 FFmpeg supports extracting a portion of a media file - a *subclip* - by seeking to a start time and optionally stopping at an end time. In `ffmpeg-studio` you can do the same from your high-level classes:

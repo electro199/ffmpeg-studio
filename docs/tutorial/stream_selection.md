@@ -1,3 +1,8 @@
+---
+title: Select specific audio/video streams with ffmpeg-studio
+description: How to pick a specific video, audio, or subtitle stream from a media file with multiple streams using ffmpeg-studio's get_stream method.
+---
+
 # Stream Selection
 
 A media file can hold **multiple streams** (video, audio, subtitles, attachments, data). Normally, FFmpeg auto-selects “the best” video + audio, but sometimes you need direct control — e.g. pick the second audio track or ignore thumbnail streams.

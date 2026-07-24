@@ -72,17 +72,18 @@ nav:
     - tutorial/output.md
 
   - Examples:
-    - Conversion: exampleformat_conversion.md
+    - Conversion: example/format_conversion.md
     - Merge Streams: example/merge_streams.md
     - Mosaic: example/mosaic.md
     - Graph Diagram: example/graph_diagram.md
     - Progress Bar: example/progress_bar.md
     - Text Fuzzing: example/text_fuzzing.md
 
-  - API Reference: 
+  - API Reference:
     - Index : api_reference/index.md
     - Inputs: api_reference/inputs.md
     - Filters: api_reference/filters.md
 
-  # - FAQ: faq.md
+  - Basics: basics.md
+  - FAQ: FAQ.md
   # - Contributing: contributing.md
