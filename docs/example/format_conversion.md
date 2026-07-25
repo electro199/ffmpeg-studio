@@ -1,5 +1,5 @@
 ---
-title: Convert video and audio formats in Python with ffmpeg-studio
+title: Convert video and audio formats
 description: How to convert a media file from one format or container to another using ffmpeg-studio's Python interface to FFmpeg.
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Advanced FFmpeg filter usage in Python with ffmpeg-studio
+title: Advanced FFmpeg filter usage
 description: How filters work in ffmpeg-studio using apply and apply2, including multi-output filters, and how filter outputs can be chained or exported.
 ---
 
