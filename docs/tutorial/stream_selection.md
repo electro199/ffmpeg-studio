@@ -1,5 +1,5 @@
 ---
-title: Select specific audio/video streams with ffmpeg-studio
+title: Select specific audio/video streams
 description: How to pick a specific video, audio, or subtitle stream from a media file with multiple streams using ffmpeg-studio's get_stream method.
 ---
 

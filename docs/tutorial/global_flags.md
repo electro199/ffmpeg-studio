@@ -1,5 +1,5 @@
 ---
-title: Set global FFmpeg flags in Python with ffmpeg-studio
+title: Set global FFmpeg flags
 description: How to configure runtime-wide FFmpeg flags such as hardware acceleration (CUDA, D3D11) and other custom options using ffmpeg-studio's add_global_flag.
 ---
 

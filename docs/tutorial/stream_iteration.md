@@ -1,5 +1,5 @@
 ---
-title: Iterate over media streams in Python with ffmpeg-studio
+title: Iterate over media streams
 description: How to loop over every stream in a media file using ffprobe-backed StreamSpecifier objects in ffmpeg-studio, instead of hardcoding stream indices.
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Working with video input files in ffmpeg-studio
+title: Working with video input files
 description: How to create and configure video inputs with InputFile and VideoFile in ffmpeg-studio, including subclipping, image-as-video inputs, and stream access.
 ---
 

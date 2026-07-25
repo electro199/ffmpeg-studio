@@ -1,5 +1,5 @@
 ---
-title: Read media duration and size in Python with ffmpeg-studio
+title: Read media duration and size
 description: How to query a media file's duration and dimensions using ffmpeg-studio's ffprobe-backed helper methods, without manually parsing JSON output.
 ---
 
