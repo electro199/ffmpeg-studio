@@ -1,22 +1,20 @@
 ---
-title: ffmpeg-studio Basics — how it works
+title: Basics
 description: An overview of how ffmpeg-studio builds FFmpeg commands from Python objects — inputs, filters, and outputs — and the general workflow for editing media.
 ---
-
-# Basics
 
 # Overview
 
 FFmpeg-studio is a command builder for FFmpeg.
 
-The package works by creating Python objects to represent filters, streams, inputs, and other FFmpeg components. These objects store the necessary data and configurations. When you're ready to execute or compile the command, you can use `ffmpeg.run()` or `ffmpeg.compile()` to generate the complete FFmpeg command.
+The package works by creating Python objects to represent filters, streams, inputs, and other FFmpeg components. These objects store the necessary data, When you're ready to execute or compile the command, you can use `ffmpeg.run()` or `ffmpeg.compile()` to generate the complete FFmpeg command.
 
 This approach makes it easier to escape and build complex FFmpeg commands programmatically, reducing the risk of syntax errors and improving maintainability.
 
 It allows you to inspect metadata or other properties of existing files. For example, you can use `VideoFile.get_duration` to retrieve the duration of a video, `VideoFile.get_size` to get its dimensions, or iterate over a `VideoFile` object to access its streams.
 
 # General Flow
-For most part you will want to edit or create media files which always flow this pattern:
+Most commonly you will want to edit or create media files which always flow this pattern:
 
 1. Create InputFile or VideoFile.
 

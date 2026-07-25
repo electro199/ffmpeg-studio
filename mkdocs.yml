@@ -5,6 +5,7 @@ site_url: https://electro199.github.io/ffmpeg-studio/
 
 theme:
   name: material
+  custom_dir: docs/overrides
   palette:
     - scheme: default
       primary: blue
@@ -60,6 +61,8 @@ plugins:
 nav:
   - Home: index.md
   - Installation: installation.md
+  - Basics: basics.md
+  - FAQ: FAQ.md
   - Getting Started: getting-started.md
   - Tutorials:
     - tutorial/making_input.md
@@ -84,6 +87,5 @@ nav:
     - Inputs: api_reference/inputs.md
     - Filters: api_reference/filters.md
 
-  - Basics: basics.md
-  - FAQ: FAQ.md
+
   # - Contributing: contributing.md
