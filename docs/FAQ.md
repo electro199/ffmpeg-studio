@@ -28,7 +28,7 @@ Python 3.11 and above.
 
 **What license is ffmpeg-studio released under?**
 
-ffmpeg-studio is licensed under GPL-3.0
+ffmpeg-studio is licensed under GPL-3.0.
 
 
 ## Installation
@@ -57,13 +57,13 @@ ffmpeg-studio is tested with **FFmpeg 8 (full build)**. Some FFmpeg builds ship 
 
 **How do I convert a file from one format to another?**
 
-See the [Format Conversion example](/ffmpeg-studio/example/format_conversion) — the `export()` function handles simple one-line conversions.
+See the [Format Conversion example](/ffmpeg-studio/example/format_conversion/) — the `export()` function handles simple one-line conversions.
 
 ---
 
 **How do I build a complex filter graph (overlays, scaling, stacking, etc.)?**
 
-Filters are composed as plain Python objects via `apply()` — no manual escaping, quoting, or raw `filter_complex` string-building required. You write Python; ffmpeg-studio handles generating the correct FFmpeg filter graph syntax underneath. See the [Tutorials](../tutorial/making_input.md) and [Examples](../example/mosaic.md) sections for concrete graphs.
+Filters are composed as plain Python objects via `apply()` — no manual escaping, quoting, or raw `filter_complex` string-building required. You write Python; ffmpeg-studio handles generating the correct FFmpeg filter graph syntax underneath. See the [Tutorials](/ffmpeg-studio/tutorial/making_input/) and [Examples](/ffmpeg-studio/example/mosaic/) sections for concrete graphs.
 
 
 ---
@@ -77,7 +77,7 @@ Partially. Running FFmpeg itself supports async via `run_async()`. `ffprobe` cal
 
 **Can I track progress during encoding?**
 
-Yes, via a `progress_callback` passed to `run()`/`run_async()`. See the [Progress Bar example](/ffmpeg-studio/example/progress_bar).
+Yes, via a `progress_callback` passed to `run()`/`run_async()`. See the [Progress Bar example](/ffmpeg-studio/example/progress_bar/).
 
 ---
 
@@ -96,7 +96,7 @@ Yes, but there's no dedicated helper for it yet — you'd build the streaming wo
 
 **Is ffmpeg-studio thread-safe / safe to run multiple instances concurrently?**
 
-No, Library is not thread safe yet i.e sharing FFmpeg object across thread is not recommended. Running multiple instances is supported while keeping the objects unique.
+No, the library is not thread-safe yet, i.e. sharing an FFmpeg object across threads is not recommended. Running multiple instances is supported, as long as each instance uses its own unique objects.
 
 
 ## Comparisons
@@ -105,7 +105,7 @@ No, Library is not thread safe yet i.e sharing FFmpeg object across thread is no
 
 ffmpeg-studio focuses on developer experience beyond just wrapping FFmpeg's own features — for example, it integrates ffprobe directly into input objects, so you can inspect a file's streams/duration without a separate probe call. It also has type-hinted, composable filter graphs, and doesn't require manual escaping of filter strings.
 
-ffmpeg-python is still widely used and has a large install base, but its last release was in 2019, and there are hundreds of open issues and pull requests with no recent activity.
+ffmpeg-python is still widely used and has a large install base, but its last release was in 2019, and there are hundreds of open issues and pull requests with no recent activity. See the full [ffmpeg-studio vs ffmpeg-python comparison](/ffmpeg-studio/vs-ffmpeg-python/) for a feature-by-feature breakdown.
 
 ---
 
@@ -118,19 +118,19 @@ ffmpeg-studio aims to match MoviePy's ease of use without needing to learn FFmpe
 
 **Why not just use FFmpeg from the command line directly?**
 
-Using FFmpeg from the command line is straightforward but error prone ffmpeg-studio solves these issues so you can focus on the workflow not FFmpeg edge cases.
+Using FFmpeg from the command line is straightforward but error-prone. ffmpeg-studio solves these issues so you can focus on the workflow, not FFmpeg edge cases.
 
 ## Project status
 
 **Is ffmpeg-studio production-ready?**
 
-ffmpeg-studio is actively used in production by early adopters, currently in beta
+ffmpeg-studio is actively used in production by early adopters, and is currently in beta.
 
 ---
 
 **Is ffmpeg-studio actively maintained?**
 
-Yes. New feautes are actively being developed and bugs are getting fixed.
+Yes. New features are actively being developed and bugs are getting fixed.
 
 ---
 
@@ -143,4 +143,4 @@ Open an issue on [GitHub](https://github.com/electro199/ffmpeg-studio/issues).
 
 **How can I contribute?**
 
-Open an issue on [GitHub](https://github.com/electro199/ffmpeg-studio/issues) and lets discuss the subject.
+Open an issue on [GitHub](https://github.com/electro199/ffmpeg-studio/issues) and let's discuss the subject.

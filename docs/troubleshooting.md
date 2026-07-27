@@ -14,6 +14,7 @@ Install: `pip install ffmpeg-studio` (requires FFmpeg installed separately and a
 - [Basics](https://electro199.github.io/ffmpeg-studio/basics/): Core concepts and the general workflow for building FFmpeg pipelines.
 - [FAQ](https://electro199.github.io/ffmpeg-studio/FAQ/): Frequently asked questions about installation, filter graphs, async support, and comparisons to alternatives.
 - [ffmpeg-studio vs ffmpeg-python](https://electro199.github.io/ffmpeg-studio/vs-ffmpeg-python/): Feature-by-feature comparison of filter graphs, escaping, type hints, async support, and maintenance status.
+- [Troubleshooting](https://electro199.github.io/ffmpeg-studio/troubleshooting/): Fixes for common errors — FFmpeg not found, missing filters, filter reuse bugs, "Argument list too long" on very large filter graphs, thread-safety, async ffprobe calls, and ffmpeg-python import conflicts.
 
 ## Tutorials
 
