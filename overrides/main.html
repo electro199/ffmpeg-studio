@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block extrahead %}
+  {{ super() }}
+  {% if page and page.title == "FAQ" %}
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is ffmpeg-studio?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio is a Pythonic interface for building and running FFmpeg commands, including complex filter graphs, without hand-writing raw filter strings or shell commands." } },
+    { "@type": "Question", "name": "Do I need FFmpeg installed separately?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. ffmpeg-studio wraps the FFmpeg and ffprobe binaries — it does not bundle them. FFmpeg must be installed and available on your system PATH." } },
+    { "@type": "Question", "name": "What Python versions are supported?", "acceptedAnswer": { "@type": "Answer", "text": "Python 3.11 and above." } },
+    { "@type": "Question", "name": "What license is ffmpeg-studio released under?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio is released under the GPL-3.0 license." } },
+    { "@type": "Question", "name": "How do I install ffmpeg-studio?", "acceptedAnswer": { "@type": "Answer", "text": "Install it with pip install ffmpeg-studio." } },
+    { "@type": "Question", "name": "How do I install FFmpeg itself?", "acceptedAnswer": { "@type": "Answer", "text": "See the Installation guide in the ffmpeg-studio documentation for platform-specific FFmpeg installation instructions." } },
+    { "@type": "Question", "name": "What's the minimum FFmpeg version required?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio is tested with FFmpeg 8 (full build). Some FFmpeg builds ship without certain filters or codecs, so using the full/complete build is strongly advised to avoid missing-filter errors." } },
+    { "@type": "Question", "name": "How do I convert a file from one format to another?", "acceptedAnswer": { "@type": "Answer", "text": "Use the export() function, which handles simple one-line format conversions. See the Format Conversion example in the documentation." } },
+    { "@type": "Question", "name": "How do I build a complex filter graph (overlays, scaling, stacking, etc.)?", "acceptedAnswer": { "@type": "Answer", "text": "Filters are composed as plain Python objects via apply() — no manual escaping, quoting, or raw filter_complex string-building required. You write Python and ffmpeg-studio generates the correct FFmpeg filter graph syntax underneath." } },
+    { "@type": "Question", "name": "Does ffmpeg-studio support async/await?", "acceptedAnswer": { "@type": "Answer", "text": "Partially. Running FFmpeg itself supports async via run_async(). ffprobe calls, such as media info and duration, are currently synchronous only." } },
+    { "@type": "Question", "name": "Can I track progress during encoding?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, via a progress_callback passed to run() or run_async()." } },
+    { "@type": "Question", "name": "Does ffmpeg-studio support GPU/hardware-accelerated encoding?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, GPU acceleration such as NVENC, QSV, or VideoToolbox can be enabled by passing the relevant flags through the global flags function." } },
+    { "@type": "Question", "name": "Can I use ffmpeg-studio for live streaming (RTMP, HLS, etc.)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, but there is no dedicated helper for it yet. You would build the streaming workflow yourself using the existing input, output, and flags API. No worked example is available at the moment." } },
+    { "@type": "Question", "name": "Is ffmpeg-studio thread-safe?", "acceptedAnswer": { "@type": "Answer", "text": "Not yet. Sharing a single FFmpeg object across threads is not recommended. Running multiple instances concurrently is supported as long as each thread uses its own unique object." } },
+    { "@type": "Question", "name": "How is ffmpeg-studio different from ffmpeg-python?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio focuses on developer experience beyond just wrapping FFmpeg's own features, for example by integrating ffprobe directly into input objects so you can inspect a file's streams and duration without a separate probe call. It also has type-hinted, composable filter graphs and does not require manual escaping of filter strings. ffmpeg-python is still widely used and has a large install base, but its last release was in 2019, and there are hundreds of open issues and pull requests with no recent activity." } },
+    { "@type": "Question", "name": "How does ffmpeg-studio compare to MoviePy?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio aims to match MoviePy's ease of use without needing to learn FFmpeg's filter and escaping system, while running close to native FFmpeg speed since it builds and runs real FFmpeg commands instead of processing frames in Python. It covers the same core use cases MoviePy is used for, including cutting, concatenation, compositing, effects, and format conversion." } },
+    { "@type": "Question", "name": "Why not just use FFmpeg from the command line directly?", "acceptedAnswer": { "@type": "Answer", "text": "Using FFmpeg from the command line is straightforward but error-prone. ffmpeg-studio solves these issues so you can focus on the workflow instead of FFmpeg edge cases." } },
+    { "@type": "Question", "name": "Is ffmpeg-studio production-ready?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio is actively used in production by early adopters, and is currently in beta." } },
+    { "@type": "Question", "name": "Is ffmpeg-studio actively maintained?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. New features are actively being developed and bugs are getting fixed." } },
+    { "@type": "Question", "name": "How do I report a bug or request a feature?", "acceptedAnswer": { "@type": "Answer", "text": "Open an issue on GitHub at github.com/electro199/ffmpeg-studio/issues." } },
+    { "@type": "Question", "name": "How can I contribute?", "acceptedAnswer": { "@type": "Answer", "text": "Open an issue on GitHub at github.com/electro199/ffmpeg-studio/issues to discuss the contribution." } }
+  ]
+}
+  </script>
+  {% endif %}
+  {% if page and page.title == "Troubleshooting ffmpeg-studio — Common Errors and Fixes" %}
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Why do I get FileNotFoundError or 'ffmpeg: command not found'?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio wraps the FFmpeg and ffprobe binaries rather than bundling them. This error means FFmpeg is not installed, or is not available on your system PATH. Verify with ffmpeg -version at the terminal, install FFmpeg following the installation guide, and on Windows restart your terminal after updating PATH." } },
+    { "@type": "Question", "name": "Why does pip install ffmpeg-studio fail or fail to import?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio requires Python 3.11 or newer. Check your version with python --version and upgrade if it is older." } },
+    { "@type": "Question", "name": "Why do I get import errors or AttributeErrors after using ffmpeg-python?", "acceptedAnswer": { "@type": "Answer", "text": "ffmpeg-studio and ffmpeg-python both install a top-level module named ffmpeg. Having both installed in the same environment can cause Python to import the wrong one. Uninstall ffmpeg-python before installing ffmpeg-studio, or keep them in separate virtual environments." } },
+    { "@type": "Question", "name": "Why do I get 'No such filter' or 'Unrecognized option' errors?", "acceptedAnswer": { "@type": "Answer", "text": "This is an FFmpeg-level error, not an ffmpeg-studio error. Some FFmpeg builds ship without certain filters or codecs. Install a full FFmpeg build and verify the filter or codec is present with ffmpeg -filters or ffmpeg -codecs." } },
+    { "@type": "Question", "name": "Why does my filter graph produce wrong output after reusing a filter object?", "acceptedAnswer": { "@type": "Answer", "text": "Filter objects like Scale or Overlay are not independent values; they carry a reference to their position in the graph once passed to apply(). Reusing the same instance in a second apply() call corrupts the graph. Create a new instance with the same arguments for each use instead." } },
+    { "@type": "Question", "name": "Why do I get 'Argument list too long' with very complex filter graphs?", "acceptedAnswer": { "@type": "Answer", "text": "By default the whole filter graph is passed to FFmpeg as one -filter_complex string on the command line, which can exceed the OS command-line length limit for very large graphs. Fix it by creating FFmpeg with use_filter_file=True and a filter_script_file path, which writes the graph to a file and passes it via -filter_complex_script instead of inlining it." } },
+    { "@type": "Question", "name": "Is ffmpeg-studio safe to use across multiple threads?", "acceptedAnswer": { "@type": "Answer", "text": "Not yet. Sharing a single FFmpeg object or its input/filter objects across threads is not supported and can corrupt output. Give each thread its own independently constructed objects instead." } },
+    { "@type": "Question", "name": "Why does my event loop stall when calling get_duration or get_size in async code?", "acceptedAnswer": { "@type": "Answer", "text": "ffprobe-backed calls such as get_duration and get_size are currently synchronous only, so calling them directly inside a coroutine blocks the event loop. Offload them with asyncio.to_thread instead." } }
+  ]
+}
+  </script>
+  {% endif %}
+{% endblock %}

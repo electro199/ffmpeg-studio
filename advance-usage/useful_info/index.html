@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Pythonic FFmpeg tools for video editing, audio mixing, subtitles, filters, and media automation in Python.">
+        <meta name="description" content="How FFmpeg command structure works — input, filter, and map flags, flag ordering, and why position matters — as background for building commands with ffmpeg-studio.">
       
       
         <meta name="author" content="Electro199">
@@ -25,7 +25,7 @@
     
     
       
-        <title>Useful info - ffmpeg-studio</title>
+        <title>Understanding FFmpeg command structure - ffmpeg-studio</title>
       
     
     
@@ -59,6 +59,10 @@
 
     
     
+  
+  
+  
+
   </head>
   
   
@@ -114,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Useful info
+              Understanding FFmpeg command structure
             
           </span>
         </div>
@@ -290,6 +294,60 @@
   
   
     <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../getting-started/" class="md-nav__link">
         
   
@@ -325,10 +383,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -346,8 +404,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -371,7 +429,7 @@
   <span class="md-ellipsis">
     
   
-    Inputs Types
+    FFmpeg input types
   
 
     
@@ -399,7 +457,7 @@
   <span class="md-ellipsis">
     
   
-    Input
+    Working with video input files
   
 
     
@@ -427,7 +485,7 @@
   <span class="md-ellipsis">
     
   
-    Subclip
+    Trim and subclip video/audio
   
 
     
@@ -455,7 +513,7 @@
   <span class="md-ellipsis">
     
   
-    Stream Selection
+    Select specific audio/video streams
   
 
     
@@ -483,7 +541,7 @@
   <span class="md-ellipsis">
     
   
-    Iterating Video Streams
+    Iterate over media streams
   
 
     
@@ -511,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    Duration &amp; Size
+    Read media duration and size
   
 
     
@@ -539,7 +597,7 @@
   <span class="md-ellipsis">
     
   
-    Global flags
+    Set global FFmpeg flags
   
 
     
@@ -567,7 +625,7 @@
   <span class="md-ellipsis">
     
   
-    Outputs
+    Configure FFmpeg outputs
   
 
     
@@ -603,10 +661,176 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cookbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/watermark.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a Watermark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/resize.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resize a Video
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -624,8 +848,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -642,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/conversion/" class="md-nav__link">
+      <a href="../../example/format_conversion/" class="md-nav__link">
         
   
   
@@ -670,14 +894,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/audio_mixing/" class="md-nav__link">
+      <a href="../../example/merge_streams/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Audio Mixing
+    Merge Streams
   
 
     
@@ -825,10 +1049,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -846,8 +1070,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1000,7 +1224,7 @@
 
 
 
-  <h1>Useful info</h1>
+  <h1>Understanding FFmpeg command structure</h1>
 
 <h2 id="ffmpeg-command-structure">FFMPEG command structure</h2>
 <p>The FFmpeg have very complex command structure the position of flags can effect the output come. The command is mainly consist of input which can be be media (file/link on internet/or any supported protocol that ffmpeg supports), then optional filter flag that tell how input should be manipulated then map flag to set which stream should be used in output either the input file and/or the modified stream the is generated after filtering</p>
@@ -1031,6 +1255,9 @@
 
 
 
+
+  
+  
 
 
 

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Pythonic FFmpeg tools for video editing, audio mixing, subtitles, filters, and media automation in Python.">
+        <meta name="description" content="Use a progress callback with ffmpeg-studio to drive a tqdm progress bar and get live percentage updates while FFmpeg processes a video export.">
       
       
         <meta name="author" content="Electro199">
@@ -29,7 +29,7 @@
     
     
       
-        <title>Progress Bar - ffmpeg-studio</title>
+        <title>Show a real-time progress bar for FFmpeg exports in Python - ffmpeg-studio</title>
       
     
     
@@ -63,6 +63,10 @@
 
     
     
+  
+  
+  
+
   </head>
   
   
@@ -80,6 +84,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#show-a-real-time-progress-bar-for-ffmpeg-exports-in-python" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -113,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Progress Bar
+              Show a real-time progress bar for FFmpeg exports in Python
             
           </span>
         </div>
@@ -289,6 +298,60 @@
   
   
     <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../getting-started/" class="md-nav__link">
         
   
@@ -324,10 +387,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -345,8 +408,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -370,7 +433,7 @@
   <span class="md-ellipsis">
     
   
-    Inputs Types
+    FFmpeg input types
   
 
     
@@ -398,7 +461,7 @@
   <span class="md-ellipsis">
     
   
-    Input
+    Working with video input files
   
 
     
@@ -426,7 +489,7 @@
   <span class="md-ellipsis">
     
   
-    Subclip
+    Trim and subclip video/audio
   
 
     
@@ -454,7 +517,7 @@
   <span class="md-ellipsis">
     
   
-    Stream Selection
+    Select specific audio/video streams
   
 
     
@@ -482,7 +545,7 @@
   <span class="md-ellipsis">
     
   
-    Iterating Video Streams
+    Iterate over media streams
   
 
     
@@ -510,7 +573,7 @@
   <span class="md-ellipsis">
     
   
-    Duration &amp; Size
+    Read media duration and size
   
 
     
@@ -538,7 +601,7 @@
   <span class="md-ellipsis">
     
   
-    Global flags
+    Set global FFmpeg flags
   
 
     
@@ -566,7 +629,173 @@
   <span class="md-ellipsis">
     
   
-    Outputs
+    Configure FFmpeg outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cookbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/watermark.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a Watermark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/resize.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resize a Video
   
 
     
@@ -604,10 +833,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -625,8 +854,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -643,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conversion/" class="md-nav__link">
+      <a href="../format_conversion/" class="md-nav__link">
         
   
   
@@ -671,14 +900,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../audio_mixing/" class="md-nav__link">
+      <a href="../merge_streams/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Audio Mixing
+    Merge Streams
   
 
     
@@ -761,6 +990,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progress Bar
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -778,6 +1027,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -834,10 +1124,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -855,8 +1145,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -974,6 +1264,38 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How it works
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -990,10 +1312,9 @@
 
 
 
-  <h1>Progress Bar</h1>
-
-<p>Example of Progress Bar
-This Example shows how to use progress callback to get real-time progress updates during ffmpeg processing.</p>
+<h1 id="show-a-real-time-progress-bar-for-ffmpeg-exports-in-python">Show a real-time progress bar for FFmpeg exports in Python</h1>
+<p>When an FFmpeg export takes more than a second or two, a script that just sits there silently is hard to trust — is it hung, or actually working? ffmpeg-studio lets you pass a <code>progress_callback</code> into <code>run()</code> so you can surface live progress in a CLI, a log file, or, as shown here, a <code>tqdm</code> progress bar — instead of leaving users staring at a blank terminal during long exports.</p>
+<h2 id="example">Example</h2>
 <div class="language-python highlight"><span class="filename">example/progress_bar.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="sd">Usage of callback function to make progress with tqdm</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">&quot;&quot;&quot;</span>
@@ -1037,12 +1358,24 @@ This Example shows how to use progress callback to get real-time progress update
 </span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
 </span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </span></code></pre></div>
+<h2 id="how-it-works">How it works</h2>
+<ul>
+<li><code>update_progress</code> is the callback FFmpeg invokes repeatedly during export. It must accept <code>stats</code> argument, which ffmpeg-studio passes in on every call.</li>
+<li><code>duration</code> is the expected length (in seconds) of whatever you're exporting — used calculate a percentage. Here it's also passed to <code>subclip(0, duration)</code> to trim the clip, you can use know export length as duration.</li>
+<li><code>functools.partial</code> pre-binds <code>duration</code> and <code>pbar</code> to <code>update_progress</code>, since FFmpeg only ever supplies <code>stats</code> at call time.</li>
+<li><code>stats["out_time_ms"]</code> is the current output timestamp in microseconds despite the name — dividing by <code>1_000_000</code> converts it to seconds.</li>
+<li><code>progress_period=1</code> controls how often (in seconds) the callback fires; lower it for smoother updates or raise it to reduce overhead.</li>
+<li>Exceptions raised inside the callback are swallowed by ffmpeg-studio, and the callback should treat <code>stats</code> as read-only.</li>
+</ul>
 
 
 
 
 
 
+
+  
+  
 
 
 

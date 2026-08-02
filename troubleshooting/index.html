@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How filters work in ffmpeg-studio using apply and apply2, including multi-output filters, and how filter outputs can be chained or exported.">
+        <meta name="description" content="Pythonic FFmpeg tools for video editing, audio mixing, subtitles, filters, and media automation in Python.">
       
       
         <meta name="author" content="Electro199">
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/advance-usage/advance-usage/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/troubleshooting/">
       
       
       
@@ -20,19 +20,19 @@
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
-        <title>Advanced FFmpeg filter usage - ffmpeg-studio</title>
+        <title>ffmpeg-studio - ffmpeg-studio</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,9 +51,9 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#filters" class="md-skip">
+        <a href="#ffmpeg-studio" class="md-skip">
           Skip to content
         </a>
       
@@ -98,7 +98,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ffmpeg-studio" class="md-header__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
+    <a href=".." title="ffmpeg-studio" class="md-header__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Advanced FFmpeg filter usage
+              ffmpeg-studio
             
           </span>
         </div>
@@ -222,7 +222,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ffmpeg-studio" class="md-nav__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
+    <a href=".." title="ffmpeg-studio" class="md-nav__button md-logo" aria-label="ffmpeg-studio" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -240,7 +240,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -267,7 +267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../installation/" class="md-nav__link">
+      <a href="../installation/" class="md-nav__link">
         
   
   
@@ -294,7 +294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../basics/" class="md-nav__link">
+      <a href="../basics/" class="md-nav__link">
         
   
   
@@ -321,7 +321,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../FAQ/" class="md-nav__link">
+      <a href="../FAQ/" class="md-nav__link">
         
   
   
@@ -348,7 +348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -422,7 +422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/making_input/" class="md-nav__link">
+      <a href="../tutorial/making_input/" class="md-nav__link">
         
   
   
@@ -450,7 +450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/video_input/" class="md-nav__link">
+      <a href="../tutorial/video_input/" class="md-nav__link">
         
   
   
@@ -478,7 +478,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/subclip/" class="md-nav__link">
+      <a href="../tutorial/subclip/" class="md-nav__link">
         
   
   
@@ -506,7 +506,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_selection/" class="md-nav__link">
+      <a href="../tutorial/stream_selection/" class="md-nav__link">
         
   
   
@@ -534,7 +534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/stream_iteration/" class="md-nav__link">
+      <a href="../tutorial/stream_iteration/" class="md-nav__link">
         
   
   
@@ -562,7 +562,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/media_info/" class="md-nav__link">
+      <a href="../tutorial/media_info/" class="md-nav__link">
         
   
   
@@ -590,7 +590,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/global_flags/" class="md-nav__link">
+      <a href="../tutorial/global_flags/" class="md-nav__link">
         
   
   
@@ -618,7 +618,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tutorial/output/" class="md-nav__link">
+      <a href="../tutorial/output/" class="md-nav__link">
         
   
   
@@ -700,7 +700,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookbooks/index.md" class="md-nav__link">
+      <a href="../cookbooks/index.md" class="md-nav__link">
         
   
   
@@ -728,7 +728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookbooks/video/index.md" class="md-nav__link">
+      <a href="../cookbooks/video/index.md" class="md-nav__link">
         
   
   
@@ -756,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookbooks/video/watermark.md" class="md-nav__link">
+      <a href="../cookbooks/video/watermark.md" class="md-nav__link">
         
   
   
@@ -784,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookbooks/video/resize.md" class="md-nav__link">
+      <a href="../cookbooks/video/resize.md" class="md-nav__link">
         
   
   
@@ -866,7 +866,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/format_conversion/" class="md-nav__link">
+      <a href="../example/format_conversion/" class="md-nav__link">
         
   
   
@@ -894,7 +894,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/merge_streams/" class="md-nav__link">
+      <a href="../example/merge_streams/" class="md-nav__link">
         
   
   
@@ -922,7 +922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/mosaic/" class="md-nav__link">
+      <a href="../example/mosaic/" class="md-nav__link">
         
   
   
@@ -950,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/graph_diagram/" class="md-nav__link">
+      <a href="../example/graph_diagram/" class="md-nav__link">
         
   
   
@@ -978,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/progress_bar/" class="md-nav__link">
+      <a href="../example/progress_bar/" class="md-nav__link">
         
   
   
@@ -1006,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../example/text_fuzzing/" class="md-nav__link">
+      <a href="../example/text_fuzzing/" class="md-nav__link">
         
   
   
@@ -1088,7 +1088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api_reference/" class="md-nav__link">
+      <a href="../api_reference/" class="md-nav__link">
         
   
   
@@ -1116,7 +1116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api_reference/inputs/" class="md-nav__link">
+      <a href="../api_reference/inputs/" class="md-nav__link">
         
   
   
@@ -1144,7 +1144,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../api_reference/filters/" class="md-nav__link">
+      <a href="../api_reference/filters/" class="md-nav__link">
         
   
   
@@ -1199,10 +1199,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#docs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        Docs
       
     </span>
   </a>
@@ -1210,10 +1210,54 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#tutorials" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Tutorials
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API Reference
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Repository
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optional
       
     </span>
   </a>
@@ -1237,76 +1281,64 @@
 
 
 
-<p>Lets see how everything works in ffmpeg-studio</p>
-<hr />
-<hr />
-<h1 id="filters">Filters</h1>
-<p>Filters are way the ffmpeg allow media to be manipulated, ffmpeg-studio use <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters. Filter output can be exported or further filtered.</p>
-<h2 id="usage">Usage</h2>
-<p>The <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> functions take Filter and then the input to be filtered</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">apply</span><span class="p">(</span><span class="n">Filter</span><span class="p">,</span> <span class="n">clip</span><span class="p">)</span>
-</span></code></pre></div>
-<h2 id="example">Example</h2>
-<p>Lets make a video logo overlay both scaled.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">VideoFile</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Overlay</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="s2">&quot;image.png&quot;</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">scaled_logo</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">logo</span><span class="p">)</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">video</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">)</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">scaled_video</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">),</span> <span class="n">video</span><span class="p">)</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">final_video</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Overlay</span><span class="p">(</span><span class="n">scaled_logo</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span><span class="n">scaled_video</span><span class="p">)</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">(</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="n">FFmpeg</span><span class="p">()</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">final_video</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">)</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">)</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="c1"># Results</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="c1"># ffmpeg -hide_banner -y -loglevel error -i image.png -i video.mp4 \</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="c1"># -filter_complex [0]scale=width=200:height=200[n0o0]; \</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="c1">#                 [1]scale=width=1920:height=1080[n1o0];\</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1">#                 [n1o0][n0o0]overlay=x=0:y=0[n2o0] \</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="c1">#  -map [n2o0] out.mp4</span>
-</span></code></pre></div>
-<h1 id="map-flags">Map Flags</h1>
-<p>We also need to set <code>-map</code> flags when exporting like setting fps or bitrate to do that we can set them in <code>Map</code> context.</p>
-<p>Use <code>suffix_flags</code> when a flags requires a suffix like <code>-r:1</code> or <code>-r:v:1</code> otherwise <code>kwargs</code> will catch all normal flags.</p>
-<p>Example with both Mapped and Unmapped stream</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">FFmpeg</span><span class="p">()</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="o">.</span><span class="n">output</span><span class="p">(</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="n">Map</span><span class="p">(</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            <span class="n">final_video</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>            <span class="n">r</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>  <span class="c1"># normal flag: set frame rate</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            <span class="n">b</span><span class="o">=</span><span class="s2">&quot;2M&quot;</span><span class="p">,</span>  <span class="c1"># normal flag: set bitrate</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="n">suffix_flags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;r&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">}</span>  <span class="c1"># suffixed flag: set output 0 video stream to 60 fps</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="p">),</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="p">)</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">scaled_logo</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;scaled_logo.png&quot;</span><span class="p">)</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">)</span>
-</span></code></pre></div>
+<h1 id="ffmpeg-studio">ffmpeg-studio</h1>
+<blockquote>
+<p>ffmpeg-studio is a Pythonic interface to FFmpeg for building and running FFmpeg commands programmatically, including complex filter graphs. It targets Python developers who need video/audio transcoding, overlays, subtitles, audio mixing, and batch media processing without hand-writing long shell commands or raw <code>filter_complex</code> strings.</p>
+</blockquote>
+<p>ffmpeg-studio wraps ffmpeg, ffprobe, and ffplay with a chainable, type-hinted API. It automatically handles safe quoting/escaping, input/output stream mapping, and progress tracking via callbacks. Unlike simpler wrappers, it has first-class support for building long, multi-stage filter graphs (scaling, overlay, mixing, etc.) as composable Python objects instead of string concatenation.</p>
+<p>Install: <code>pip install ffmpeg-studio</code> (requires FFmpeg installed separately and available on PATH).</p>
+<h2 id="docs">Docs</h2>
+<ul>
+<li><a href="https://electro199.github.io/ffmpeg-studio/">Home</a>: Overview, key features, and why developers use ffmpeg-studio.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/installation/">Installation</a>: How to install the package and FFmpeg itself on Windows, macOS, and Linux.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/getting-started/">Getting Started</a>: First steps and a minimal working example.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/basics/">Basics</a>: Core concepts and the general workflow for building FFmpeg pipelines.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/FAQ/">FAQ</a>: Frequently asked questions about installation, filter graphs, async support, and comparisons to alternatives.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/vs-ffmpeg-python/">ffmpeg-studio vs ffmpeg-python</a>: Feature-by-feature comparison of filter graphs, escaping, type hints, async support, and maintenance status.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/troubleshooting/">Troubleshooting</a>: Fixes for common errors — FFmpeg not found, missing filters, filter reuse bugs, "Argument list too long" on very large filter graphs, thread-safety, async ffprobe calls, and ffmpeg-python import conflicts.</li>
+</ul>
+<h2 id="tutorials">Tutorials</h2>
+<ul>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/making_input/">Input Types</a>: The different ways to create inputs.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/video_input/">Input</a>: Working with video input files.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/subclip/">Subclip</a>: Trimming/subclipping media.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/stream_selection/">Stream Selection</a>: Selecting specific audio/video streams from inputs.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/stream_iteration/">Iterating Video Streams</a>: Iterating over multiple streams in a file.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/media_info/">Duration &amp; Size</a>: Reading media metadata via ffprobe.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/global_flags/">Global Flags</a>: Setting global FFmpeg command flags.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/tutorial/output/">Outputs</a>: Configuring outputs, mapping, and per-output flags.</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<ul>
+<li><a href="https://electro199.github.io/ffmpeg-studio/example/format_conversion/">Conversion</a>: Simple format/container conversion.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/example/merge_streams/">Merge Streams</a>: Combining a video stream from one file with an audio stream from another.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/example/mosaic/">Mosaic</a>: Building a video mosaic/grid layout with overlays.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/example/graph_diagram/">Graph Diagram</a>: Visualizing generated filter graphs.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/example/progress_bar/">Progress Bar</a>: Tracking encode progress with callbacks.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/example/text_fuzzing/">Text Fuzzing</a>: Simple text fuzzer to test escaping.</li>
+</ul>
+<h2 id="api-reference">API Reference</h2>
+<ul>
+<li><a href="https://electro199.github.io/ffmpeg-studio/api_reference/">Index</a>: API reference overview.</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/api_reference/inputs/">Inputs</a>: Input classes (<code>InputFile</code>, <code>VideoFile</code>, <code>AudioFile</code>, <code>ImageFile</code>, etc.).</li>
+<li><a href="https://electro199.github.io/ffmpeg-studio/api_reference/filters/">Filters</a>: Filter classes and the <code>apply</code>/<code>apply2</code> helpers for building filter graphs.</li>
+</ul>
+<h2 id="repository">Repository</h2>
+<ul>
+<li><a href="https://github.com/electro199/ffmpeg-studio">GitHub</a>: Source code, issues, and releases.</li>
+<li><a href="https://pypi.org/project/ffmpeg-studio/">PyPI</a>: Package releases and install instructions.</li>
+</ul>
+<h2 id="optional">Optional</h2>
+<ul>
+<li>License: GPL-3.0.</li>
+<li>Related terms: FFmpeg Python wrapper, Python FFmpeg complex filter graph, FFmpeg command builder Python, ffprobe Python wrapper, ffplay Python wrapper.</li>
+</ul>
 
 
 
 
 
 
-
-  
-  
 
 
 
@@ -1354,10 +1386,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link", "navigation.section"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "content.code.copy", "content.admonitions", "content.tabs.link", "navigation.section"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>

@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Pythonic FFmpeg tools for video editing, audio mixing, subtitles, filters, and media automation in Python.">
+        <meta name="description" content="Generate a diagram of your FFmpeg complex filter graph with ffmpeg-studio to understand and debug multi-stage video/audio pipelines before running them.">
       
       
         <meta name="author" content="Electro199">
@@ -29,7 +29,7 @@
     
     
       
-        <title>Graph Diagram - ffmpeg-studio</title>
+        <title>Visualize FFmpeg filter graphs in Python - ffmpeg-studio</title>
       
     
     
@@ -63,6 +63,10 @@
 
     
     
+  
+  
+  
+
   </head>
   
   
@@ -80,6 +84,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#graph-diagram" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -113,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Graph Diagram
+              Visualize FFmpeg filter graphs in Python
             
           </span>
         </div>
@@ -289,6 +298,60 @@
   
   
     <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../getting-started/" class="md-nav__link">
         
   
@@ -324,10 +387,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -345,8 +408,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -370,7 +433,7 @@
   <span class="md-ellipsis">
     
   
-    Inputs Types
+    FFmpeg input types
   
 
     
@@ -398,7 +461,7 @@
   <span class="md-ellipsis">
     
   
-    Input
+    Working with video input files
   
 
     
@@ -426,7 +489,7 @@
   <span class="md-ellipsis">
     
   
-    Subclip
+    Trim and subclip video/audio
   
 
     
@@ -454,7 +517,7 @@
   <span class="md-ellipsis">
     
   
-    Stream Selection
+    Select specific audio/video streams
   
 
     
@@ -482,7 +545,7 @@
   <span class="md-ellipsis">
     
   
-    Iterating Video Streams
+    Iterate over media streams
   
 
     
@@ -510,7 +573,7 @@
   <span class="md-ellipsis">
     
   
-    Duration &amp; Size
+    Read media duration and size
   
 
     
@@ -538,7 +601,7 @@
   <span class="md-ellipsis">
     
   
-    Global flags
+    Set global FFmpeg flags
   
 
     
@@ -566,7 +629,173 @@
   <span class="md-ellipsis">
     
   
-    Outputs
+    Configure FFmpeg outputs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cookbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/watermark.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a Watermark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/resize.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resize a Video
   
 
     
@@ -604,10 +833,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" checked>
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -625,8 +854,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -643,7 +872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../conversion/" class="md-nav__link">
+      <a href="../format_conversion/" class="md-nav__link">
         
   
   
@@ -671,14 +900,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../audio_mixing/" class="md-nav__link">
+      <a href="../merge_streams/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Audio Mixing
+    Merge Streams
   
 
     
@@ -733,6 +962,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Diagram
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -750,6 +999,36 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -834,10 +1113,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -855,8 +1134,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -974,6 +1253,27 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#example" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Example
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -990,10 +1290,16 @@
 
 
 
-  <h1>Graph Diagram</h1>
-
-<p>This Example shows how to create a filter graph diagram using ffmpeg-studio.
-It is often useful to visualize complex filter graphs for better understanding and debugging.</p>
+<h1 id="graph-diagram">Graph Diagram</h1>
+<p>When you're chaining several filters together — scaling, overlays, mixing, subtitles — it gets hard to keep the whole pipeline in your head. ffmpeg-studio can render your filter graph as a diagram, so you can see exactly how inputs, filters, and outputs connect before you run the command.</p>
+<p>This is especially useful for:</p>
+<ul>
+<li>Debugging a filter graph that isn't producing the output you expect</li>
+<li>Understanding someone else's (or your future self's) pipeline</li>
+<li>Documenting complex, multi-input/multi-output workflows</li>
+</ul>
+<p><img alt="FFmpeg filter graph diagram generated with ffmpeg-studio" src="/ffmpeg-studio/assets/images/filter_graph.jpg" /></p>
+<h2 id="example">Example</h2>
 <div class="language-python highlight"><span class="filename">example/graph_diagram.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">FFmpeg</span><span class="p">,</span> <span class="n">FileInputOptions</span><span class="p">,</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">apply</span><span class="p">,</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>                    <span class="n">draw_filter_graph</span><span class="p">)</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">Overlay</span><span class="p">,</span> <span class="n">Scale</span>
@@ -1020,13 +1326,16 @@ It is often useful to visualize complex filter graphs for better understanding a
 </span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1"># You must install graphviz with pip and it is dependencies</span>
 </span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="n">draw_filter_graph</span><span class="p">(</span><span class="n">ffmpeg</span><span class="p">,</span> <span class="s2">&quot;graph_output&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<p><img alt="Progress Bar" src="/ffmpeg-studio/assets/images/filter_graph.jpg" /></p>
+<p>Running this generates a visual representation of the filter graph:</p>
 
 
 
 
 
 
+
+  
+  
 
 
 

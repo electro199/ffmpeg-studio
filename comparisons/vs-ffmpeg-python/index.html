@@ -6,19 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Pythonic FFmpeg tools for video editing, audio mixing, subtitles, filters, and media automation in Python.">
+        <meta name="description" content="A practical comparison of ffmpeg-studio and ffmpeg-python for Python developers working with FFmpeg">
       
       
         <meta name="author" content="Electro199">
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/example/conversion/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/comparisons/vs-ffmpeg-python/">
       
       
-        <link rel="prev" href="../../tutorial/output/">
-      
-      
-        <link rel="next" href="../audio_mixing/">
       
       
         
@@ -29,7 +25,7 @@
     
     
       
-        <title>Conversion - ffmpeg-studio</title>
+        <title>ffmpeg-studio vs ffmpeg-python — which Python FFmpeg wrapper should you use? - ffmpeg-studio</title>
       
     
     
@@ -63,6 +59,10 @@
 
     
     
+  
+  
+  
+
   </head>
   
   
@@ -80,6 +80,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#ffmpeg-studio-vs-ffmpeg-python" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -113,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Conversion
+              ffmpeg-studio vs ffmpeg-python — which Python FFmpeg wrapper should you use?
             
           </span>
         </div>
@@ -289,6 +294,60 @@
   
   
     <li class="md-nav__item">
+      <a href="../../basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../FAQ/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../getting-started/" class="md-nav__link">
         
   
@@ -324,10 +383,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   
@@ -345,8 +404,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -370,7 +429,7 @@
   <span class="md-ellipsis">
     
   
-    Inputs Types
+    FFmpeg input types
   
 
     
@@ -398,7 +457,7 @@
   <span class="md-ellipsis">
     
   
-    Input
+    Working with video input files
   
 
     
@@ -426,7 +485,7 @@
   <span class="md-ellipsis">
     
   
-    Subclip
+    Trim and subclip video/audio
   
 
     
@@ -454,7 +513,7 @@
   <span class="md-ellipsis">
     
   
-    Stream Selection
+    Select specific audio/video streams
   
 
     
@@ -482,7 +541,7 @@
   <span class="md-ellipsis">
     
   
-    Iterating Video Streams
+    Iterate over media streams
   
 
     
@@ -510,7 +569,7 @@
   <span class="md-ellipsis">
     
   
-    Duration &amp; Size
+    Read media duration and size
   
 
     
@@ -538,7 +597,7 @@
   <span class="md-ellipsis">
     
   
-    Global flags
+    Set global FFmpeg flags
   
 
     
@@ -566,7 +625,7 @@
   <span class="md-ellipsis">
     
   
-    Outputs
+    Configure FFmpeg outputs
   
 
     
@@ -591,23 +650,187 @@
       
   
   
-    
   
   
-  
     
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cookbooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cookbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/index.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/watermark.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Add a Watermark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cookbooks/video/resize.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Resize a Video
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   
@@ -625,8 +848,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -640,17 +863,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../example/format_conversion/" class="md-nav__link">
         
   
   
@@ -666,7 +882,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -679,14 +894,14 @@
   
   
     <li class="md-nav__item">
-      <a href="../audio_mixing/" class="md-nav__link">
+      <a href="../../example/merge_streams/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Audio Mixing
+    Merge Streams
   
 
     
@@ -707,7 +922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../mosaic/" class="md-nav__link">
+      <a href="../../example/mosaic/" class="md-nav__link">
         
   
   
@@ -735,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../graph_diagram/" class="md-nav__link">
+      <a href="../../example/graph_diagram/" class="md-nav__link">
         
   
   
@@ -763,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../progress_bar/" class="md-nav__link">
+      <a href="../../example/progress_bar/" class="md-nav__link">
         
   
   
@@ -791,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../text_fuzzing/" class="md-nav__link">
+      <a href="../../example/text_fuzzing/" class="md-nav__link">
         
   
   
@@ -834,10 +1049,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_9" id="__nav_9_label" tabindex="0">
             
   
   
@@ -855,8 +1070,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_6">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -974,6 +1189,60 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-ffmpeg-python-still-holds-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where ffmpeg-python still holds up
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-the-two-diverge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where the two diverge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-should-you-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which should you use?
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -990,27 +1259,94 @@
 
 
 
-  <h1>Conversion</h1>
+<h1 id="ffmpeg-studio-vs-ffmpeg-python">ffmpeg-studio vs ffmpeg-python</h1>
+<p>Both libraries build on top of FFmpeg for Python, but they were built years apart and make different tradeoffs. This page is a straightforward comparison to help you pick the right one for your project — including where ffmpeg-python is still a reasonable choice.</p>
+<h2 id="quick-comparison">Quick comparison</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>ffmpeg-studio</th>
+<th>ffmpeg-python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Complex filter graphs</td>
+<td>Built as composable Python objects via <code>apply()</code></td>
+<td>Built by chaining <code>.filter()</code> calls and manually managing stream labels</td>
+</tr>
+<tr>
+<td>Escaping / quoting</td>
+<td>✅ Handled automatically</td>
+<td>❌ Manual — a common source of bugs with special characters in <code>drawtext</code>, paths, etc.</td>
+</tr>
+<tr>
+<td>Type hints</td>
+<td>✅ Full</td>
+<td>❌ None</td>
+</tr>
+<tr>
+<td>ffprobe integration</td>
+<td>✅ Built into input objects (inspect streams/duration directly)</td>
+<td>⚠️ Separate <code>ffmpeg.probe()</code> call, returns raw dict</td>
+</tr>
+<tr>
+<td>Async support</td>
+<td>✅ <code>run_async()</code> for running FFmpeg</td>
+<td>❌ Not supported</td>
+</tr>
+<tr>
+<td>Progress tracking</td>
+<td>✅ Built-in for both Sync and Async</td>
+<td>❌ Not built in — typically requires parsing stderr yourself</td>
+</tr>
+<tr>
+<td>Raw commands</td>
+<td>✅ Yes, exposes the generated command</td>
+<td>✅ Yes, exposes the generated command</td>
+</tr>
+<tr>
+<td>Actively maintained</td>
+<td>✅ Getting new features</td>
+<td>❌ Last release in 2019</td>
+</tr>
+<tr>
+<td>Open issues/PRs</td>
+<td>✅ Actively triaged</td>
+<td>❌ Hundreds, largely inactive</td>
+</tr>
+<tr>
+<td>Install base / maturity</td>
+<td>⚠️ Newer, smaller install base</td>
+<td>✅ Long-established, widely used, large community footprint</td>
+</tr>
+<tr>
+<td>License</td>
+<td>GPL-3.0</td>
+<td>Apache 2.0</td>
+</tr>
+</tbody>
+</table>
+<h2 id="where-ffmpeg-python-still-holds-up">Where ffmpeg-python still holds up</h2>
+<p>It's worth being upfront: ffmpeg-python has been the default choice for years, and that's not an accident. It's simple for basic conversions, has a huge number of tutorials and Stack Overflow answers already written against it, and its Apache 2.0 license is more permissive than ffmpeg-studio's GPL-3.0. If you're doing a one-off, simple conversion and don't need active maintenance or type safety, it will likely still work fine — FFmpeg itself hasn't changed its fundamentals, so a 2019-era wrapper for basic operations isn't automatically broken.</p>
+<h2 id="where-the-two-diverge">Where the two diverge</h2>
+<p><strong>Complex filter graphs.</strong> This is the biggest practical difference. ffmpeg-python builds filter graphs by chaining <code>.filter()</code> calls and threading stream references through each call — for anything beyond 2-3 filters (say, a multi-input overlay with scaling and cropping), it's easy to lose track of which stream feeds which filter, and errors tend to surface as opaque FFmpeg CLI errors rather than something catchable in Python. ffmpeg-studio represents the graph as composable Python objects, so the structure of the graph mirrors the structure of your code.</p>
+<p><strong>Escaping and quoting.</strong> FFmpeg's filter syntax has its own escaping rules for characters like <code>:</code>, <code>'</code>, <code>[</code>, <code>]</code>, and <code>\</code> — especially inside <code>drawtext</code>. In ffmpeg-python, you're responsible for getting this right yourself, and getting it wrong produces cryptic FFmpeg errors rather than a clear Python exception. ffmpeg-studio handles this automatically.</p>
+<p><strong>Maintenance.</strong> ffmpeg-python's last release was in 2019, and there are hundreds of open issues and pull requests with no recent activity — including an open issue directly asking whether the project is still maintained. That doesn't mean the existing code is broken, but it does mean bugs, security concerns, or compatibility issues with newer FFmpeg versions aren't likely to get fixed upstream.</p>
+<p><strong>Type hints.</strong> ffmpeg-python was written before type hints were common practice in the Python ecosystem and has none. ffmpeg-studio is fully typed, which means better autocomplete and the ability to catch mistakes with a type checker before runtime rather than after an FFmpeg process fails.</p>
+<h2 id="which-should-you-use">Which should you use?</h2>
+<p>If you're doing simple, well-tested conversions and don't mind writing filter strings by hand, ffmpeg-python's maturity and ubiquity are real advantages. If you're building anything with non-trivial filter graphs — multi-input overlays, mosaics, subtitle/text rendering with unpredictable input, or pipelines you expect to maintain and extend — ffmpeg-studio's composable filter objects, automatic escaping, and type hints will save you time and catch mistakes earlier. Async support and built-in progress tracking are also worth weighing in if your project needs either.</p>
+<p>Both are wrappers around the same underlying FFmpeg binary, so you're not locked into one forever — start with what fits your current project, and see the <a href="/ffmpeg-studio/getting-started/">Getting Started guide</a> if you decide ffmpeg-studio is the better fit.</p>
 
-<p>Convert Input from one format to another</p>
-<div class="language-python highlight"><span class="filename">example/format_conversion.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="sd">Example Convert Input from one format to another without any filter</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">&quot;&quot;&quot;</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">export</span>
-</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">export</span><span class="p">(</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>    <span class="n">InputFile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">),</span>
-</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mkv&quot;</span><span class="p">,</span>
-</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span></code></pre></div>
 
 
 
 
 
 
+  
+  
 
 
 
@@ -1031,44 +1367,6 @@
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../../tutorial/output/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Outputs">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Outputs
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../audio_mixing/" class="md-footer__link md-footer__link--next" aria-label="Next: Audio Mixing">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Audio Mixing
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">

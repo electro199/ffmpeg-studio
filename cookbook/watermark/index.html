@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="How filters work in ffmpeg-studio using apply and apply2, including multi-output filters, and how filter outputs can be chained or exported.">
+        <meta name="description" content="Learn how to add a watermark or logo to a video in Python using ffmpeg-studio. Overlay transparent PNG logos, position them anywhere in the frame, and export high-quality branded videos.">
       
       
         <meta name="author" content="Electro199">
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/advance-usage/advance-usage/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/cookbook/watermark/">
       
       
       
@@ -25,7 +25,7 @@
     
     
       
-        <title>Advanced FFmpeg filter usage - ffmpeg-studio</title>
+        <title>Add a Watermark or Logo to a Video in Python - ffmpeg-studio</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#filters" class="md-skip">
+        <a href="#add-a-watermark-or-logo-to-a-video-in-python" class="md-skip">
           Skip to content
         </a>
       
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Advanced FFmpeg filter usage
+              Add a Watermark or Logo to a Video in Python
             
           </span>
         </div>
@@ -1199,10 +1199,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#usage" class="md-nav__link">
+  <a href="#what-youll-learn" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Usage
+        What you'll learn
       
     </span>
   </a>
@@ -1210,10 +1210,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#prerequisites" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Prerequisites
       
     </span>
   </a>
@@ -1237,67 +1237,255 @@
 
 
 
-<p>Lets see how everything works in ffmpeg-studio</p>
+<h1 id="add-a-watermark-or-logo-to-a-video-in-python">Add a Watermark or Logo to a Video in Python</h1>
+<p>Adding a watermark or logo is one of the most common video editing tasks. Whether you're branding YouTube videos, protecting client previews, adding a company logo, or creating social media content, FFmpeg's powerful <strong>overlay</strong> filter makes the process both fast and efficient.</p>
+<p>In this recipe, you'll learn how to overlay a transparent PNG logo onto a video using <strong>ffmpeg-studio</strong>, a Python interface for FFmpeg. The same approach works for channel branding, preview watermarks, company logos, and other static image overlays.</p>
+<h2 id="what-youll-learn">What you'll learn</h2>
+<p>After completing this guide, you'll know how to:</p>
+<ul>
+<li>Overlay a PNG logo onto a video</li>
+<li>Position a watermark anywhere on the screen</li>
+<li>Resize the logo before applying it</li>
+<li>Preserve the original audio</li>
+<li>Export the final video using H.264</li>
+</ul>
 <hr />
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Install ffmpeg-studio:</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>pip<span class="w"> </span>install<span class="w"> </span>ffmpeg-studio
+</span></code></pre></div>
+<p>You'll also need:</p>
+<ul>
+<li>A video file (<code>.mp4</code>, <code>.mov</code>, <code>.mkv</code>, etc.)</li>
+<li>A logo or watermark image (PNG with transparency is recommended)</li>
+</ul>
+<p>Example files:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>your-video.mp4
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>your-logo.png
+</span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>PNG images support transparency (alpha channel), making them ideal for logos and watermarks. JPEG images do not support transparent backgrounds.</p>
 <hr />
-<h1 id="filters">Filters</h1>
-<p>Filters are way the ffmpeg allow media to be manipulated, ffmpeg-studio use <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply2"><code>apply2</code></a>, apply2 is for multi output filters. Filter output can be exported or further filtered.</p>
-<h2 id="usage">Usage</h2>
-<p>The <a href="/ffmpeg-studio/api/#ffmpeg.filters.apply"><code>apply</code></a> functions take Filter and then the input to be filtered</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">apply</span><span class="p">(</span><span class="n">Filter</span><span class="p">,</span> <span class="n">clip</span><span class="p">)</span>
+<h1 id="step-1-import-the-required-modules">Step 1: Import the required modules</h1>
+<p>Import the classes required to load media files, apply filters, and export the final video.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span><span class="p">,</span> <span class="n">ImageFile</span><span class="p">,</span> <span class="n">VideoFile</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">export</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">Overlay</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">apply</span>
 </span></code></pre></div>
-<h2 id="example">Example</h2>
-<p>Lets make a video logo overlay both scaled.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span><span class="p">,</span> <span class="n">Map</span><span class="p">,</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">VideoFile</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">apply</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Overlay</span>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="s2">&quot;image.png&quot;</span><span class="p">,</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="n">scaled_logo</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">),</span> <span class="n">logo</span><span class="p">)</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="n">video</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>    <span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="p">)</span>
-</span><span id="__span-1-14"><a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-</span><span id="__span-1-15"><a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="n">scaled_video</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">1920</span><span class="p">,</span> <span class="mi">1080</span><span class="p">),</span> <span class="n">video</span><span class="p">)</span>
-</span><span id="__span-1-16"><a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>
-</span><span id="__span-1-17"><a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="n">final_video</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Overlay</span><span class="p">(</span><span class="n">scaled_logo</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span><span class="n">scaled_video</span><span class="p">)</span>
-</span><span id="__span-1-18"><a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-</span><span id="__span-1-19"><a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-</span><span id="__span-1-20"><a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="p">(</span>
-</span><span id="__span-1-21"><a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>    <span class="n">FFmpeg</span><span class="p">()</span>
-</span><span id="__span-1-22"><a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">final_video</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">)</span>
-</span><span id="__span-1-23"><a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span id="__span-1-24"><a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p">)</span>
-</span><span id="__span-1-25"><a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="c1"># Results</span>
-</span><span id="__span-1-26"><a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="c1"># ffmpeg -hide_banner -y -loglevel error -i image.png -i video.mp4 \</span>
-</span><span id="__span-1-27"><a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="c1"># -filter_complex [0]scale=width=200:height=200[n0o0]; \</span>
-</span><span id="__span-1-28"><a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="c1">#                 [1]scale=width=1920:height=1080[n1o0];\</span>
-</span><span id="__span-1-29"><a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="c1">#                 [n1o0][n0o0]overlay=x=0:y=0[n2o0] \</span>
-</span><span id="__span-1-30"><a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="c1">#  -map [n2o0] out.mp4</span>
+<hr />
+<h1 id="step-2-load-the-media-files">Step 2: Load the media files</h1>
+<p>Create file objects for both the video and the watermark image.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">video</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;your-video.mp4&quot;</span><span class="p">)</span>
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">ImageFile</span><span class="p">(</span><span class="s2">&quot;your-logo.png&quot;</span><span class="p">)</span>
 </span></code></pre></div>
-<h1 id="map-flags">Map Flags</h1>
-<p>We also need to set <code>-map</code> flags when exporting like setting fps or bitrate to do that we can set them in <code>Map</code> context.</p>
-<p>Use <code>suffix_flags</code> when a flags requires a suffix like <code>-r:1</code> or <code>-r:v:1</code> otherwise <code>kwargs</code> will catch all normal flags.</p>
-<p>Example with both Mapped and Unmapped stream</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">(</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="n">FFmpeg</span><span class="p">()</span>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="o">.</span><span class="n">output</span><span class="p">(</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>        <span class="n">Map</span><span class="p">(</span>
-</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>            <span class="n">final_video</span><span class="p">,</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>            <span class="n">r</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>  <span class="c1"># normal flag: set frame rate</span>
-</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>            <span class="n">b</span><span class="o">=</span><span class="s2">&quot;2M&quot;</span><span class="p">,</span>  <span class="c1"># normal flag: set bitrate</span>
-</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            <span class="n">suffix_flags</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;r&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">}</span>  <span class="c1"># suffixed flag: set output 0 video stream to 60 fps</span>
-</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        <span class="p">),</span>
-</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>        <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span>
-</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="p">)</span>
-</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    <span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">scaled_logo</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;scaled_logo.png&quot;</span><span class="p">)</span>
-</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="p">)</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+</div>
+<p><code>VideoFile</code> and <code>ImageFile</code> only create references to your media. The files are <strong>not decoded or loaded into memory</strong> until FFmpeg starts processing the export.</p>
+<p>This design allows even very large videos to be processed efficiently without consuming unnecessary RAM.</p>
+<hr />
+<h1 id="step-3-resize-the-logo">Step 3: Resize the logo</h1>
+<p>Watermarks should usually occupy only a small portion of the frame.</p>
+<p>For example, resizing a 2000×2000 logo down to 100×100 pixels keeps it visible without covering important video content.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    <span class="n">Scale</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    <span class="n">logo</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="p">)</span>
 </span></code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+</div>
+<p>Larger isn't always better. A subtle watermark is usually more professional and less distracting.</p>
+<hr />
+<h1 id="step-4-overlay-the-logo">Step 4: Overlay the logo</h1>
+<p>Now place the resized logo onto the video.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">watermarked</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span>
+</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">Overlay</span><span class="p">(</span>
+</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>        <span class="n">logo</span><span class="p">,</span>
+</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>        <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="p">),</span>
+</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="n">video</span>
+</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>This places the logo:</p>
+<ul>
+<li>0 pixels from the left</li>
+<li>10 pixels from the top</li>
+</ul>
+<p>The result is a new video stream containing the watermark.</p>
+<hr />
+<h1 id="common-watermark-positions">Common watermark positions</h1>
+<p>FFmpeg allows positions to be specified using either fixed pixel values or expressions.</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top Left</td>
+<td><code>0</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>Top Right</td>
+<td><code>"main_w-overlay_w"</code></td>
+<td><code>0</code></td>
+</tr>
+<tr>
+<td>Bottom Left</td>
+<td><code>0</code></td>
+<td><code>"main_h-overlay_h"</code></td>
+</tr>
+<tr>
+<td>Bottom Right</td>
+<td><code>"main_w-overlay_w"</code></td>
+<td><code>"main_h-overlay_h"</code></td>
+</tr>
+<tr>
+<td>Center</td>
+<td><code>"(main_w-overlay_w)/2"</code></td>
+<td><code>"(main_h-overlay_h)/2"</code></td>
+</tr>
+</tbody>
+</table>
+<p>For a small margin from the edge:</p>
+<table>
+<thead>
+<tr>
+<th>Position</th>
+<th>x</th>
+<th>y</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Top Right</td>
+<td><code>"main_w-overlay_w-20"</code></td>
+<td><code>20</code></td>
+</tr>
+<tr>
+<td>Bottom Right</td>
+<td><code>"main_w-overlay_w-20"</code></td>
+<td><code>"main_h-overlay_h-20"</code></td>
+</tr>
+<tr>
+<td>Bottom Left</td>
+<td><code>20</code></td>
+<td><code>"main_h-overlay_h-20"</code></td>
+</tr>
+</tbody>
+</table>
+<p>These expressions automatically adapt to videos of different resolutions.</p>
+<hr />
+<h1 id="step-5-export-the-final-video">Step 5: Export the final video</h1>
+<p>Finally, export the processed video.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">export</span><span class="p">(</span>
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>    <span class="n">watermarked</span><span class="p">,</span>
+</span><span id="__span-6-3"><a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">,</span>
+</span><span id="__span-6-4"><a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></div>
+<p>Your output video will contain the original video with the watermark permanently embedded.</p>
+<hr />
+<h1 id="complete-example">Complete example</h1>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">ImageFile</span><span class="p">,</span> <span class="n">VideoFile</span><span class="p">,</span> <span class="n">export</span>
+</span><span id="__span-7-2"><a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">Overlay</span><span class="p">,</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">apply</span>
+</span><span id="__span-7-3"><a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+</span><span id="__span-7-4"><a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="n">video</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;your-video.mp4&quot;</span><span class="p">)</span>
+</span><span id="__span-7-5"><a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">ImageFile</span><span class="p">(</span><span class="s2">&quot;your-logo.png&quot;</span><span class="p">)</span>
+</span><span id="__span-7-6"><a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
+</span><span id="__span-7-7"><a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span>
+</span><span id="__span-7-8"><a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">Scale</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+</span><span id="__span-7-9"><a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>    <span class="n">logo</span>
+</span><span id="__span-7-10"><a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="p">)</span>
+</span><span id="__span-7-11"><a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
+</span><span id="__span-7-12"><a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="n">watermarked</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span>
+</span><span id="__span-7-13"><a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>    <span class="n">Overlay</span><span class="p">(</span>
+</span><span id="__span-7-14"><a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="n">logo</span><span class="p">,</span>
+</span><span id="__span-7-15"><a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>        <span class="n">x</span><span class="o">=</span><span class="s2">&quot;main_w-overlay_w-20&quot;</span><span class="p">,</span>
+</span><span id="__span-7-16"><a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>        <span class="n">y</span><span class="o">=</span><span class="s2">&quot;main_h-overlay_h-20&quot;</span><span class="p">,</span>
+</span><span id="__span-7-17"><a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>    <span class="p">),</span>
+</span><span id="__span-7-18"><a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>    <span class="n">video</span>
+</span><span id="__span-7-19"><a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="p">)</span>
+</span><span id="__span-7-20"><a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
+</span><span id="__span-7-21"><a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="n">export</span><span class="p">(</span>
+</span><span id="__span-7-22"><a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>    <span class="n">watermarked</span><span class="p">,</span>
+</span><span id="__span-7-23"><a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">,</span>
+</span><span id="__span-7-24"><a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span></code></pre></div>
+<hr />
+<h1 id="how-it-works">How it works</h1>
+<p>Internally, ffmpeg-studio generates an FFmpeg <strong>filter graph</strong> using the <code>overlay</code> filter.</p>
+<p>The processing pipeline is:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>Video
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>      \
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>       Overlay Filter → Output Video
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>      /
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>Logo
+</span></code></pre></div>
+<p>The overlay filter combines two video streams:</p>
+<ol>
+<li>The main video.</li>
+<li>The watermark image.</li>
+</ol>
+<p>Each frame of the video receives the logo at the specified coordinates before being encoded into the output file.</p>
+<p>Because the watermark is applied during encoding, there is no need to manually edit every frame.</p>
+<hr />
+<h1 id="tips-for-better-watermarks">Tips for better watermarks</h1>
+<ul>
+<li>Use a transparent PNG for cleaner results.</li>
+<li>Leave a 10–30 pixel margin from the edges.</li>
+<li>Resize large logos before overlaying.</li>
+<li>Avoid covering subtitles or important content.</li>
+<li>Use high-resolution logos to prevent blurry scaling.</li>
+<li>Keep branding subtle—large opaque logos can distract viewers.</li>
+</ul>
+<hr />
+<h1 id="troubleshooting">Troubleshooting</h1>
+<h3 id="my-logo-appears-too-large">My logo appears too large</h3>
+<p>Reduce the size using the <code>Scale</code> filter.</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="n">Scale</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+</span></code></pre></div>
+<hr />
+<h3 id="my-watermark-has-a-white-background">My watermark has a white background</h3>
+<p>You're probably using a JPEG image.</p>
+<p>Use a PNG with transparency instead.</p>
+<hr />
+<h3 id="the-logo-is-partially-outside-the-video">The logo is partially outside the video</h3>
+<p>Check your <code>x</code> and <code>y</code> coordinates.</p>
+<p>Using expressions such as:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>main_w-overlay_w-20
+</span></code></pre></div>
+<p>automatically keeps the watermark inside the frame.</p>
+<hr />
+<h3 id="the-image-looks-blurry">The image looks blurry</h3>
+<p>Start with a higher-resolution logo and scale it down rather than enlarging a small image.</p>
+<hr />
+<h1 id="next-steps">Next steps</h1>
+<p>Now that you've learned how to overlay a static logo, you can explore more advanced compositing techniques:</p>
+<ul>
+<li>Overlay multiple logos or images</li>
+<li>Animate a watermark using timeline expressions</li>
+<li>Fade a logo in or out</li>
+<li>Add text overlays</li>
+<li>Overlay videos instead of images</li>
+<li>Create picture-in-picture effects</li>
+</ul>
+<hr />
+<h1 id="related-recipes">Related recipes</h1>
+<ul>
+<li>Resize a video in Python</li>
+<li>Add subtitles to a video</li>
+<li>Overlay one video on another</li>
+<li>Crop a video</li>
+<li>Blur a region of a video</li>
+<li>Add text to a video</li>
+</ul>
 
 
 
