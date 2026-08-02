@@ -28,7 +28,7 @@ import logging
 logger = logging.getLogger("ffmpeg")
 
 
-__version__ = "0.1.2"
+__version__ = "0.1.4"
 
 __all__ = [
     "InputFile",
