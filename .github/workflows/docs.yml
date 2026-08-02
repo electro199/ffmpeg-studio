@@ -4,7 +4,7 @@ name: Deploy MkDocs Documentation
 on:
   release:
     types: [published]  # Only run when a release is published
-
+  workflow_dispatch:  
 permissions:
   contents: write  # required to deploy to GitHub Pages
 
