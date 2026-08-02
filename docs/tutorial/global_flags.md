@@ -1,3 +1,8 @@
+---
+title: Set global FFmpeg flags
+description: How to configure runtime-wide FFmpeg flags such as hardware acceleration (CUDA, D3D11) and other custom options using ffmpeg-studio's add_global_flag.
+---
+
 # Global flags
 
 Global flags are used change settings for whole runtime, you can use `add_global_flag` to set custom flags, These flags are automatic added duration command generation in `FFmpeg.compile()`:

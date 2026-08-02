@@ -1,3 +1,8 @@
+---
+title: Working with video input files
+description: How to create and configure video inputs with InputFile and VideoFile in ffmpeg-studio, including subclipping, image-as-video inputs, and stream access.
+---
+
 # Input
 
 The ffmpeg takes input in `[-key value -i path]`, ffmpeg-studio will make a input with `InputFile` or `VideoFile`. Both of them are does same thing but with VideoFile it comes with addition features like:

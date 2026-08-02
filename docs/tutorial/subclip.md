@@ -1,10 +1,15 @@
+---
+title: Trim and subclip video/audio
+description: How to extract a portion of a media file by seeking to a start and end time using ffmpeg-studio's subclip method, without modifying the original file.
+---
+
 # Subclip
 
-FFmpeg supports extracting a portion of a media file - a *subclip* - by seeking to a start time and optionally stopping at an end time. In `ffmpeg-studio` you can do the same from your high-level classes:
+FFmpeg supports extracting a portion of a media file - a _subclip_ - by seeking to a start time and optionally stopping at an duration. In `ffmpeg-studio` you can do the same from your high-level classes:
 
 ```python
-VideoFile("path/to/video.mp4").subclip(start, end)
-AudioFile("path/to/audio.mp3").subclip(start, end)
+VideoFile("path/to/video.mp4").subclip(start, duration)
+AudioFile("path/to/audio.mp3").subclip(start, duration)
 ```
 
 ## Under The Hood
@@ -15,20 +20,20 @@ AudioFile("path/to/audio.mp3").subclip(start, end)
 
 ## Examples
 
-### Example - Python API
+Make a subclip starting from 5s and 15s duration after the starting point
 
 ```python
 from ffmpeg import VideoFile, export
 
-# take 5..15 seconds of the video
 sub = VideoFile("demo.mp4").subclip(5, 15)
 export(sub, path="demo_subclip.mp4").run()
 ```
 
+Make a subclip starting from 1 minute and keep 2min duration after the starting point
+
 ```python
 from ffmpeg import AudioFile, export
 
-# take from 1:00 to 2:00 of the audio
 sub_audio = AudioFile("podcast.mp3").subclip(60, 120)
 export(sub_audio, path="podcast_part.mp3").run()
 ```

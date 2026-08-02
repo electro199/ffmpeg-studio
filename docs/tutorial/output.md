@@ -1,3 +1,8 @@
+---
+title: Configure FFmpeg outputs
+description: How to define output files, stream mapping, and per-output encoding options when exporting media with ffmpeg-studio.
+---
+
 # Outputs
 
 Outputs in **ffmpeg-studio** define where and how your processed media is exported.

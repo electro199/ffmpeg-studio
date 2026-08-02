@@ -1,3 +1,8 @@
+---
+title: Iterate over media streams
+description: How to loop over every stream in a media file using ffprobe-backed StreamSpecifier objects in ffmpeg-studio, instead of hardcoding stream indices.
+---
+
 # Iterating Video Streams
 
 Working with media files often requires knowing exactly what streams are inside: multiple audio tracks, subtitles, or attachments. Instead of guessing or hardcoding stream indices, you can iterate over them directly.

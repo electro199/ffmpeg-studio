@@ -1,3 +1,8 @@
+---
+title: Understanding FFmpeg command structure
+description: How FFmpeg command structure works — input, filter, and map flags, flag ordering, and why position matters — as background for building commands with ffmpeg-studio.
+---
+
 ## FFMPEG command structure
 The FFmpeg have very complex command structure the position of flags can effect the output come. The command is mainly consist of input which can be be media (file/link on internet/or any supported protocol that ffmpeg supports), then optional filter flag that tell how input should be manipulated then map flag to set which stream should be used in output either the input file and/or the modified stream the is generated after filtering
 

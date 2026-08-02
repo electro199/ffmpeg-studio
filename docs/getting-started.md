@@ -17,16 +17,17 @@ In most cases, you will want to transform a file, and ffmpeg-studio provides spe
 
 Available classes for taking media are:
 
-| Class              | Purpose                                                                   | Typical Use Case                                                           |
-| ------------------ | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| [**`VideoFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile)    | Video-specific input with helpers for trimming, resolution, and metadata. | Cutting video segments, accessing video/audio streams.                     |
-| [**`AudioFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudioFile)    | Audio-only input with specialized handling for audio streams.             | Audio extraction, mixing, replacing tracks.                                |
-| [**`ImageFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile)    | Static image input.                                                       | Overlays, slideshows, or looping images as video.                          |
+| Class                                                                                 | Purpose                                                                   | Typical Use Case                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| [**`VideoFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile)       | Video-specific input with helpers for trimming, resolution, and metadata. | Cutting video segments, accessing video/audio streams.                     |
+| [**`AudioFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudioFile)       | Audio-only input with specialized handling for audio streams.             | Audio extraction, mixing, replacing tracks.                                |
+| [**`ImageFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile)       | Static image input.                                                       | Overlays, slideshows, or looping images as video.                          |
 | [**`VirtualVideo`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VirtualVideo) | Synthetic video sources using FFmpeg's built-in generators.               | Test patterns, color fills, gradients, fractals, programmatic backgrounds. |
-| [**`InputFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile)    | Generic input for any media file or URL supported by FFmpeg.              | Flexible option when no specialized class fits.                            |
+| [**`InputFile`**](/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile)       | Generic input for any media file or URL supported by FFmpeg.              | Flexible option when no specialized class fits.                            |
+
 ### Define input
 
-Define  Input object like below this will make a object with path to the video.
+Define Input object like below this will make a object with path to the video.
 This will not check if path is valid or not.
 
 ```python
@@ -37,9 +38,6 @@ clip = VideoFile("video.mp4")
 clip = clip.subclip(1, 10)
 
 ```
-
-
-
 
 Different ways input can be handled based on usecase
 
@@ -74,13 +72,13 @@ clip_scaled = apply(Scale(1000, 1000), clip)
 ```
 
 !!! Warning
-    Filters contain parent info they are not independent, do not reuse them in more then one apply function.
-    If you want to reuse them create new instance with same arguments.
+Filters contain parent info they are not independent, do not reuse them in more then one apply function.
+If you want to reuse them create new instance with same arguments.
 
 ## Export
+
 For straightforward exporting, ffmpeg-studio provides a convenient [`export`](/ffmpeg-studio/api_reference/api/#ffmpeg.ffmpeg.export) function.
 This allows you to quickly export a single output file containing one or more streams.
-
 
 Combine audio and video from files and output them to a single file.
 

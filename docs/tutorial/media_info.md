@@ -1,3 +1,8 @@
+---
+title: Read media duration and size
+description: How to query a media file's duration and dimensions using ffmpeg-studio's ffprobe-backed helper methods, without manually parsing JSON output.
+---
+
 # Duration & Size
 
 Many inputs in `ffmpeg-studio` expose convenience methods to quickly inspect common properties like **duration** and **size**. These are thin wrappers around `ffprobe`, so you don’t need to manually parse JSON output.
