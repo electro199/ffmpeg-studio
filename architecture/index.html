@@ -6,19 +6,19 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Learn the basics of using ffmpeg-studio in Python for FFmpeg input handling, filter graphs, and media export.">
+        <meta name="description" content="Pythonic FFmpeg tools for video editing, audio mixing, subtitles, filters, and media automation in Python.">
       
       
         <meta name="author" content="Electro199">
       
       
-        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/getting-started/">
+        <link rel="canonical" href="https://electro199.github.io/ffmpeg-studio/architecture/">
       
       
-        <link rel="prev" href="../installation/">
+        <link rel="prev" href="../basics/">
       
       
-        <link rel="next" href="../basics/">
+        <link rel="next" href="../FAQ/">
       
       
         
@@ -29,7 +29,7 @@
     
     
       
-        <title>Getting started with ffmpeg-studio - ffmpeg-studio</title>
+        <title>Architecture - ffmpeg-studio</title>
       
     
     
@@ -86,7 +86,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#getting-started" class="md-skip">
+        <a href="#architecture" class="md-skip">
           Skip to content
         </a>
       
@@ -122,7 +122,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Getting started with ffmpeg-studio
+              Architecture
             
           </span>
         </div>
@@ -295,37 +295,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Getting Started
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -341,87 +314,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#input" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Input
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Input">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#define-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Define input
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Filters
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#export" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Export
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Example
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -457,10 +349,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../architecture/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -476,6 +395,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Mental model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-graph" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Building the graph
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#compiling-graph-cli-arguments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Compiling: graph → CLI arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-process-execution-and-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running: process execution and progress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting interfaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extending-the-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extending the library
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1310,38 +1337,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#input" class="md-nav__link">
+  <a href="#mental-model" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Input
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Input">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#define-input" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Define input
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#filters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Filters
+        Mental model
       
     </span>
   </a>
@@ -1349,10 +1348,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#export" class="md-nav__link">
+  <a href="#building-the-graph" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Export
+        Building the graph
       
     </span>
   </a>
@@ -1360,10 +1359,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#example" class="md-nav__link">
+  <a href="#compiling-graph-cli-arguments" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Example
+        Compiling: graph → CLI arguments
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-process-execution-and-progress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running: process execution and progress
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supporting-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supporting interfaces
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Error handling
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extending-the-library" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Extending the library
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See also
       
     </span>
   </a>
@@ -1387,164 +1441,136 @@
 
 
 
-<h1 id="getting-started">Getting Started</h1>
-<p>Getting started with ffmpeg-studio is straightforward. The library is organized around three core steps for most Python FFmpeg workflows:</p>
-<ul>
-<li>Input: handle video, audio, image, and other media sources with dedicated classes</li>
-<li>Filters: apply transformations such as scaling, cropping, overlays, and subtitles</li>
-<li>Export: render the processed streams to a final output file</li>
-</ul>
-<h2 id="input">Input</h2>
-<p>In most cases, you will want to transform a file, and ffmpeg-studio provides specialized classes to make input handling clear, consistent, and easy to reuse.</p>
-<p>Available classes for taking media are:</p>
+<h1 id="architecture">Architecture</h1>
+<p>This page explains how <code>ffmpeg-studio</code> represents an FFmpeg pipeline internally, how data flows from the objects you build in Python to the actual <code>ffmpeg</code> process, and how the library's pieces interface with each other. It's aimed at contributors and advanced users who want to extend the library (new filters, new input types) or just understand what <code>.run()</code> is doing under the hood.</p>
+<h2 id="mental-model">Mental model</h2>
+<p>FFmpeg itself takes a flat CLI invocation (<code>-i</code>, <code>-filter_complex</code>, <code>-map</code>, output flags), but pipelines are naturally a <strong>graph</strong>: inputs feed filters, filters feed other filters, and everything eventually gets mapped to one or more outputs.</p>
+<p><code>ffmpeg-studio</code> lets you build that graph as plain Python objects, then compiles it into the flat CLI form FFmpeg expects only at the last moment. There is no persistent <code>Graph</code> class — the graph is implicit in back-references between nodes, and it is walked and flattened lazily by <code>FFmpeg.compile()</code>.</p>
+<p>Three kinds of node make up the graph:</p>
 <table>
 <thead>
 <tr>
+<th>Node type</th>
 <th>Class</th>
-<th>Purpose</th>
-<th>Typical Use Case</th>
+<th>Represents</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VideoFile"><strong><code>VideoFile</code></strong></a></td>
-<td>Video-specific input with helpers for trimming, resolution, and metadata.</td>
-<td>Cutting video segments, accessing video/audio streams.</td>
+<td>Source</td>
+<td><code>BaseInput</code> (<code>VideoFile</code>, <code>ImageFile</code>, <code>AudioFile</code>, <code>InputFile</code>, <code>VirtualVideo</code>)</td>
+<td>A <code>-i</code> input, or a synthetic source (e.g. <code>lavfi</code>)</td>
 </tr>
 <tr>
-<td><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.AudioFile"><strong><code>AudioFile</code></strong></a></td>
-<td>Audio-only input with specialized handling for audio streams.</td>
-<td>Audio extraction, mixing, replacing tracks.</td>
+<td>Transform</td>
+<td><code>BaseFilter</code> (<code>Scale</code>, <code>Overlay</code>, <code>Concat</code>, <code>Split</code>, …)</td>
+<td>One <code>-filter_complex</code> node</td>
 </tr>
 <tr>
-<td><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.ImageFile"><strong><code>ImageFile</code></strong></a></td>
-<td>Static image input.</td>
-<td>Overlays, slideshows, or looping images as video.</td>
+<td>Handle</td>
+<td><code>StreamSpecifier</code></td>
+<td>A typed pointer to one output of a source or filter (e.g. "the audio stream of this input", "the second output of this split")</td>
 </tr>
 <tr>
-<td><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.VirtualVideo"><strong><code>VirtualVideo</code></strong></a></td>
-<td>Synthetic video sources using FFmpeg's built-in generators.</td>
-<td>Test patterns, color fills, gradients, fractals, programmatic backgrounds.</td>
-</tr>
-<tr>
-<td><a href="/ffmpeg-studio/api_reference/inputs/#ffmpeg.inputs.InputFile"><strong><code>InputFile</code></strong></a></td>
-<td>Generic input for any media file or URL supported by FFmpeg.</td>
-<td>Flexible option when no specialized class fits.</td>
+<td>Sink</td>
+<td><code>Map</code> / <code>OutFile</code></td>
+<td>Where a node in the graph exits: <code>Map</code> binds one node (input or <code>StreamSpecifier</code>) to a <code>-map</code>, with its own per-stream flags (codec, metadata); <code>OutFile</code> groups one or more <code>Map</code>s under a single output path and output-level flags (<code>crf</code>, container options, …)</td>
 </tr>
 </tbody>
 </table>
-<h3 id="define-input">Define input</h3>
-<p>Define Input object like below this will make a object with path to the video.
-This will not check if path is valid or not.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoFile</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<p>You never build the CLI string yourself — you wire nodes together with plain function calls, and <code>FFmpeg</code> does the topological flattening and argument rendering when you call <code>.compile()</code> or <code>.run()</code>.</p>
+<h2 id="building-the-graph">Building the graph</h2>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">apply</span><span class="p">,</span> <span class="n">FFmpeg</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scale</span><span class="p">,</span> <span class="n">Overlay</span>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">subclip</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="n">bg</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;bg.mp4&quot;</span><span class="p">)</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="n">logo</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;logo.png&quot;</span><span class="p">))</span>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="n">composited</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Overlay</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span> <span class="n">bg</span><span class="p">,</span> <span class="n">logo</span><span class="p">)</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="n">FFmpeg</span><span class="p">()</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">composited</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span></code></pre></div>
-<p>Different ways input can be handled based on usecase</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">InputFile</span><span class="p">,</span> <span class="n">FileInputOptions</span><span class="p">,</span> <span class="n">VideoFile</span>
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># if you know flags</span>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span> <span class="n">ss</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># same but easy usage with limited flags</span>
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">,</span> <span class="n">FileInputOptions</span><span class="p">(</span><span class="n">start_time</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># same with VideoFile easiest</span>
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">subclip</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
-</span><span id="__span-1-11"><a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-</span><span id="__span-1-12"><a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="c1"># Results</span>
-</span><span id="__span-1-13"><a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># [&#39;-t&#39;, &#39;10&#39;, &#39;-ss&#39;, &#39;1&#39;, &#39;-i&#39;, &#39;video.mp4&#39;]</span>
-</span></code></pre></div>
-<h2 id="filters">Filters</h2>
-<p>A Filter is a component used to process and transform the input or its stream i.e audio from a video.</p>
-<p>This library extensively handles filters with built classes.
-filters can be used with <a href="/ffmpeg-studio/api_reference/api/#ffmpeg.filters.apply"><code>apply</code></a> or <a href="/ffmpeg-studio/api_reference/api/#ffmpeg.filters.apply2"><code>apply2</code></a>,
-apply2 is for multi output filters like Split and Concat.
-apply function make new output node in filter graph to be used in filter again or to be written in to output file while maintaining source.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;image.png&quot;</span><span class="p">)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">clip_scaled</span> <span class="o">=</span> <span class="n">apply</span><span class="p">(</span><span class="n">Scale</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">clip</span><span class="p">)</span>
-</span></code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-</div>
-<p>Filters contain parent info they are not independent, do not reuse them in more then one apply function.
-If you want to reuse them create new instance with same arguments.</p>
-<h2 id="export">Export</h2>
-<p>For straightforward exporting, ffmpeg-studio provides a convenient <a href="/ffmpeg-studio/api_reference/api/#ffmpeg.ffmpeg.export"><code>export</code></a> function.
-This allows you to quickly export a single output file containing one or more streams.</p>
-<p>Combine audio and video from files and output them to a single file.</p>
-<p>This code extracts the <strong>video</strong> from video 1 and the <strong>audio</strong> from video 2, then exports them into a single output file <code>out.mp4</code>.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoFile</span><span class="p">,</span> <span class="n">export</span>
-</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
-</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">export</span><span class="p">(</span>
-</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>    <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video1.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">video</span><span class="p">,</span>  <span class="c1"># Video stream from video.mp4</span>
-</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>    <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video2.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">audio</span><span class="p">,</span>  <span class="c1"># Audio stream(s) from video1.mp4</span>
-</span><span id="__span-3-6"><a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">,</span>  <span class="c1"># Output path</span>
-</span><span id="__span-3-7"><a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span id="__span-3-8"><a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-</span><span id="__span-3-9"><a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># ffmpeg ... -i video1.mp4 -i video2.mp4 -map 0:v -map 1:a out.mp4</span>
-</span></code></pre></div>
-<p>For more complex scenarios where you need to map multiple streams or have more control over the output, you can use the <code>Map</code> class and set settings such as bitrate or fps along with the <code>FFmpeg</code> class directly.</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.inputs</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoFile</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span><span class="p">,</span> <span class="n">Map</span>
-</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="n">FFmpeg</span><span class="p">()</span><span class="o">.</span><span class="n">output</span><span class="p">(</span>
-</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>    <span class="c1"># Map video stream from video.mp4 with fps 30</span>
-</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>    <span class="n">Map</span><span class="p">(</span><span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video1.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">video</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
-</span><span id="__span-4-7"><a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    <span class="c1"># Map(automatically added)  qaudio stream from video 2.</span>
-</span><span id="__span-4-8"><a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>    <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video2.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">audio</span><span class="p">,</span>
-</span><span id="__span-4-9"><a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">,</span>  <span class="c1"># Output path</span>
-</span><span id="__span-4-10"><a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span id="__span-4-11"><a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># ffmpeg ... -i video1.mp4 -i video2.mp4 -map 0:v -r 30 -map 1:a out.mp4</span>
-</span></code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>This method provides a more <strong>explicit</strong> control flow where each stream is mapped individually. you can provide flags for <code>-map</code> context with both stream suffixed flag or without.</p>
-</div>
-<hr />
-<h2 id="example">Example</h2>
-<p>Lets make a video from a image with audio with</p>
-<div class="language-py highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">FFmpeg</span>
-</span><span id="__span-5-2"><a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.inputs</span><span class="w"> </span><span class="kn">import</span> <span class="n">FileInputOptions</span><span class="p">,</span> <span class="n">InputFile</span>
-</span><span id="__span-5-3"><a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.models.output</span><span class="w"> </span><span class="kn">import</span> <span class="n">Map</span>
-</span><span id="__span-5-4"><a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-</span><span id="__span-5-5"><a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># set options</span>
-</span><span id="__span-5-6"><a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span>
-</span><span id="__span-5-7"><a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>    <span class="s2">&quot;image.png&quot;</span><span class="p">,</span>
-</span><span id="__span-5-8"><a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>    <span class="n">FileInputOptions</span><span class="p">(</span><span class="n">loop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">frame_rate</span><span class="o">=</span><span class="mi">60</span><span class="p">),</span>
-</span><span id="__span-5-9"><a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="p">)</span>
-</span><span id="__span-5-10"><a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="n">audio</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span>
-</span><span id="__span-5-11"><a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="s2">&quot;audio.mp3&quot;</span><span class="p">,</span>
-</span><span id="__span-5-12"><a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">FileInputOptions</span><span class="p">(</span><span class="n">duration</span><span class="o">=</span><span class="mi">5</span><span class="p">),</span>
-</span><span id="__span-5-13"><a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="p">)</span>
-</span><span id="__span-5-14"><a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>
-</span><span id="__span-5-15"><a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="c1"># run command</span>
-</span><span id="__span-5-16"><a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="n">ffmpeg</span> <span class="o">=</span> <span class="p">(</span>
-</span><span id="__span-5-17"><a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="n">FFmpeg</span><span class="p">()</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="n">audio</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
-</span><span id="__span-5-18"><a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="p">)</span>
-</span><span id="__span-5-19"><a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>
-</span><span id="__span-5-20"><a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="c1"># ffmpeg ... -t 5 -r 60 -loop 1 -i image.png -t 5 -i audio.mp3 -map 0 -map 1 out.mp4</span>
-</span></code></pre></div>
-<p>Here we are using <code>InputFile</code> it is for generic input which are support by FFmpeg like path or url in combination with <code>FileInputOptions</code>
-this provide useful flags that are applied to input in ffmpeg command.</p>
-<p>The above code is easy to understand which works like:</p>
 <ul>
-<li><code>loop=True</code> will make a infinite loop</li>
-<li>we set a <code>duration</code> so infinite loop can end</li>
-<li>then set <code>frame_rate</code> at 60</li>
+<li><strong>Inputs</strong> (<code>BaseInput</code> subclasses) wrap a source file/path and its input-side flags (<code>-ss</code>, <code>-t</code>, etc). <code>_get_outputs()</code> gives you a <code>StreamSpecifier</code> pointing at that input.</li>
+<li><strong>Filters</strong> are plain <code>BaseFilter</code> instances holding their own flags (e.g. <code>Scale(100, 100)</code>). They aren't wired to anything until you connect them.</li>
+<li><strong><code>apply(filter_obj, *parents) -&gt; StreamSpecifier</code></strong> registers <code>parents</code> as the filter's inputs and returns a handle to its single output. <strong><code>apply2(...) -&gt; list[StreamSpecifier]</code></strong> does the same for filters with multiple outputs (<code>Split</code>, <code>Concat</code>).</li>
+<li>Each <code>BaseFilter</code> instance can only be wired once — calling <code>apply</code>/<code>apply2</code> twice on the same filter object raises, preventing accidental graph reuse.</li>
+<li>Because <code>apply()</code> returns a <code>StreamSpecifier</code>, chaining filters is just passing that return value as the parent of the next <code>apply()</code> call — the graph is built functionally, not by mutating a shared object.</li>
 </ul>
-<p>At end we make a <code>FFmpeg()</code> and add a output with two stream mapping. The <code>Map</code> add stream(s) to a output file in this way we can add multiple streams to one output.</p>
+<p><code>Map</code> and <code>OutFile</code> (in <code>ffmpeg.output</code>) sit at the edge of the graph: a <code>Map</code> wraps a node (input or <code>StreamSpecifier</code>) plus per-stream output flags (codec, metadata); an <code>OutFile</code> wraps one or more <code>Map</code>s plus a destination path and output-level flags (<code>crf</code>, container options, …). <code>FFmpeg.output(*maps, path=..., **kwargs)</code> is the entry point that creates these and attaches them to the builder.</p>
+<p>Some filters (<code>scale</code> is the extreme case) expose dozens of optional FFmpeg parameters. Rather than one constructor with dozens of keyword arguments, filters like <code>Scale</code> accept the common ones in <code>__init__</code> and expose the rest as chainable <code>set_*</code>/<code>reset_*</code> methods that mutate <code>self.flags</code> and <code>return self</code>:</p>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.filters</span><span class="w"> </span><span class="kn">import</span> <span class="n">Scale</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+</span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">scale</span> <span class="o">=</span> <span class="p">(</span>
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="n">Scale</span><span class="p">(</span><span class="mi">1280</span><span class="p">,</span> <span class="mi">720</span><span class="p">)</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="o">.</span><span class="n">set_eval</span><span class="p">(</span><span class="n">EvalMode</span><span class="o">.</span><span class="n">INIT</span><span class="p">)</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="o">.</span><span class="n">set_interlacing</span><span class="p">(</span><span class="n">InterlacingMode</span><span class="o">.</span><span class="n">ON</span><span class="p">)</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>    <span class="o">.</span><span class="n">set_force_divisible_by</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="p">)</span>
+</span></code></pre></div>
+<p>This keeps the common case (<code>Scale(w, h)</code>) simple while still allowing every rarely-used FFmpeg option to be set without an unwieldy constructor signature, and reads close to the filter's own documentation (one call per option).</p>
+<p>FFmpeg's <code>enable</code> option — an expression like <code>between(t\,2\,5)</code> that turns a filter on/off based on the current timestamp — is generic: it applies uniformly to any filter that supports timeline editing (<code>Text</code>/<code>drawtext</code>, <code>Overlay</code>, and others), not to one specific filter's domain logic. So instead of living on <code>BaseFilter</code> itself (which would imply every filter supports <code>enable</code>, and it doesn't), <code>enable_between</code>/<code>enable_after</code>/<code>enable_before</code> are implemented once as <code>TimelineEditingMixin</code> (<code>ffmpeg/filters/mixins/enable.py</code>) and mixed into whichever filters support it (e.g. <code>class Text(BaseFilter, TimelineEditingMixin)</code>). The mixin only assumes <code>self.flags: dict</code> exists, so it composes with any filter without needing to know that filter's other options.</p>
+<h2 id="compiling-graph-cli-arguments">Compiling: graph → CLI arguments</h2>
+<p><code>FFmpeg</code> (<code>ffmpeg/ffmpeg.py</code>) accumulates build state as you call <code>.output()</code>:</p>
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>_inputs: list[BaseInput]
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>_filter_nodes: list[BaseFilter]
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>_outputs: list[OutFile]
+</span></code></pre></div>
+<p>Calling <code>.compile()</code> does the actual translation:</p>
+<ol>
+<li><strong>Flatten each output's graph.</strong> For every <code>Map</code> in every <code>OutFile</code>, <code>_flatten_graph()</code> walks backward from the mapped node through <code>parent_nodes</code> (a DFS over filters, resolving <code>StreamSpecifier.parent</code> as it goes), collecting the <code>BaseFilter</code> ancestors in dependency order and auto-registering any <code>BaseInput</code>s it discovers along the way.</li>
+<li><strong>Render filter nodes.</strong> Each filter renders itself as <code>name=k=v:k=v</code>, and its parents/outputs are rendered as bracketed link names (<code>[n{filter_index}o{output_index}]</code>). These are joined with <code>;</code> into a single <code>-filter_complex</code> string by default. Very large graphs can exceed OS/shell command-length limits as one argument — passing <code>use_filter_file=True</code> (and optionally <code>filter_script_file=...</code>) to <code>FFmpeg(...)</code> writes the same string to a file instead and swaps <code>-filter_complex "..."</code> for <code>-filter_complex_script &lt;path&gt;</code> in the compiled command; nothing else about graph-building changes, it's purely a transport decision made at compile time.</li>
+<li><strong>Render inputs.</strong> Each <code>BaseInput</code> contributes its own <code>-i</code> flags in registration order — this is what fixes each input's numeric index for <code>-map</code>.</li>
+<li><strong>Render <code>-map</code> / output flags.</strong> Each <code>Map</code> resolves its node to either a raw input index (<code>0:v</code>) or a filter-graph link name, plus any per-stream flags (<code>-c:v</code>, metadata). Each <code>OutFile</code> appends its own kv-flags, metadata, and destination path.</li>
+</ol>
+<p>The result is a plain list of CLI arguments — <code>FFmpeg.compile()</code> returns exactly what you'd type at a terminal. <code>-filter_complex</code> is only emitted if the pipeline actually contains filters; a filter-free input→output copy compiles to a minimal <code>-i ... -map ... out.mp4</code>.</p>
+<p>Calling <code>.compile()</code> twice, or inspecting <code>draw_filter_graph()</code> (see below), doesn't mutate your original filter objects in a way that breaks a later <code>.run()</code> — but note that <code>_inputs</code>/<code>_filter_nodes</code> are populated as a side effect of flattening, so <code>compile()</code> is not purely read-only against the <code>FFmpeg</code> instance itself (this is also why <code>draw_filter_graph</code> re-runs <code>_build_filter</code> to regenerate the same state for visualization).</p>
+<p>FFmpeg is strict about wiring: every filter output it creates must be consumed by something, and every filter input must come from a real, previously-defined link — an unreferenced pad or a dangling link name is a hard error, not a warning. Building the <code>-filter_complex</code> string by hand is exactly where this bites people (typo a link name, forget to map an output, leave a filter half-wired). Flattening from the mapped outputs backward avoids this class of error by construction: because <code>_flatten_graph()</code> starts from what's actually <strong>mapped</strong> and walks backward through <code>parent_nodes</code>, only filters that are genuine ancestors of a mapped output ever get emitted. A <code>BaseFilter</code> you construct but never <code>apply()</code> into a mapped chain simply never appears in the compiled command, and link names (<code>n{idx}o{idx}</code>) are assigned during the same walk that emits the filter rather than typed by hand — so the filter definitions and the links between them can't drift out of sync the way handwritten <code>-filter_complex</code> strings do.</p>
+<p>Rendering itself is also deliberately decentralized: every node — <code>BaseInput</code>, <code>BaseFilter</code>, <code>Map</code>, <code>OutFile</code> — owns its own <code>_build_*</code> method that turns its state into CLI arguments, rather than <code>FFmpeg</code> centrally knowing how to render every possible filter or input. <code>FFmpeg.compile()</code> only orchestrates <em>when</em> each node renders and how the pieces link together; it stays ignorant of what's inside any given filter's syntax. This matters because FFmpeg's filters don't share one uniform grammar — most are simple <code>key=value:key=value</code> pairs, but some have their own quoting/escaping rules (<code>drawtext</code>'s <code>text=</code>/<code>fontfile=</code>, see below), positional-only syntax, or nested expression languages. Keeping rendering on each node means a filter with unusual syntax can special-case itself without <code>FFmpeg</code> needing a growing pile of <code>if filter_name == ...</code> branches — adding a new filter is adding a new self-contained class, not patching the compiler.</p>
+<p>Two helpers, <code>build_flags</code> (global/output-level flags) and <code>build_name_kvargs_format</code> (filter option strings), apply the same small set of conversions when turning a Python dict into CLI text, so individual filters/inputs don't need to repeat this logic:</p>
+<ul>
+<li><strong><code>bool</code> → <code>0</code>/<code>1</code>.</strong> FFmpeg has no native boolean flag value — <code>True</code>/<code>False</code> are converted to <code>1</code>/<code>0</code> (e.g. <code>reset_sar(True)</code> → <code>sar=1</code>), matching what FFmpeg actually expects.</li>
+<li><strong><code>None</code> → flag is skipped/bare.</strong> In <code>build_flags</code>, a <code>None</code> value emits the flag name with no value (<code>{"y": None}</code> → <code>["-y"]</code>), used for boolean-style CLI switches. In filter kwargs (<code>build_name_kvargs_format</code>), a <code>None</code> value drops the key entirely — this is what lets filter classes default optional parameters to <code>None</code> and have them silently omitted from the rendered string instead of requiring every filter to manually build a "only include if set" dict.</li>
+<li><strong>Text escaping.</strong> Filters that take free-form text (notably <code>Text</code>/<code>drawtext</code>) run user-supplied strings through <code>escape_arguments</code>/<code>escape_stray_percent</code> before building the filter string, escaping characters FFmpeg's filter grammar treats as special (<code>:</code>, <code>\</code>, stray <code>%</code>). Without this, a caption containing a colon or backslash would silently corrupt the filter graph syntax (or open a path for filter-string injection from untrusted text) instead of being rendered as literal text.</li>
+</ul>
+<h2 id="running-process-execution-and-progress">Running: process execution and progress</h2>
+<p><code>.run()</code> / <code>.run_async()</code> call <code>.compile()</code>, then hand the argument list to <code>subprocess.Popen</code> / <code>asyncio.create_subprocess_exec</code>.</p>
+<ul>
+<li>Without a <code>progress_callback</code>, this is a normal blocking (or awaitable) subprocess call; a non-zero exit code raises <code>FFmpegException(stderr, return_code)</code>.</li>
+<li>With a <code>progress_callback</code>, the builder additionally passes <code>-progress pipe:1 -nostats -stats_period N</code>, telling FFmpeg to emit machine-readable <code>key=value</code> progress lines on stdout instead of its normal human-readable stats. stdout is read line by line; each line is parsed (<code>parse_value</code> — typed as int/float/<code>None</code> for <code>N/A</code>/string) and accumulated into a dict. The dict is flushed to your callback every time a <code>progress</code> key is seen (FFmpeg emits that key once per stats interval), giving you a live snapshot (<code>frame</code>, <code>fps</code>, <code>out_time</code>, <code>speed</code>, …) as encoding proceeds.</li>
+</ul>
+<p>This is the same interface for the sync and async run paths — the only difference is whether the underlying subprocess and stdout read loop use <code>subprocess</code>/blocking reads or <code>asyncio</code>.</p>
+<h2 id="supporting-interfaces">Supporting interfaces</h2>
+<ul>
+<li><strong><code>ffprobe</code></strong> (<code>ffmpeg.ffprobe</code>) shells out to <code>ffprobe -show_streams -show_format -print_format json</code> and parses the result. <code>VideoFile</code> uses this internally to back <code>.get_size()</code>, <code>.get_duration()</code>, stream iteration/indexing (<code>__iter__</code>, <code>__getitem__</code>), and <code>.audio</code>/<code>.video</code>/<code>.subtitle</code> stream lookup — so inspecting a <code>VideoFile</code>'s streams transparently probes the real file. Failures raise <code>FFprobeException</code>.</li>
+<li><strong><code>ffplay</code></strong> (<code>ffmpeg.ffplay</code>) is a thin, fire-and-forget wrapper: it builds a flag string from keyword arguments and runs <code>ffplay</code> via <code>subprocess.run(shell=True)</code> for local playback/preview. It does not participate in the graph model.</li>
+<li><strong>Expressions</strong> (<code>ffmpeg.expressions</code>) provides helpers for building FFmpeg's numeric/eval expression syntax (used in filters that take expressions rather than fixed values, e.g. dynamic overlay positions).</li>
+<li><strong><code>draw_filter_graph</code></strong> (<code>ffmpeg.utils.diagram</code>) renders the graph FFmpeg will build — inputs, filters, stream specifiers, outputs, with directed edges — as a Graphviz diagram. It's the fastest way to sanity-check a complex pipeline before running it.</li>
+</ul>
+<h2 id="error-handling">Error handling</h2>
+<p>Errors are a flat hierarchy, all raised as Python exceptions rather than error codes:</p>
+<ul>
+<li><code>FFmpegCompileError</code> — raised by <code>.compile()</code> itself, e.g. when no outputs were defined.</li>
+<li><code>FFmpegException(message, return_code)</code> — raised by <code>.run()</code>/<code>.run_async()</code> when the <code>ffmpeg</code> process exits non-zero; carries the process's stderr and exit code.</li>
+<li><code>FFprobeException(FFmpegException)</code> — same shape, raised by <code>ffprobe()</code> failures.</li>
+</ul>
+<h2 id="extending-the-library">Extending the library</h2>
+<p>The two most common extension points both slot into the same graph model:</p>
+<ul>
+<li><strong>New filter</strong>: subclass <code>BaseFilter</code>, set <code>filter_name</code> and populate <code>self.flags</code> in <code>__init__</code>; <code>output_count</code> controls whether it should be wired with <code>apply()</code> (single output) or <code>apply2()</code> (multiple outputs, e.g. a custom split-like filter). No changes to <code>FFmpeg</code> are needed — <code>_flatten_graph</code> walks any <code>BaseFilter</code> uniformly.</li>
+<li><strong>New input type</strong>: subclass <code>BaseInput</code>, implement <code>_build_input_flags()</code> to return the <code>-i</code>-side CLI arguments for that source. <code>VideoFile</code> is the richest example (subclip trimming, ffprobe-backed stream introspection) if you need a template.</li>
+</ul>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="../api_reference/">API Reference</a> for the full class/method listing (autogenerated from docstrings).</li>
+<li><a href="../tutorial/making_input/">Tutorials</a> for task-oriented, example-first walkthroughs.</li>
+<li><a href="../example/mosaic/">Mosaic example</a> for a realistic multi-filter graph built with <code>apply()</code>.</li>
+</ul>
 
 
 
 
 
 
-
-  
-  
 
 
 
@@ -1570,7 +1596,7 @@ this provide useful flags that are applied to input in ffmpeg command.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../installation/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Installation">
+          <a href="../basics/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Basics">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1580,20 +1606,20 @@ this provide useful flags that are applied to input in ffmpeg command.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Installation
+                Basics
               </div>
             </div>
           </a>
         
         
           
-          <a href="../basics/" class="md-footer__link md-footer__link--next" aria-label="Next: Basics">
+          <a href="../FAQ/" class="md-footer__link md-footer__link--next" aria-label="Next: FAQ">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Basics
+                FAQ
               </div>
             </div>
             <div class="md-footer__button md-icon">
