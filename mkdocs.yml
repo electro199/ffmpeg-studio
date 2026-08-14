@@ -61,9 +61,10 @@ plugins:
 nav:
   - Home: index.md
   - Installation: installation.md
-  - Basics: basics.md
-  - FAQ: FAQ.md
   - Getting Started: getting-started.md
+  - Basics: basics.md
+  - Architecture: architecture.md
+  - FAQ: FAQ.md
   - Tutorials:
       - tutorial/making_input.md
       - tutorial/video_input.md

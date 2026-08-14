@@ -5,11 +5,6 @@ description: How filters work in ffmpeg-studio using apply and apply2, including
 
 Lets see how everything works in ffmpeg-studio
 
-
----
-
----
-
 # Filters
 
 Filters are way the ffmpeg allow media to be manipulated, ffmpeg-studio use [`apply`](/ffmpeg-studio/api/#ffmpeg.filters.apply) or [`apply2`](/ffmpeg-studio/api/#ffmpeg.filters.apply2), apply2 is for multi output filters. Filter output can be exported or further filtered.
@@ -59,7 +54,6 @@ final_video = apply(Overlay(scaled_logo, 0, 0),scaled_video)
 #                 [n1o0][n0o0]overlay=x=0:y=0[n2o0] \
 #  -map [n2o0] out.mp4
 ```
-
 
 # Map Flags
 
