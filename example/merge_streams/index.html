@@ -29,7 +29,7 @@
     
     
       
-        <title>Merge video and audio from two different files with ffmpeg-studio - ffmpeg-studio</title>
+        <title>Merge Video and Audio from Two Files - ffmpeg-studio</title>
       
     
     
@@ -63,6 +63,9 @@
 
     
     
+  
+  
+  <meta name="robots" content="index, follow">
   
   
   
@@ -122,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Merge video and audio from two different files with ffmpeg-studio
+              Merge Video and Audio from Two Files
             
           </span>
         </div>
@@ -731,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookbook/" class="md-nav__link">
+      <a href="../../cookbooks/index.md" class="md-nav__link">
         
   
   
@@ -767,34 +770,6 @@
     
   
     Add a Watermark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cookbook/video/resize.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resize a Video
   
 
     
@@ -1292,24 +1267,24 @@
 <h1 id="merge-video-and-audio">Merge Video and Audio</h1>
 <p>Sometimes the video and audio you need live in two separate files — for example, replacing a clip's original audio with a different track, or combining a silent screen recording with narration. ffmpeg-studio lets you pull a stream from each file and combine them into one output without hand-writing the FFmpeg mapping flags.</p>
 <h2 id="example">Example</h2>
-<div class="language-python highlight"><span class="filename">example/merge_streams.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">&quot;&quot;&quot;</span>
+<div class="language-python highlight"><span class="filename">example/merge_streams.py</span><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="sd">"""</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="sd">Example Quick Start to merge video and audio from two files</span>
-</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">&quot;&quot;&quot;</span>
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sd">"""</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 </span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg.inputs</span><span class="w"> </span><span class="kn">import</span> <span class="n">VideoFile</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">export</span>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 </span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># Grab video from File</span>
-</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">video_stream</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video1.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">video</span>
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="n">video_stream</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">"video1.mp4"</span><span class="p">)</span><span class="o">.</span><span class="n">video</span>
 </span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
 </span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="c1"># Grab audio from another File</span>
-</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">audio_stream</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;video2.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">audio</span>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="n">audio_stream</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">"video2.mp4"</span><span class="p">)</span><span class="o">.</span><span class="n">audio</span>
 </span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
 </span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># Combine them together and export as mp4 </span>
 </span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="n">export</span><span class="p">(</span>
 </span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>    <span class="n">video_stream</span><span class="p">,</span>
 </span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>    <span class="n">audio_stream</span><span class="p">,</span>
-</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">path</span><span class="o">=</span><span class="s2">&quot;out.mp4&quot;</span><span class="p">,</span>
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>    <span class="n">path</span><span class="o">=</span><span class="s2">"out.mp4"</span><span class="p">,</span>
 </span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span></code></pre></div>
 <p>This grabs the video stream from <code>video1.mp4</code> and the audio stream from <code>video2.mp4</code>, then exports both into a single <code>out.mp4</code>.</p>

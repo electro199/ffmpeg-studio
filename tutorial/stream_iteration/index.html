@@ -65,6 +65,9 @@
     
   
   
+  <meta name="robots" content="index, follow">
+  
+  
   
 
   </head>
@@ -802,7 +805,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookbook/" class="md-nav__link">
+      <a href="../../cookbooks/index.md" class="md-nav__link">
         
   
   
@@ -838,34 +841,6 @@
     
   
     Add a Watermark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cookbook/video/resize.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resize a Video
   
 
     
@@ -1316,10 +1291,10 @@
 <p>When Iterating the we call the ffprobe to get all streams and give user list of <code>StreamSpecifier</code> with index and metadata from the ffprobe. This allow users flexiblity to use while processing streams.</p>
 <h2 id="loop-over-all-streams">Loop over all Streams</h2>
 <p>Lets print all Streams and the codec_type</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;movie.mkv&quot;</span><span class="p">)</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">"movie.mkv"</span><span class="p">)</span>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">clip</span><span class="p">:</span>
-</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span>  <span class="n">s</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">&#39;codec_type&#39;</span><span class="p">])</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span>  <span class="n">s</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s1">'codec_type'</span><span class="p">])</span>
 </span></code></pre></div>
 <p>Example output:</p>
 <div class="language-text highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>&lt;StreamSpecifier stream_index=0 stream_name=None&gt; video
@@ -1328,12 +1303,12 @@
 </span></code></pre></div>
 <h2 id="extract-all-audio-streams">Extract All Audio Streams</h2>
 <p>Here  we checking if codec type is audio we are exporting stream into new file using multioutput feature and exporting at once.</p>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">&quot;movie.mkv&quot;</span><span class="p">)</span>
-</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">audio_streams</span> <span class="o">=</span> <span class="p">[</span><span class="n">stream</span> <span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">clip</span> <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">&quot;codec_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;audio&quot;</span><span class="p">]</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">clip</span> <span class="o">=</span> <span class="n">VideoFile</span><span class="p">(</span><span class="s2">"movie.mkv"</span><span class="p">)</span>
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="n">audio_streams</span> <span class="o">=</span> <span class="p">[</span><span class="n">stream</span> <span class="k">for</span> <span class="n">stream</span> <span class="ow">in</span> <span class="n">clip</span> <span class="k">if</span> <span class="n">stream</span><span class="o">.</span><span class="n">metadata</span><span class="p">[</span><span class="s2">"codec_type"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"audio"</span><span class="p">]</span>
 </span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">FFmpeg</span><span class="p">()</span>
 </span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 </span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">audio_streams</span><span class="p">:</span>
-</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;track_</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">stream_index</span><span class="si">}</span><span class="s2">.mp3&quot;</span><span class="p">)</span>
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s2">"track_</span><span class="si">{</span><span class="n">a</span><span class="o">.</span><span class="n">stream_index</span><span class="si">}</span><span class="s2">.mp3"</span><span class="p">)</span>
 </span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
 </span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="n">ffmpeg</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span></code></pre></div>

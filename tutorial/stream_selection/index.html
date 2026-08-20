@@ -65,6 +65,9 @@
     
   
   
+  <meta name="robots" content="index, follow">
+  
+  
   
 
   </head>
@@ -813,7 +816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cookbook/" class="md-nav__link">
+      <a href="../../cookbooks/index.md" class="md-nav__link">
         
   
   
@@ -849,34 +852,6 @@
     
   
     Add a Watermark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../cookbook/video/resize.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resize a Video
   
 
     
@@ -1336,7 +1311,7 @@
 <h1 id="stream-selection">Stream Selection</h1>
 <p>A media file can hold <strong>multiple streams</strong> (video, audio, subtitles, attachments, data). Normally, FFmpeg auto-selects “the best” video + audio, but sometimes you need direct control — e.g. pick the second audio track or ignore thumbnail streams.</p>
 <p>We can select by doing:
-<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">audio_stream</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">get_stream</span><span class="p">(</span><span class="n">stream_index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stream_name</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">)</span>
+<div class="language-py highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">audio_stream</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">get_stream</span><span class="p">(</span><span class="n">stream_index</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">stream_name</span><span class="o">=</span><span class="s2">"a"</span><span class="p">)</span>
 </span></code></pre></div></p>
 <hr />
 <h2 id="under-the-hood">Under the hood</h2>

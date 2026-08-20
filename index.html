@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Learn how ffmpeg-studio helps Python developers build FFmpeg pipelines for video editing, audio mixing, subtitles, overlays, and media automation.">
+        <meta name="description" content="Home Page for ffmpeg-studio, a Python wrapper for Modern FFmpeg for building and running FFmpeg commands programmatically, including complex filter graphs.">
       
       
         <meta name="author" content="Electro199">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Python FFmpeg library for video editing and audio processing - ffmpeg-studio</title>
+        <title>Python FFmpeg Library for Video and Audio Processing - ffmpeg-studio</title>
       
     
     
@@ -61,6 +61,9 @@
 
     
     
+  
+  
+  <meta name="robots" content="index, follow">
   
   
   
@@ -120,7 +123,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python FFmpeg library for video editing and audio processing
+              Python FFmpeg Library for Video and Audio Processing
             
           </span>
         </div>
@@ -302,10 +305,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-developers-use-ffmpeg-studio" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why developers use ffmpeg-studio
+        Key Features
       
     </span>
   </a>
@@ -313,10 +316,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#how-does-it-compare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Features
+        How does it compare?
       
     </span>
   </a>
@@ -331,45 +334,6 @@
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ffprobe-and-ffplay" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FFprobe and FFplay
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="FFprobe and FFplay">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ffprobe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ffprobe
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ffplay" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ffplay
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -848,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="cookbook/" class="md-nav__link">
+      <a href="cookbooks/index.md" class="md-nav__link">
         
   
   
@@ -884,34 +848,6 @@
     
   
     Add a Watermark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="cookbook/video/resize.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resize a Video
   
 
     
@@ -1319,10 +1255,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#why-developers-use-ffmpeg-studio" class="md-nav__link">
+  <a href="#key-features" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why developers use ffmpeg-studio
+        Key Features
       
     </span>
   </a>
@@ -1330,10 +1266,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#key-features" class="md-nav__link">
+  <a href="#how-does-it-compare" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Key Features
+        How does it compare?
       
     </span>
   </a>
@@ -1348,45 +1284,6 @@
       
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ffprobe-and-ffplay" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FFprobe and FFplay
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="FFprobe and FFplay">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#ffprobe" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ffprobe
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ffplay" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ffplay
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1408,36 +1305,32 @@
 
 
 <h1 id="ffmpeg-studio">FFmpeg-studio</h1>
-<p><strong>ffmpeg-studio</strong> is a Pythonic interface to <a href="https://ffmpeg.org/">FFmpeg</a> for developers who want to build powerful video and audio workflows without writing long shell commands. It is a practical choice for Python users working on media conversion, transcoding, overlays, subtitles, and batch processing.</p>
-<h2 id="why-developers-use-ffmpeg-studio">Why developers use ffmpeg-studio</h2>
-<ul>
-<li>Build FFmpeg pipelines in Python with a readable and chainable API</li>
-<li>Create video editing workflows such as trimming, scaling, and overlaying</li>
-<li>Mix audio tracks, extract streams, and automate media processing jobs</li>
-<li>Work with filter graphs for subtitles, fades, crops, and other effects</li>
-<li>Generate FFmpeg commands programmatically for scripts and applications</li>
-</ul>
+<p><strong>ffmpeg-studio</strong> is a modern <a href="https://ffmpeg.org/">FFmpeg</a> Python wrapper for developers who want to build powerful video and audio workflows without writing long shell commands. It is a practical choice for Python users working on media conversion, transcoding, overlays, subtitles, and batch processing.</p>
 <h2 id="key-features">Key Features</h2>
 <ul>
-<li>Clean, chainable API to compose FFmpeg commands</li>
 <li>Automatic escaping of command-line arguments</li>
-<li>Support for simple and advanced filter graphs</li>
+<li>Easily get media info and stream metadata</li>
+<li>Visualize filter graphs and FFmpeg commands</li>
+<li>Support for large filter graphs with multiple inputs and outputs</li>
 <li>Easy integration into larger video and audio processing workflows</li>
 <li>Built-in support for progress callbacks</li>
+<li>Typed every step of the way for better IDE support and code completion</li>
+</ul>
+<h2 id="how-does-it-compare">How does it compare?</h2>
+<p>Existing tool chains for FFmpeg in Python are either unmaintained, slow, or limited in scope. ffmpeg-studio is designed to be a modern, fast, and flexible alternative.</p>
+<ul>
+<li>
+<p><a href="https://github.com/kkroening/ffmpeg-python">ffmpeg-python</a> works with filter objects with automatic escaping and full type hints, instead of chained <code>.filter()</code> calls and manual stream-label management on an unmaintained (2019 last commit).</p>
+</li>
+<li>
+<p><a href="https://github.com/singular-labs/singular-moviepy">MoviePy</a> is a high-level video editing library that wraps FFmpeg, but it is very slow for complex workflows. Currently it is unmaintained and has no type hints.</p>
+</li>
 </ul>
 <h2 id="start-here">Start here</h2>
-<ul>
-<li><a href="/ffmpeg-studio/installation">Installation</a></li>
-<li><a href="/ffmpeg-studio/getting-started/">Getting Started</a></li>
-<li><a href="/ffmpeg-studio/basics/">Basic Usage</a></li>
-<li><a href="#ffprobe-and-ffplay">FFprobe and FFplay</a></li>
-</ul>
-<h2 id="ffprobe-and-ffplay">FFprobe and FFplay</h2>
-<p>Alongside ffmpeg-studio, this toolkit can also include convenient wrappers for common FFmpeg companion tools.</p>
-<h3 id="ffprobe">ffprobe</h3>
-<p>A Python wrapper for the ffprobe utility to extract metadata from media files and inspect streams.</p>
-<h3 id="ffplay">ffplay</h3>
-<p>A Python wrapper for ffplay for previewing media from Python-based workflows.</p>
+<p>New to ffmpeg-studio? Start with <a href="/ffmpeg-studio/installation/">Installation</a>, then <a href="/ffmpeg-studio/getting-started/">Getting Started</a> and <a href="/ffmpeg-studio/basics/">Basics</a> to learn the core concepts, or check the <a href="/ffmpeg-studio/FAQ/">FAQ</a> for common questions.</p>
+<p>The <a href="/ffmpeg-studio/tutorial/making_input/">Tutorials</a> walk through input types, working with video input, trimming and subclipping, stream selection and iteration, reading media info, setting global flags, and configuring outputs.</p>
+<p>The <a href="/ffmpeg-studio/cookbooks/">Cookbooks</a> section has practical recipes such as <a href="/ffmpeg-studio/cookbooks/video/watermark/">adding a watermark</a> and <a href="/ffmpeg-studio/cookbooks/video/resize/">resizing a video</a>, while <a href="/ffmpeg-studio/example/format_conversion/">Examples</a> covers format conversion, merging video and audio, building a video mosaic, visualizing filter graphs, showing a progress bar, and fuzz-testing text rendering.</p>
+<p>For full class and function documentation, see the <a href="/ffmpeg-studio/api_reference/">API Reference</a>, covering <a href="/ffmpeg-studio/api_reference/inputs/">Inputs</a> and <a href="/ffmpeg-studio/api_reference/filters/">Filters</a>. ffprobe and ffplay wrappers are covered <a href="#ffprobe-and-ffplay">below</a>.</p>
 
 
 

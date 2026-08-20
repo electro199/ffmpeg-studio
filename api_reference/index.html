@@ -29,7 +29,7 @@
     
     
       
-        <title>ffmpeg-studio API Reference - ffmpeg-studio</title>
+        <title>API Reference - ffmpeg-studio</title>
       
     
     
@@ -63,6 +63,9 @@
 
     
     
+  
+  
+  <meta name="robots" content="index, follow">
   
   
   
@@ -122,7 +125,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ffmpeg-studio API Reference
+              API Reference
             
           </span>
         </div>
@@ -731,7 +734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cookbook/" class="md-nav__link">
+      <a href="../cookbooks/index.md" class="md-nav__link">
         
   
   
@@ -767,34 +770,6 @@
     
   
     Add a Watermark
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../cookbook/video/resize.md" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Resize a Video
   
 
     
@@ -4292,20 +4267,20 @@ complex filter graphs, without hand-writing raw filter strings.</p>
 </span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 </span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">ffmpeg</span> <span class="o">=</span> <span class="n">FFmpeg</span><span class="p">()</span>
 </span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">"output.mp4"</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 </span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="c1"># or run asynchronously</span>
-</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">await</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;output.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run_async</span><span class="p">()</span>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>    <span class="k">await</span> <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">"output.mp4"</span><span class="p">)</span><span class="o">.</span><span class="n">run_async</span><span class="p">()</span>
 </span></code></pre></div></p>
 <div class="language-text highlight"><pre><span></span><code>Multiple outputs can be chained in a single command:
 </code></pre></div>
-<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip1</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;output1.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip2</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;output2.mp4&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+<div class="language-python highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>    <span class="n">ffmpeg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip1</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">"output1.mp4"</span><span class="p">)</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">Map</span><span class="p">(</span><span class="n">clip2</span><span class="p">),</span> <span class="n">path</span><span class="o">=</span><span class="s2">"output2.mp4"</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span></code></pre></div>
 <p>For simple cases, use the <code>export</code> function to export in one line:</p>
 <div class="language-python highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>    <span class="kn">from</span><span class="w"> </span><span class="nn">ffmpeg</span><span class="w"> </span><span class="kn">import</span> <span class="n">export</span><span class="p">,</span> <span class="n">InputFile</span>
 </span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">clip</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">&quot;input.mp4&quot;</span><span class="p">)</span>
-</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">export</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">&quot;output.mkv&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    <span class="n">clip</span> <span class="o">=</span> <span class="n">InputFile</span><span class="p">(</span><span class="s2">"input.mp4"</span><span class="p">)</span>
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    <span class="n">export</span><span class="p">(</span><span class="n">clip</span><span class="p">,</span> <span class="n">path</span><span class="o">=</span><span class="s2">"output.mkv"</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 </span></code></pre></div>
 
 
@@ -4371,7 +4346,7 @@ complex filter graphs, without hand-writing raw filter strings.</p>
 
 
 </h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">__init__</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">&#39;ffmpeg&#39;</span><span class="p">,</span> <span class="n">use_filter_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filter_script_file</span><span class="o">=</span><span class="s1">&#39;filters.txt&#39;</span><span class="p">)</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">__init__</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s1">'ffmpeg'</span><span class="p">,</span> <span class="n">use_filter_file</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">filter_script_file</span><span class="o">=</span><span class="s1">'filters.txt'</span><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6772,7 +6747,7 @@ See: https://ffmpeg.org/ffmpeg-filters.html#concat</p>
 
 
 </h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">__init__</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="s1">&#39;1&#39;</span><span class="p">)</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">__init__</span><span class="p">(</span><span class="n">expression</span><span class="o">=</span><span class="s1">'1'</span><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6944,7 +6919,7 @@ that expands to the local time with given strftime format.</p>
   </span>
 
 </h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">f_gmtime</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %Y&#39;</span><span class="p">)</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">f_gmtime</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">'</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %Y'</span><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6969,7 +6944,7 @@ that expands to the local time with given strftime format.</p>
   </span>
 
 </h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">f_localtime</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %Y&#39;</span><span class="p">)</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">f_localtime</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">'</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %Y'</span><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -6994,7 +6969,7 @@ that expands to the local time with given strftime format.</p>
   </span>
 
 </h4>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">f_pts</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;flt&#39;</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">f_pts</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">'flt'</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">extra</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -7898,8 +7873,8 @@ Args:
 
 <details class="example" open>
   <summary>Example</summary>
-  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">build_name_kvargs_format</span><span class="p">(</span><span class="s2">&quot;scale&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;w&quot;</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span> <span class="s2">&quot;h&quot;</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span> <span class="s2">&quot;force_original_aspect_ratio&quot;</span><span class="p">:</span> <span class="s2">&quot;decrease&quot;</span><span class="p">})</span>
-</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">returns</span> <span class="s2">&quot;scale=w=1280:h=720:force_original_aspect_ratio=decrease&quot;</span>
+  <div class="language-python highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">build_name_kvargs_format</span><span class="p">(</span><span class="s2">"scale"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"w"</span><span class="p">:</span> <span class="mi">1280</span><span class="p">,</span> <span class="s2">"h"</span><span class="p">:</span> <span class="mi">720</span><span class="p">,</span> <span class="s2">"force_original_aspect_ratio"</span><span class="p">:</span> <span class="s2">"decrease"</span><span class="p">})</span>
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">returns</span> <span class="s2">"scale=w=1280:h=720:force_original_aspect_ratio=decrease"</span>
 </span></code></pre></div>
 </details>
 
@@ -8594,7 +8569,7 @@ Args:
   </span>
 
 </h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">E</span> <span class="o">=</span> <span class="s1">&#39;E&#39;</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">E</span> <span class="o">=</span> <span class="s1">'E'</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -8618,7 +8593,7 @@ Args:
   </span>
 
 </h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">PHI</span> <span class="o">=</span> <span class="s1">&#39;PHI&#39;</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">PHI</span> <span class="o">=</span> <span class="s1">'PHI'</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">
@@ -8642,7 +8617,7 @@ Args:
   </span>
 
 </h3>
-<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">PI</span> <span class="o">=</span> <span class="s1">&#39;PI&#39;</span>
+<div class="language-python doc-signature highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">PI</span> <span class="o">=</span> <span class="s1">'PI'</span>
 </span></code></pre></div>
 
     <div class="doc doc-contents ">

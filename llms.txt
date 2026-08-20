@@ -1,6 +1,6 @@
 # ffmpeg-studio
 
-> ffmpeg-studio is a Pythonic interface to FFmpeg for building and running FFmpeg commands programmatically, including complex filter graphs. It targets Python developers who need video/audio transcoding, overlays, subtitles, audio mixing, and batch media processing without hand-writing long shell commands or raw `filter_complex` strings.
+**ffmpeg-studio** is a modern [FFmpeg](https://ffmpeg.org/) Python wrapper for developers who want to build powerful video and audio workflows without writing long shell commands. It is a practical choice for Python users working on media conversion, transcoding, overlays, subtitles, and batch processing.
 
 ffmpeg-studio wraps ffmpeg, ffprobe, and ffplay with a chainable, type-hinted API. It automatically handles safe quoting/escaping, input/output stream mapping, and progress tracking via callbacks. Unlike simpler wrappers, it has first-class support for building long, multi-stage filter graphs (scaling, overlay, mixing, etc.) as composable Python objects instead of string concatenation.
 

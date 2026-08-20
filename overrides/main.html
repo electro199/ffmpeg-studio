@@ -2,6 +2,11 @@
 
 {% block extrahead %}
   {{ super() }}
+  {% if page and page.meta and page.meta.robots %}
+  <meta name="robots" content="{{ page.meta.robots }}">
+  {% else %}
+  <meta name="robots" content="index, follow">
+  {% endif %}
   {% if page and page.title == "FAQ" %}
   <script type="application/ld+json">
 {
