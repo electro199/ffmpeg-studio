@@ -1,5 +1,5 @@
 ---
-title: ffmpeg-studio vs ffmpeg-python — which Python FFmpeg wrapper should you use?
+title: ffmpeg-studio vs ffmpeg-python
 description: A practical comparison of ffmpeg-studio and ffmpeg-python for Python developers working with FFmpeg
 ---
 

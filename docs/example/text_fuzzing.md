@@ -1,5 +1,5 @@
 ---
-title: Fuzz test FFmpeg drawtext escaping in Python
+title: Fuzz Testing FFmpeg drawtext Escaping
 description: Stress-test FFmpeg's drawtext filter and character escaping rules by generating random special-character strings with ffmpeg-studio, rendered as a sliding-text video.
 ---
 

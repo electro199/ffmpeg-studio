@@ -1,5 +1,5 @@
 ---
-title: Build a video mosaic grid in Python with FFmpeg
+title: Build a Video Mosaic Grid in Python
 description: Combine multiple videos into a 2x2 mosaic grid using ffmpeg-studio's VerticalStack and HorizontalStack filters in Python.
 ---
 

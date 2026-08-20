@@ -1,5 +1,5 @@
 ---
-title: Getting started with ffmpeg-studio
+title: Getting Started
 description: Learn the basics of using ffmpeg-studio in Python for FFmpeg input handling, filter graphs, and media export.
 ---
 

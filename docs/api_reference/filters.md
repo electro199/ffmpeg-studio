@@ -1,5 +1,5 @@
 ---
-title: ffmpeg-studio Filters API Reference
+title: Filters API Reference
 description: API reference for ffmpeg-studio's filter classes and the apply/apply2 helpers, including Text, Box, Split, XFade, Subtitles, Overlay, Concat, and Scale.
 ---
 

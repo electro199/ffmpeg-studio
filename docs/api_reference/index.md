@@ -1,5 +1,5 @@
 ---
-title: ffmpeg-studio API Reference
+title: API Reference
 description: Full API reference for ffmpeg-studio's core FFmpeg, filters, utils, exceptions, ffprobe, and ffplay modules.
 ---
 

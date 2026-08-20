@@ -1,5 +1,5 @@
 ---
-title: Show a real-time progress bar for FFmpeg exports in Python
+title: Real-Time Progress Bar for FFmpeg Exports
 description: Use a progress callback with ffmpeg-studio to drive a tqdm progress bar and get live percentage updates while FFmpeg processes a video export.
 ---
 

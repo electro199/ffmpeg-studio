@@ -1,5 +1,5 @@
 ---
-title: Merge video and audio from two different files with ffmpeg-studio
+title: Merge Video and Audio from Two Files
 description: How to combine a video stream from one file and an audio stream from another into a single MP4 output using ffmpeg-studio's Python interface to FFmpeg.
 ---
 

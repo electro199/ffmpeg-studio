@@ -299,7 +299,7 @@ class FFmpeg:
             Map(node) if not isinstance(node, Map) else node for node in maps
         ]
         self._outputs.append(OutFile(wrapped_maps, path, metadata=metadata, **kwargs))
-        return self
+        return self 
 
     def run(
         self,

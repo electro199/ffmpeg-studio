@@ -1,5 +1,5 @@
 ---
-title: Add a Watermark or Logo to a Video in Python
+title: Add a Watermark to a Video in Python
 description: Learn how to add a watermark or logo to a video in Python using ffmpeg-studio. Overlay transparent PNG logos, position them anywhere in the frame, and export high-quality branded videos.
 ---
 

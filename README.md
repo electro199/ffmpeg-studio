@@ -7,7 +7,6 @@
 
 ffmpeg-studio provides a Pythonic interface to FFmpeg, allowing users to construct and execute FFmpeg commands programmatically.
 
-
 It simplifies and Handles:
 
 - Complex filter generation
@@ -83,6 +82,69 @@ export(
 
 ```
 
+## Quick Examples
+
+
+
+
+
+
+
+### Trim a video
+
+```py
+from ffmpeg.inputs import VideoFile
+from ffmpeg import export
+
+clip = VideoFile("video.mp4").subclip(start=5, duration=10)
+
+export(clip, path="trimmed.mp4").run()
+```
+
+### Extract audio from a video
+
+```py
+from ffmpeg.inputs import VideoFile
+from ffmpeg import export
+
+extracted_audio = VideoFile("video.mp4").audio
+
+export(extracted_audio, path="audio.mp3").run()
+```
+
+### Merge separate video and audio files
+
+```py
+from ffmpeg import FFmpeg
+from ffmpeg.inputs import VideoFile, AudioFile
+
+video = VideoFile("video.mp4")
+audio = AudioFile("audio.mp3")
+
+ffmpeg = FFmpeg()
+ffmpeg.output(video.video, audio, path="merged.mp4")
+ffmpeg.run()
+```
+
+### Add a watermark/logo overlay
+
+```py
+from ffmpeg import FFmpeg
+from ffmpeg.inputs import VideoFile, ImageFile
+from ffmpeg.filters import apply, Overlay
+
+video = VideoFile("video.mp4")
+logo = ImageFile("logo.png")
+
+watermarked = apply(Overlay(logo, x=10, y=10), video)
+
+ffmpeg = FFmpeg()
+ffmpeg.output(watermarked, path="watermarked.mp4")
+ffmpeg.run()
+```
+
+More recipes and full explanations are in the [docs](https://electro199.github.io/ffmpeg-studio/), including [Cookbooks](https://electro199.github.io/ffmpeg-studio/cookbooks/) and [Examples](https://electro199.github.io/ffmpeg-studio/example/format_conversion/).
+
 ## Install FFmpeg
 
 This project does not install ffmpeg utility automatically.
@@ -92,7 +154,6 @@ Verify ffmpeg is installed:
 ```sh
 ffmpeg -version
 ```
-
 
 ### Windows
 
@@ -122,39 +183,3 @@ For Debian/Ubuntu:
 ```sh
 sudo apt install ffmpeg
 ```
-
-## To-Do
-
-- All Input methods
-  - [x] Generic(Input) class
-  - [x] ImageFile class
-  - [x] VideoFile class
-  - [x] AudioFile class
-  - [x] VituralVideo class
-  - [ ] VituralAudio class
-
-- Output options
-  - [x] Muliple output per command
-  - [x] filter_file for super long filters
-  - [x] Per map flags
-  - [x] Per output flags
-
-- Improve progress tracking  
-  - [x] Support callbacks with frame/time info  
-  - [ ] Provide async interface for streaming progress
-
-- Documentation & Examples  
-  - [x] Basic tutorials.
-  - [x] Showcase filtergraph construction with helpers  
-  - [ ] Detailed tutorials.
-  - [ ] Detailed example/gallery.
-
-- Testing & CI  
-  - [x] Publish to PyPI  every release
-  - [x] Publish Docs  every release
-  - [ ] Verify cross-platform behavior (Linux/Windows/macOS)  
-  - [ ] GitHub Actions for automated testing
-
-- Packaging & Distribution  
-  - [x] Publish to PyPI  
-

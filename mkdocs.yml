@@ -75,9 +75,9 @@ nav:
       - tutorial/global_flags.md
       - tutorial/output.md
   - Cookbooks:
-      - Overview: cookbook/index.md
+      - Overview: cookbooks/index.md
       - Add a Watermark: cookbook/video/watermark.md
-      - Resize a Video: cookbook/video/resize.md
+      # - Resize a Video: cookbook/video/resize.md
 
   - Examples:
       - Conversion: example/format_conversion.md
