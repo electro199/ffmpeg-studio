@@ -17,6 +17,14 @@ description: Home Page for ffmpeg-studio, a Python wrapper for Modern FFmpeg for
 - Built-in support for progress callbacks
 - Typed every step of the way for better IDE support and code completion
 
+## How does it compare?
+
+Existing tool chains for FFmpeg in Python are either unmaintained, slow, or limited in scope. ffmpeg-studio is designed to be a modern, fast, and flexible alternative.
+
+- [ffmpeg-python](https://github.com/kkroening/ffmpeg-python) works with filter objects with automatic escaping and full type hints, instead of chained `.filter()` calls and manual stream-label management on an unmaintained (2019 last commit).
+
+- [MoviePy](https://github.com/singular-labs/singular-moviepy) is a high-level video editing library that wraps FFmpeg, but it is very slow for complex workflows. Currently it is unmaintained and has no type hints.
+
 ## Start here
 
 New to ffmpeg-studio? Start with [Installation](/ffmpeg-studio/installation/), then [Getting Started](/ffmpeg-studio/getting-started/) and [Basics](/ffmpeg-studio/basics/) to learn the core concepts, or check the [FAQ](/ffmpeg-studio/FAQ/) for common questions.
