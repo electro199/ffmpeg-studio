@@ -26,6 +26,7 @@ from .scale import (
     IOChromaLocation,
     IOPrimaries,
     IORange,
+    SWSFlags,
     Scale,
 )
 from .split import Split
@@ -36,6 +37,9 @@ from .vstack import VerticalStack
 from .xfade import XFade
 from .format import Format
 from .aformat import AudioFormat
+from .fps import FPS
+from .palettegen import PaletteGen
+from .paletteuse import PaletteUse
 
 __all__ = [
     # util
@@ -51,6 +55,7 @@ __all__ = [
     "IOChromaLocation",
     "IOPrimaries",
     "IORange",
+    "SWSFlags",
     "Box",
     "Text",
     "Overlay",
@@ -62,6 +67,9 @@ __all__ = [
     "HorizontalStack",
     "Crop",
     "Delogo",
+    "FPS",
+    "PaletteGen",
+    "PaletteUse",
     # audio
     "AudioMix",
     "AudioFormat",
