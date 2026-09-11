@@ -47,7 +47,7 @@ class StreamSpecifier:
         return StreamSpecifier(self)
 
     def __str__(self) -> str:
-        return f"<{self.__class__.__name__} stream_index={self.stream_index} stream_name={self.stream_name}>"
+        return f"<{self.__class__.__name__} index={self.stream_index} codec_type={self.codec_type} stream_name={self.stream_name}>"
 
     def __repr__(self) -> str:
-        return f"<{self.__class__.__name__} index={self.stream_index} stream={self.stream_name}>"
+        return f"<{self.__class__.__name__} index={self.stream_index} codec_type={self.codec_type} stream={self.stream_name}>"
