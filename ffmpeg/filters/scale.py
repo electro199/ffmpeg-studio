@@ -1,5 +1,6 @@
 from enum import IntEnum, StrEnum
 from typing import Self
+from unittest import mock
 from .base import BaseFilter
 
 
@@ -71,6 +72,26 @@ class AspectRatioMode(StrEnum):
     INCREASE = "increase"
 
 
+class SWSFlags(StrEnum):
+    FAST_BILINEAR = "fast_bilinear"
+    BILINEAR = "bilinear"
+    BICUBIC = "bicubic"
+    EXPERIMENTAL = "experimental"
+    NEIGHBOR = "neighbor"
+    AREA = "area"
+    BICUBLIN = "bicublin"
+    GAUSS = "gauss"
+    SINC = "sinc"
+    LANCZOS = "lanczos"
+    SPLINE = "spline"
+    PRINT_INFO = "print_info"
+    ACCURATE_RND = "accurate_rnd"
+    FULL_CHROMA_INT = "full_chroma_int"
+    FULL_CHROMA_INP = "full_chroma_inp"
+    BITEXACT = "bitexact"
+    UNSTABLE = "unstable"
+
+
 class Scale(BaseFilter):
     """
     Represents the FFmpeg scale filter.
@@ -79,9 +100,13 @@ class Scale(BaseFilter):
         width: The width of the output video.
         height: The height of the output video.
     """
+
     def __init__(self, width: float, height: float):
         super().__init__("scale")
-        self.flags: dict[str, float | int | str | bool] = {"width": width, "height": height}
+        self.flags: dict[str, float | int | str | bool] = {
+            "width": width,
+            "height": height,
+        }
 
     # --- helper methods for each option ---
 
@@ -100,7 +125,7 @@ class Scale(BaseFilter):
 
     def set_interlacing(self, mode: InterlacingMode) -> Self:
         """
-        Set the interlacing mode. 
+        Set the interlacing mode.
 
         Args:
             mode: The interlacing mode.
@@ -252,6 +277,15 @@ class Scale(BaseFilter):
             Self: The current Scale instance.
         """
         self.flags["force_divisible_by"] = n
+        return self
+
+    def set_flag(self, flag: SWSFlags) -> Self:
+        """
+        Set libswscale scaling flags. See the ffmpeg-scaler manual for the complete list of values.
+        If not explicitly specified the filter applies the default flags.
+        """
+        # docs mention mulitple and single flags need to check
+        self.flags["flags"] = flag
         return self
 
     def reset_sar(self, enable: bool = True) -> Self:
