@@ -26,7 +26,9 @@ class VideoFile(BaseInput):
     @property
     def audio(self) -> StreamSpecifier:
         """
-        Access the audio stream of the video file.
+        Access the audio(s) stream of the video file.
+        This is eqault to `Stream:a` in ffmpeg command line.
+        if you want to access specific audio stream, use `get_stream` method.
         """
         return StreamSpecifier(self, stream_name="a")
 
@@ -34,20 +36,26 @@ class VideoFile(BaseInput):
     def video(self) -> StreamSpecifier:
         """
         Access the video stream of the video file.
+        This is eqault to `Stream:V` in ffmpeg command line.
+        if you want to access specific video stream, use `get_stream` method.
         """
-        return StreamSpecifier(self, stream_name="v")
+        return StreamSpecifier(self, stream_name="V")
 
     @property
     def subtitle(self) -> StreamSpecifier:
         """
-        Access the subtitle stream of the video file.
-
-        Returns:
-            A StreamSpecifier object for the subtitle stream.
+        Access the subtitle(s) stream of the video file.
+        This is eqault to `Stream:s` in ffmpeg command line.
+        if you want to access specific subtitle stream, use `get_stream` method.
         """
         return StreamSpecifier(self, stream_name="s")
 
     def __iter__(self) -> Iterator[StreamSpecifier]:
+        """
+        Iterate over all streams in the video file.
+        This method uses FFprobe to extract stream information and yields StreamSpecifier objects for each stream.
+        """
+
         for stream in ffprobe(self.filepath)["streams"]:
             yield StreamSpecifier(
                 self,
@@ -59,6 +67,7 @@ class VideoFile(BaseInput):
     def __getitem__(self, index: int) -> StreamSpecifier:
         """
         Get stream from video by index
+        This method uses FFprobe to extract stream information and returns a StreamSpecifier object for the specified stream index.
         """
         stream = ffprobe(self.filepath, ["-show_streams"])["streams"][index]
         return StreamSpecifier(
@@ -78,6 +87,7 @@ class VideoFile(BaseInput):
 
         Note:
             This function will not validate if stream exists.
+            For validated streams, you can use list(clip), which will return all streams in the video file.
 
         Example:
             You get 2nd audio stream from video like this.
@@ -87,15 +97,14 @@ class VideoFile(BaseInput):
 
         Args:
             stream_index: The index of the stream (e.g., 0 for the first stream).
-            stream_name: The name of the stream
+            stream_name: The name of the stream If not provided, retrieves the stream by index.
                 to retrieve
-                - `a` -> audio
+                - `V` -> video but excludes thumbnails/attached pics
                 - `v` -> video
+                - `a` -> audio
                 - `s` -> subtitles
                 - `d` -> data
                 - `t` -> attachments
-                - `V` -> video but excludes thumbnails/attached pics
-                If not provided, retrieves the stream by index.
 
         Returns:
             A StreamSpecifier object for the requested stream.
@@ -132,7 +141,9 @@ class VideoFile(BaseInput):
         return self
 
     @classmethod
-    def from_imagefile(cls, imgpath: str, duration: float | str, fps: int) -> "VideoFile":
+    def from_imagefile(
+        cls, imgpath: str, duration: float | str, fps: int
+    ) -> "VideoFile":
         """
         Creates a VideoFile object from an image file, looping it for the given
         duration and setting the frame rate.
