@@ -72,8 +72,8 @@ clip_scaled = apply(Scale(1000, 1000), clip)
 ```
 
 !!! Warning
-Filters contain parent info they are not independent, do not reuse them in more then one apply function.
-If you want to reuse them create new instance with same arguments.
+    Filters contain parent info they are not independent, do not reuse them in more then one apply function.
+    If you want to reuse them create new instance with same arguments.
 
 ## Export
 

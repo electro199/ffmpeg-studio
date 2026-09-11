@@ -42,7 +42,7 @@ your-logo.png
 ```
 
 !!! tip
-PNG images support transparency (alpha channel), making them ideal for logos and watermarks. JPEG images do not support transparent backgrounds.
+    PNG images support transparency (alpha channel), making them ideal for logos and watermarks. JPEG images do not support transparent backgrounds.
 
 ---
 
@@ -67,7 +67,7 @@ logo = ImageFile("your-logo.png")
 ```
 
 !!! note
-`VideoFile` and `ImageFile` only create references to your media. The files are **not decoded or loaded into memory** until FFmpeg starts processing the export.
+    `VideoFile` and `ImageFile` only create references to your media. The files are **not decoded or loaded into memory** until FFmpeg starts processing the export.
 
 This design allows even very large videos to be processed efficiently without consuming unnecessary RAM.
 
@@ -87,7 +87,7 @@ logo = apply(
 ```
 
 !!! tip
-Larger isn't always better. A subtle watermark is usually more professional and less distracting.
+    Larger isn't always better. A subtle watermark is usually more professional and less distracting.
 
 ---
 
