@@ -3,7 +3,7 @@ title: Add a Watermark to a Video in Python
 description: Learn how to add a watermark or logo to a video in Python using ffmpeg-studio. Overlay transparent PNG logos, position them anywhere in the frame, and export high-quality branded videos.
 ---
 
-# Add a Watermark or Logo to a Video in Python
+## Add a Watermark or Logo to a Video in Python
 
 Adding a watermark or logo is one of the most common video editing tasks. Whether you're branding YouTube videos, protecting client previews, adding a company logo, or creating social media content, FFmpeg's powerful **overlay** filter makes the process both fast and efficient.
 
@@ -42,11 +42,11 @@ your-logo.png
 ```
 
 !!! tip
-    PNG images support transparency (alpha channel), making them ideal for logos and watermarks. JPEG images do not support transparent backgrounds.
+PNG images support transparency (alpha channel), making them ideal for logos and watermarks. JPEG images do not support transparent backgrounds.
 
 ---
 
-# Step 1: Import the required modules
+## Step 1: Import the required modules
 
 Import the classes required to load media files, apply filters, and export the final video.
 
@@ -55,9 +55,7 @@ from ffmpeg import FFmpeg, ImageFile, VideoFile, Map, export
 from ffmpeg.filters import Overlay, Scale, apply
 ```
 
----
-
-# Step 2: Load the media files
+## Step 2: Load the media files
 
 Create file objects for both the video and the watermark image.
 
@@ -67,13 +65,11 @@ logo = ImageFile("your-logo.png")
 ```
 
 !!! note
-    `VideoFile` and `ImageFile` only create references to your media. The files are **not decoded or loaded into memory** until FFmpeg starts processing the export.
+`VideoFile` and `ImageFile` only create references to your media. The files are **not decoded or loaded into memory** until FFmpeg starts processing the export.
 
 This design allows even very large videos to be processed efficiently without consuming unnecessary RAM.
 
----
-
-# Step 3: Resize the logo
+## Step 3: Resize the logo
 
 Watermarks should usually occupy only a small portion of the frame.
 
@@ -87,11 +83,9 @@ logo = apply(
 ```
 
 !!! tip
-    Larger isn't always better. A subtle watermark is usually more professional and less distracting.
+Larger isn't always better. A subtle watermark is usually more professional and less distracting.
 
----
-
-# Step 4: Overlay the logo
+## Step 4: Overlay the logo
 
 Now place the resized logo onto the video.
 
@@ -113,9 +107,8 @@ This places the logo:
 
 The result is a new video stream containing the watermark.
 
----
 
-# Common watermark positions
+### Common watermark positions
 
 FFmpeg allows positions to be specified using either fixed pixel values or expressions.
 
@@ -137,9 +130,8 @@ For a small margin from the edge:
 
 These expressions automatically adapt to videos of different resolutions.
 
----
 
-# Step 5: Export the final video
+## Step 5: Export the final video
 
 Finally, export the processed video.
 
@@ -271,14 +263,3 @@ Now that you've learned how to overlay a static logo, you can explore more advan
 - Add text overlays
 - Overlay videos instead of images
 - Create picture-in-picture effects
-
----
-
-# Related recipes
-
-- Resize a video in Python
-- Add subtitles to a video
-- Overlay one video on another
-- Crop a video
-- Blur a region of a video
-- Add text to a video
