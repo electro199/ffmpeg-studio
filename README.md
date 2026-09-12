@@ -56,7 +56,6 @@ overlay = apply(Scale(100, 100), overlay)
 # apply overlay filter with overlay on upscaled_clip
 upscaled_clip = apply(Overlay(overlay, x=0, y=10), clip)
 
-
 ffmpeg = FFmpeg()
 
 # add output
@@ -70,9 +69,6 @@ ffmpeg.run(progress_callback=print)
 For simple media conversion :
 
 ```py
-from ffmpeg.inputs import VideoFile
-from ffmpeg import export
-
 clip = VideoFile("video.mp4")
 
 export(
@@ -84,40 +80,64 @@ export(
 
 ## Quick Examples
 
-
-
-
-
-
-
 ### Trim a video
 
 ```py
-from ffmpeg.inputs import VideoFile
-from ffmpeg import export
-
 clip = VideoFile("video.mp4").subclip(start=5, duration=10)
 
 export(clip, path="trimmed.mp4").run()
 ```
 
-### Extract audio from a video
+### Get meta data info
+
+Use builtin support for ffprobe
 
 ```py
-from ffmpeg.inputs import VideoFile
-from ffmpeg import export
+VideoFile("video.mp4").get_duration() # 10.33 seconds
+VideoFile("video.mp4").get_size()  # (1920, 1080)
 
-extracted_audio = VideoFile("video.mp4").audio
+AudioFile("audio.mp3").get_duration() # 30.00 seconds
 
-export(extracted_audio, path="audio.mp3").run()
+ImageFile("image.jpeg").get_size()  # (1920, 1080)
 ```
 
-### Merge separate video and audio files
+### Extract Audio/Video/Subtitle from a video
+
+Extract or reference streams:
 
 ```py
-from ffmpeg import FFmpeg
-from ffmpeg.inputs import VideoFile, AudioFile
+video = VideoFile("video.mkv")
 
+# get audio(s)/subtitles(s)
+audio = video.audio
+subtitle = video.subtitle
+
+# get specific stream
+audio_1 = video.get_stream(stream_name="a", stream_index=1)
+video_1 = video.get_stream(stream_name="V", stream_index=1)
+subtitle_1 = video.get_stream(stream_name="s", stream_index=1)
+
+# Now you can use them in filter or export
+export(..., path=...).run()
+```
+
+List the all streams in the video file autiomatically with builtin ffprobe support.
+The for-loop will tigger the ffprobe to get list all streams:
+
+```py
+video = VideoFile("video.mkv")
+
+for stream in video:
+    print(stream, stream.metadata["codec_type"])
+
+# <StreamSpecifier stream_index=0> video
+# <StreamSpecifier stream_index=1> audio
+# <StreamSpecifier stream_index=2> subtitle
+```
+
+### Merge separate video and audio(s) files
+
+```py
 video = VideoFile("video.mp4")
 audio = AudioFile("audio.mp3")
 
@@ -129,10 +149,6 @@ ffmpeg.run()
 ### Add a watermark/logo overlay
 
 ```py
-from ffmpeg import FFmpeg
-from ffmpeg.inputs import VideoFile, ImageFile
-from ffmpeg.filters import apply, Overlay
-
 video = VideoFile("video.mp4")
 logo = ImageFile("logo.png")
 
@@ -155,7 +171,9 @@ Verify ffmpeg is installed:
 ffmpeg -version
 ```
 
-### Windows
+<details>
+
+<summary>Windows Install</summary>
 
 Using winget:
 
@@ -168,7 +186,12 @@ or download and install FFmpeg from [FFmpeg official website](https://ffmpeg.org
 1. Download the latest FFmpeg build from [here](https://www.gyan.dev/ffmpeg/builds/).
 2. Extract the archive and add the `bin` directory to your system `PATH`.
 
-### macOS
+</details>
+
+<details>
+
+<summary>MacOS Install</summary>
+
 
 Using Homebrew:
 
@@ -176,10 +199,16 @@ Using Homebrew:
 brew install ffmpeg
 ```
 
-### Linux
+</details>
+
+<details>
+
+<summary>Linux Install</summary>
 
 For Debian/Ubuntu:
 
 ```sh
 sudo apt install ffmpeg
 ```
+
+</details>
