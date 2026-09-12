@@ -1,11 +1,40 @@
 ---
 title: ffmpeg-studio vs ffmpeg-python
-description: A practical comparison of ffmpeg-studio and ffmpeg-python for Python developers working with FFmpeg
+description: Comparing ffmpeg-studio and ffmpeg-python
 ---
 
 # ffmpeg-studio vs ffmpeg-python
 
-Both libraries build on top of FFmpeg for Python, but they were built years apart and make different tradeoffs. This page is a straightforward comparison to help you pick the right one for your project — including where ffmpeg-python is still a reasonable choice.
+ffmpeg-python is well known library used widely and have many tutorials avaialble on the internet making it accessible for users. Both libraries build on top of FFmpeg for Python, but they were built years apart and make different tradeoffs. This page is a straightforward comparison to help you pick the right one for your project — including where ffmpeg-python is still a reasonable choice.
+
+## Code Difference
+
+This snippet from `ffmpeg-python` github repo:
+
+```py
+main = ffmpeg.input('main.mp4')
+logo = ffmpeg.input('logo.png')
+(
+    ffmpeg
+    .filter([main, logo], 'overlay', 10, 10)
+    .output('out.mp4')
+    .run()
+)
+```
+
+This is equivalent code in `ffmpeg-studio`:
+
+```
+main = VideoFile("main.mp4")
+logo = ImageFile("logo.png")
+
+water_marked_video = apply(Overlay(logo, x=10, y=10), main)
+
+export(
+    water_marked_video,
+    path="out.mp4",
+).run()
+```
 
 ## Quick comparison
 
